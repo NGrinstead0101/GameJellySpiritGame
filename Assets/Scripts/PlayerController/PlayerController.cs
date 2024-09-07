@@ -12,7 +12,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     // True is Angel, False is Devil
-    public static Action<bool> SwapForm;
+    public static Action<AbilitySetType> SwapForm;
 
     [SerializeField] private float _jumpSpeed;
     [SerializeField] private float _baseSpeed;
@@ -98,8 +98,16 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void SwapSpiritForm()
     {
-        _currentForm = !_currentForm;
-        SwapForm?.Invoke(_currentForm);
+        if(_currentForm)
+        {
+            SwapForm?.Invoke(AbilitySetType.Devil);
+        }
+        else
+        {
+            SwapForm?.Invoke(AbilitySetType.Angel);
+        }
+
+        _currentForm = !_currentForm; 
     }
 
     /// <summary>
