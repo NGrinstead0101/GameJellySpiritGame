@@ -30,7 +30,7 @@ public class Patrol : EnemyState
         }
         else if ((int)context.GetTime() % 10 == 0) //every 5 seconds the patrolling enemy will randomly decide if it should go to idle
         {
-            var rand = Random.Range(0, 50);
+            var rand = Random.Range(0, 15);
             if (context.GetTime() > rand)
             {
                 context.ChangeState(new Idle());
@@ -93,7 +93,7 @@ public class Idle : EnemyState
         }
         else if ((int)context.GetTime() % 3 ==0) //every 2 seconds the idle enemy will randomly decide if it should go to patrol
         {
-            if(context.GetTime() > Random.Range(0,50))
+            if(context.GetTime() > Random.Range(0,15))
             {
                 context.ChangeState(new Patrol());
             }

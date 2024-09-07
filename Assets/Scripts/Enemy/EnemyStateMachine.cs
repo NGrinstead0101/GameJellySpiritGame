@@ -56,7 +56,6 @@ public class EnemyStateMachine : MonoBehaviour
         {
             if (currentState.NeedsDestinationUpdate(this))
             {
-                Debug.Log("Updating destination");
                 currentState.UpdateDestination(this);
             }
 
@@ -82,10 +81,8 @@ public class EnemyStateMachine : MonoBehaviour
     {
         if (Vector2.Distance(transform.position, GetPlayerLocation()) < GetChaseDistance())
         {
-            Debug.Log("is in range");
             return true;
         }
-        Debug.Log("Not in range");
         return false;
     }
     public int GetChaseDistance()
@@ -151,7 +148,6 @@ public class EnemyStateMachine : MonoBehaviour
     }
     public bool GetNextToPlayer()
     {
-        Debug.Log("Next to player: " + isNextToPlayer);
         return isNextToPlayer;
     }
     public bool IsFacingPlayer()
@@ -187,7 +183,6 @@ public class EnemyStateMachine : MonoBehaviour
     }
     public bool IsNextToWall()
     {
-        Debug.Log("next to wall called");
         bool returnVal = isNearWall;
 
         if (isNearWall == true)
@@ -275,7 +270,6 @@ public class EnemyStateMachine : MonoBehaviour
 
         if (other.CompareTag("WALL"))
         {
-            Debug.Log("TriggerEntered");
             isNearWall = true;
         }
     }
