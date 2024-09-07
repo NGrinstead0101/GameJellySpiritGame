@@ -70,9 +70,9 @@ public class BackgroundMusicManager : MonoBehaviour
     /// <summary>
     /// switched the devil/angel dynamic tracks
     /// </summary>
-    private void SwitchDynamicMusic(bool form)
+    private void SwitchDynamicMusic(AbilitySetType form)
     {
-        if(form)
+        if(form == AbilitySetType.Angel)
         {
             StartCoroutine(StartFade(_devilMusicSource, 0, _angelDevilTransitionTime));
             StartCoroutine(StartFade(_angelMusicSource, 1, _angelDevilTransitionTime));
