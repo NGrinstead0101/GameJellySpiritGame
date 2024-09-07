@@ -25,12 +25,7 @@ public class BackgroundMusicManager : MonoBehaviour
 
     public static BackgroundMusicManager Instance { get; private set; }
 
-    public enum BackTrack
-    {
-        menu,
-        pause,
-        level
-    }
+    
 
     private void Awake()
     {
@@ -106,21 +101,21 @@ public class BackgroundMusicManager : MonoBehaviour
 
     #region selecting back track
 
-    public void SwitchBackTrack(BackTrack from, BackTrack to)
+    public void SwitchBackTrack(GameManager.GameState from, GameManager.GameState to)
     {
         StartCoroutine(StartFade(EnumToClip(from), 0, _backTrackTransitionTime));
         StartCoroutine(StartFade(EnumToClip(to), 1, _backTrackTransitionTime));
     }
 
-    private AudioSource EnumToClip(BackTrack input)
+    private AudioSource EnumToClip(GameManager.GameState input)
     {
         switch(input)
         {
-            case BackTrack.menu:
+            case GameManager.GameState.menu:
                 return _menuMusicSource;
-            case BackTrack.pause:
+            case GameManager.GameState.pause:
                 return _pauseMusicSource;
-            case BackTrack.level:
+            case GameManager.GameState.level:
                 return _levelMusicSource;
             default:
                 return null;
