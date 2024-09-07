@@ -22,7 +22,6 @@ public class BackgroundMusicManager : MonoBehaviour
 
     [SerializeField] private float _angelDevilTransitionTime;
     [SerializeField] private float _backTrackTransitionTime;
-    private bool _playingAngel;
 
     public static BackgroundMusicManager Instance { get; private set; }
 
@@ -58,12 +57,12 @@ public class BackgroundMusicManager : MonoBehaviour
 
     private void OnEnable()
     {
-        //TODO: assign SwitchMusic fx += ability switch action
+        PlayerController.SwapForm += SwitchDynamicMusic;
     }
 
     private void OnDisable()
     {
-        //TODO: assign SwitchMusic fx -= ability switch action
+        PlayerController.SwapForm -= SwitchDynamicMusic;
     }
 
 
@@ -71,11 +70,9 @@ public class BackgroundMusicManager : MonoBehaviour
     /// <summary>
     /// switched the devil/angel dynamic tracks
     /// </summary>
-    private void SwitchMusic()
+    private void SwitchDynamicMusic(bool form)
     {
-        _playingAngel = !_playingAngel;
-
-        if(_playingAngel )
+        if(form)
         {
             StartCoroutine(StartFade(_devilMusicSource, 0, _angelDevilTransitionTime));
             StartCoroutine(StartFade(_angelMusicSource, 1, _angelDevilTransitionTime));
