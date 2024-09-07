@@ -99,7 +99,6 @@ public class PlayerController : MonoBehaviour
     private void SwapSpiritForm()
     {
         _currentForm = !_currentForm;
-        Debug.Log(_currentForm);
         SwapForm?.Invoke(_currentForm);
     }
 
