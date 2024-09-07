@@ -7,6 +7,9 @@ public class EnemyStateMachine : MonoBehaviour
 {
     public static Action EnemyDied;
 
+    [SerializeField] private GameObject torchPrefab;
+    [SerializeField] private bool shouldSpawnTorch = false;
+
     private float time;
     private Vector2 targetDestination;
     private bool isFacingLeft;
@@ -28,6 +31,8 @@ public class EnemyStateMachine : MonoBehaviour
 
     public void Start()
     {
+        currentHealth = MaxHealth;
+
         if (currentState == null)
         {
             currentState = new Idle();
@@ -250,6 +255,10 @@ public class EnemyStateMachine : MonoBehaviour
         if (currentHealth <= 0)
         {
             EnemyDied?.Invoke();
+
+            if (shouldSpawnTorch)
+                Instantiate(torchPrefab, transform.position, Quaternion.identity);
+
             ChangeState(new Died());
         }
     }
