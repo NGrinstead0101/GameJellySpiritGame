@@ -1,24 +1,29 @@
 /******************************************************************
  *    Author: Nick Grinstead
  *    Contributors: 
- *    Description: Handles player inputs and movement.
+ *    Description: Handles player inputs and movement. Also updates
+ *      fog of war light as player form changes.
  *******************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerController : MonoBehaviour
 {
-    // True is Angel, False is Devil
     public static Action<AbilitySetType> SwapForm;
 
     [SerializeField] private float _jumpSpeed;
     [SerializeField] private float _baseSpeed;
     [SerializeField] private float _angelSpeedModifier;
     [SerializeField] private float _devilSpeedModifier;
+    [SerializeField] private float _angelLightDistance;
+    [SerializeField] private float _devilLightDistance;
+    [SerializeField] private float _lightTransitionTime;
 
+    private Light2D _characterLight;
     private Rigidbody2D _rb;
     private float _horizVelocity;
     private bool _canJump = true;
@@ -36,6 +41,8 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _characterLight = GetComponent<Light2D>();
+        _characterLight.pointLightOuterRadius = _currentForm ? _angelLightDistance : _devilLightDistance;
 
         _gamePlayInputs = new GameplayInputs();
         _gamePlayInputs.Enable();
@@ -107,7 +114,31 @@ public class PlayerController : MonoBehaviour
             SwapForm?.Invoke(AbilitySetType.Angel);
         }
 
-        _currentForm = !_currentForm; 
+        _currentForm = !_currentForm;
+        StopAllCoroutines();
+        StartCoroutine(nameof(LerpLightDistance));        
+    }
+
+    /// <summary>
+    /// Smoothly transitions between different lighting states
+    /// </summary>
+    private IEnumerator LerpLightDistance()
+    {
+        float startingDistance = _characterLight.pointLightOuterRadius;
+        float targetDistance = _currentForm ? _angelLightDistance : _devilLightDistance;
+        float timeWaited = 0f;
+
+        while (timeWaited < _lightTransitionTime)
+        {
+            yield return new WaitForSeconds(0.05f);
+
+            timeWaited += 0.05f;
+
+            _characterLight.pointLightOuterRadius = 
+                Mathf.Lerp(startingDistance, targetDistance, timeWaited / _lightTransitionTime);
+        }
+
+        _characterLight.pointLightOuterRadius = _currentForm ? _angelLightDistance : _devilLightDistance;
     }
 
     /// <summary>
