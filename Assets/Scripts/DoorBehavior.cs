@@ -12,6 +12,8 @@ public class DoorBehavior : MonoBehaviour
     [SerializeField] private bool _isLocked = false;
     [SerializeField] private int _enemyCount;
 
+    private bool _hasTriggeredDoor = false;
+
     /// <summary>
     /// Registering to action
     /// </summary>
@@ -55,8 +57,10 @@ public class DoorBehavior : MonoBehaviour
     /// <param name="collision">Collider involved in collision</param>
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !_isLocked)
+        if (collision.CompareTag("Player") && !_isLocked && !_hasTriggeredDoor)
         {
+            _hasTriggeredDoor = true;
+
             // TODO: trigger end of level here
             Debug.Log("Reached End of Level");
         }
