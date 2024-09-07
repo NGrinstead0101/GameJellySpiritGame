@@ -206,17 +206,8 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(_sceneTransitionTime);
 
-        UIAssetManager.BlackFade?.Invoke(false);
         //TODO: set current ability type to player controller for current level
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyUp(KeyCode.P))
-        {
-            StartCoroutine(LoadScene(1));
-        }
-
+        UIAssetManager.BlackFade?.Invoke(false);
     }
 
     #endregion
