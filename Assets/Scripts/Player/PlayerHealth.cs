@@ -12,7 +12,6 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    //[SerializeField] private Image _healthBar;
     [SerializeField] private GameObject _heartPrefab;
     [SerializeField] private Transform _healthBar;
     [SerializeField] private Image _deathFadeOutImage;
@@ -43,7 +42,8 @@ public class PlayerHealth : MonoBehaviour
         _deathFadeOutImage.gameObject.SetActive(false);
         _currentHealth = _totalHealth;
 
-        // TODO: register to take damage and heal action here
+        EnemyState.DealtDamage += TakeDamage;
+        // TODO: register heal action here
     }
 
     /// <summary>
@@ -61,7 +61,7 @@ public class PlayerHealth : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.O))
-            TakeDamage(1);
+            TakeDamage();
         if (Input.GetKeyDown(KeyCode.P))
             HealPlayer(1);
     }
@@ -72,14 +72,14 @@ public class PlayerHealth : MonoBehaviour
     /// Updates health bar and triggers death if needed.
     /// </summary>
     /// <param name="damage">Damage taken</param>
-    public void TakeDamage(int damage)
+    public void TakeDamage()
     {
         // Update health bar
         if (_currentHealth > 0 && _currentHealth <= _hearts.Count)
         {
             _hearts[_currentHealth - 1].enabled = false;
 
-            _currentHealth -= damage;
+            _currentHealth--; ;
         }
 
         // Check for death
