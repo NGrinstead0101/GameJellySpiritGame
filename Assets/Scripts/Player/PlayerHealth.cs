@@ -4,26 +4,33 @@
  *    Description: Tracks player health and updates the health bar.
  *******************************************************************/
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private Image _healthBar;
+    //[SerializeField] private Image _healthBar;
+    [SerializeField] private Transform _healthBar;
     [SerializeField] private Image _deathFadeOutImage;
     [SerializeField] private float _maxHealth = 100f;
     [SerializeField] private float _deathFadeOutTime = 1f;
 
-    private float _currentHealth;
+    private int _totalHealth;
+    private int _currentHealth;
+    private Image[] _hearts;
 
     /// <summary>
     /// Initial set-up
     /// </summary>
     private void Awake()
     {
+        _hearts = _healthBar.GetComponentsInChildren<Image>();
+        _totalHealth = _hearts.Length;
+
         _deathFadeOutImage.gameObject.SetActive(false);
-        _currentHealth = _maxHealth;
+        _currentHealth = _totalHealth;
 
         // TODO: register to take damage action here
     }
@@ -42,8 +49,10 @@ public class PlayerHealth : MonoBehaviour
 #if UNITY_EDITOR
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
-            TakeDamage(20f);
+        if (Input.GetKeyDown(KeyCode.O))
+            TakeDamage(1);
+        if (Input.GetKeyDown(KeyCode.P))
+            HealPlayer(1);
     }
 #endif
 
@@ -52,20 +61,40 @@ public class PlayerHealth : MonoBehaviour
     /// Updates health bar and triggers death if needed.
     /// </summary>
     /// <param name="damage">Damage taken</param>
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
-        _currentHealth -= damage;
-
         // Update health bar
-        float healthBarFill = _currentHealth / _maxHealth;
-        healthBarFill = Mathf.Clamp(healthBarFill, 0, _maxHealth);
-        _healthBar.fillAmount = healthBarFill;
+        if (_currentHealth > 0 && _currentHealth <= _hearts.Length)
+        {
+            _hearts[_currentHealth - 1].enabled = false;
+
+            _currentHealth -= damage;
+        }
 
         // Check for death
         if (_currentHealth <= 0)
         {
             Time.timeScale = 0;
             StartCoroutine(nameof(DeathFadeOutTimer));
+        }
+    }
+
+    /// <summary>
+    /// Called when angel heal ability is activated to restore health
+    /// </summary>
+    /// <param name="healthGained">Amount of hearts restored</param>
+    public void HealPlayer(int healthGained)
+    {
+        _currentHealth += healthGained;
+        if (_currentHealth > _totalHealth)
+        {
+            _currentHealth = _totalHealth;
+        }
+
+        // Update health bar
+        for (int i = 0; i < _currentHealth && i < _hearts.Length; ++i)
+        {
+            _hearts[i].enabled = true;
         }
     }
 
