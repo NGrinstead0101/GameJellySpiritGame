@@ -13,6 +13,7 @@ public class AbilityInformation : ScriptableObject
     #region Ability Info
 
     [SerializeField] private string _abilityName;
+    public float Cooldown;
 
     #endregion
 }
