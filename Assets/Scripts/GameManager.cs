@@ -7,6 +7,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,7 +19,10 @@ public class GameManager : MonoBehaviour
 
     private bool _angelTutComplete;
     private bool _devilTutComplete;
-    [SerializeField] int _numberOfLevels;
+    int _numberOfLevels;
+    [SerializeField] float _sceneTransitionTime;
+
+    private AbilitySetType _currentAbilityType;
 
     public static GameManager Instance { get; private set; }
 
@@ -40,6 +45,14 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(Instance);
         }
+
+    }
+
+    private void Start()
+    {
+        _numberOfLevels = SceneManager.sceneCountInBuildSettings - 1;
+
+        UIAssetManager.BlackFade?.Invoke(false);
     }
 
     public GameState GetCurrentGameState()
@@ -47,13 +60,18 @@ public class GameManager : MonoBehaviour
         return _currentGameState;
     }
 
+    public AbilitySetType GetCurrentAbilityType()
+    {
+        return _currentAbilityType;
+    }
+
     /// <summary>
-    /// Changes the state of the game. 
+    /// Changes the state of the game and loads scenes accordingly
     /// </summary>
     /// <param name="state"></param> state to change to
     public void ChangeGameState(GameState state)
     {
-        switch(state)
+        switch (state)
         {
             case GameState.menu:
                 LoadMainMenu();
@@ -84,9 +102,9 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void LoadMainMenu()
     {
-        //fade out of current scene
-        //load main menu scene, will fade in on its own
-        //change state
+        LoadScene(0);
+        _currentGameState = GameState.menu;
+        //load menu art for the main menu
     }
 
     /// <summary>
@@ -97,16 +115,8 @@ public class GameManager : MonoBehaviour
         //already in level scene
         //switch pause menu art
         //find canvas and call fx there
-    }
-
-    /// <summary>
-    /// Loads the first level based on the current player type
-    /// </summary>
-    private void LoadFirstLevel()
-    {
-        //if curent player state is angel
-        //load angel tutorial scene
-        //vice versa
+        //switch state
+        //switch music
     }
 
     /// <summary>
@@ -115,6 +125,23 @@ public class GameManager : MonoBehaviour
     private void ReturnToLevel()
     {
         //leaves the pause menu
+    }
+
+    /// <summary>
+    /// Loads the first level based on the current player type
+    /// </summary>
+    private void LoadFirstLevel()
+    {
+        if(_currentAbilityType == AbilitySetType.Angel)
+        {
+            //load angel scene
+            StartCoroutine(LoadScene(1));
+        }
+        else
+        {
+            //load devil scene
+            StartCoroutine(LoadScene(2));
+        }
     }
 
     /// <summary>
@@ -129,7 +156,7 @@ public class GameManager : MonoBehaviour
             if(!_devilTutComplete)
             {
                 //load devil scene
-                LoadScene(2);
+                StartCoroutine(LoadScene(2));
             }
         }
         //if in devil tutorial scene
@@ -139,7 +166,7 @@ public class GameManager : MonoBehaviour
             if (!_angelTutComplete)
             {
                 //load angel scene
-                LoadScene(1);
+                StartCoroutine(LoadScene(1));
             }
         }
         //both tutorials completed
@@ -148,18 +175,18 @@ public class GameManager : MonoBehaviour
             //if in one of the tutorial levels
             if(SceneManager.GetActiveScene().buildIndex < 3)
             {
-                LoadScene(3);
+                StartCoroutine(LoadScene(3));
             }
             //if is in final level
             else if(SceneManager.GetActiveScene().buildIndex >= _numberOfLevels)
             {
-                //TODO: Any final transitions?
+                //TODO: Any final transitions or fun stuff?
                 LoadMainMenu();
             }
             //in any other level
             else
             {
-                LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
             }
         }
 
@@ -169,22 +196,28 @@ public class GameManager : MonoBehaviour
     /// fades out of the current scene and then loads the given scene
     /// </summary>
     /// <param name="index"></param>
-    private void LoadScene(int index)
+    private IEnumerator LoadScene(int index)
     {
-        //fade current scene
+        UIAssetManager.BlackFade?.Invoke(true);
+
+        yield return new WaitForSeconds(_sceneTransitionTime);
+
         SceneManager.LoadScene(index);
-    }
-#endregion
 
-    /// <summary>
-    /// Finds the asset manager in each scene
-    /// </summary>
-    private void FindManagers()
+        yield return new WaitForSeconds(_sceneTransitionTime);
+
+        UIAssetManager.BlackFade?.Invoke(false);
+        //TODO: set current ability type to player controller for current level
+    }
+
+    private void Update()
     {
-        GameObject asset = GameObject.FindWithTag("AssetManager");
-        _assetManager = asset.GetComponent<UIAssetManager>();
+        if(Input.GetKeyUp(KeyCode.P))
+        {
+            StartCoroutine(LoadScene(1));
+        }
 
-        GameObject canvas = GameObject.FindWithTag("Canvas");
-        _canvasBehavior = canvas.GetComponent<CanvasBehavior>();
     }
+
+    #endregion
 }

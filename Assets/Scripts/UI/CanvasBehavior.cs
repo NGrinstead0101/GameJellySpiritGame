@@ -10,6 +10,16 @@ public class CanvasBehavior : MonoBehaviour
     private void Start()
     {
         _anim = GetComponent<Animator>();
+        UIAssetManager.SwitchAssets?.Invoke(GameManager.Instance.GetCurrentAbilityType());
+    }
+
+    private void OnEnable()
+    {
+        UIAssetManager.BlackFade += TriggerBlackFadeAnim;
+    }
+    private void OnDisable()
+    {
+        UIAssetManager.BlackFade -= TriggerBlackFadeAnim;
     }
 
     /// <summary>
@@ -18,9 +28,11 @@ public class CanvasBehavior : MonoBehaviour
     /// <param name="input"></param> om = 1, off = 0
     public void EnableFTB(int input)
     {
+        print("enable");
         if(input == 1) 
         {
             _fadeToBlack.SetActive(true);
+            print("true");
         }
         else
         {

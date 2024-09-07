@@ -4,6 +4,7 @@
  *    Description: Handles the game's different assets for angel/devil.
  *    There should be one in every scene.
  *******************************************************************/
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,9 @@ using UnityEngine.UI;
 public class UIAssetManager : MonoBehaviour
 {
     [SerializeField] private List<AssetReference> _assetReferences = new List<AssetReference>();
+
+    public static Action<AbilitySetType> SwitchAssets;
+    public static Action<bool> BlackFade;
 
     [System.Serializable] public struct AssetReference
     {
@@ -25,10 +29,12 @@ public class UIAssetManager : MonoBehaviour
     private void OnEnable()
     {
         PlayerController.SwapForm += UpdateUIAssets;
+        SwitchAssets += UpdateUIAssets;
     }
     private void OnDisable()
     {
         PlayerController.SwapForm -= UpdateUIAssets;
+        SwitchAssets -= UpdateUIAssets;
     }
 
     /// <summary>
