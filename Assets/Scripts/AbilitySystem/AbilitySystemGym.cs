@@ -6,39 +6,15 @@ public class AbilitySystemGym : MonoBehaviour
 {
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            SwitchToAngel();
-        }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            SwitchToDevil();
-        }
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             CastAbility(0);
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             CastAbility(1);
         }
 
-    }
-
-    /// <summary>
-    /// Switches to Angel ability set
-    /// </summary>
-    private void SwitchToAngel()
-    {
-        AbilitySystem.Instance.OnSwitchAbility?.Invoke(AbilitySetType.Angel);
-    }
-
-    /// <summary>
-    /// Switcges to Devil ability set
-    /// </summary>
-    private void SwitchToDevil()
-    {
-        AbilitySystem.Instance.OnSwitchAbility?.Invoke(AbilitySetType.Devil);
     }
 
     /// <summary>

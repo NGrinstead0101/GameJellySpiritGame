@@ -31,7 +31,6 @@ public class AbilitySystem : MonoBehaviour
     public static AbilitySystem Instance;
 
     public Action<int> OnCastAbility;
-    public Action<AbilitySetType> OnSwitchAbility;
 
     [SerializeField] private GameObject[] _angelAbilities;
     [SerializeField] private GameObject[] _devilAbilities;
@@ -47,12 +46,12 @@ public class AbilitySystem : MonoBehaviour
     #region Assign Actions
     private void OnEnable()
     {
-        OnSwitchAbility += SwitchAbilitySet;
+        PlayerController.SwapForm += SwitchAbilitySet;
         OnCastAbility += CastAbility;
     }
     private void OnDisable()
     {
-        OnSwitchAbility -= SwitchAbilitySet;
+        PlayerController.SwapForm -= SwitchAbilitySet;
         OnCastAbility -= CastAbility;
     }
     #endregion Assign Actions
