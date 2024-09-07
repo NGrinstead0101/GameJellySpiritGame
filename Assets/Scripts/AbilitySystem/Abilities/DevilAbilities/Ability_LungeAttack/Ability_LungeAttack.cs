@@ -24,6 +24,7 @@ public class Ability_LungeAttack : Ability
     {
         _hitBoxCollider = GetComponent<Collider2D>();
         _baseHitboxOffset = _hitBoxCollider.offset;
+        _hitBoxCollider.enabled = false;
     }
     
     /// <summary>
@@ -37,6 +38,7 @@ public class Ability_LungeAttack : Ability
             base.CastAbility();
 
             //Debug.Log(_abilityInformation.name + " Child Casted");
+            _hitBoxCollider.enabled = true;
             StartCoroutine(MoveHitBox());
         }
     }
@@ -71,7 +73,8 @@ public class Ability_LungeAttack : Ability
     private IEnumerator ReturnHitBox()
     {
         float pathTime = 0;
-        
+        _hitBoxCollider.enabled = false;
+
         Vector2 startingOffset = new Vector2(_attackOffset, _hitBoxCollider.offset.y);
 
         while (pathTime < _returnDuration)
