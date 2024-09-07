@@ -4,12 +4,15 @@ using static System.TimeZoneInfo;
 
 public class Ability_LungeAttack : Ability
 {
+    [Header("Attack Options (First Half of Attack)")]
+
     [Tooltip("Collider offset at the max attack range")]
     [SerializeField] float _attackOffset;
 
     [Tooltip("Duration the hitbox will move forward, smaller value is a faster attack")]
     [SerializeField] float _forwardAttackDuration;
 
+    [Header("Return Options (Second Half of Attack)")]
     [Tooltip("Time after the forward attack before the hitbox starts to return to the base position")]
     [SerializeField] float _returnDelay;
 
@@ -18,7 +21,6 @@ public class Ability_LungeAttack : Ability
 
     private Collider2D _hitBoxCollider = null;
     private Vector2 _baseHitboxOffset = Vector2.zero;
-    private bool _canAttack = true;
 
     private void Start()
     {
@@ -32,9 +34,8 @@ public class Ability_LungeAttack : Ability
     /// </summary>
     public override void CastAbility()
     {
-        if (_canAttack)
+        if (_canCast)
         {
-            _canAttack = false;
             base.CastAbility();
 
             //Debug.Log(_abilityInformation.name + " Child Casted");
@@ -87,12 +88,6 @@ public class Ability_LungeAttack : Ability
             pathTime += Time.deltaTime;
             yield return null;
         }
-        StartCoroutine(AttackCooldown());
-    }
-
-    private IEnumerator AttackCooldown()
-    {
-        yield return new WaitForSeconds(_cooldown);
-        _canAttack = true;
-    }
+        StartCoroutine(AbilityCooldown());
+    }  
 }

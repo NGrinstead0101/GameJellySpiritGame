@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
     private bool _currentForm = true;
 
-    private GameplayInputs _gamePlayInputs;
+    public static GameplayInputs GameplayInputs;
     private InputAction _move, _jump, _swapToAngel, _swapToDevil;
     private float _moveDirection = 0f;
 
@@ -44,13 +44,15 @@ public class PlayerController : MonoBehaviour
         _characterLight = GetComponent<Light2D>();
         _characterLight.pointLightOuterRadius = _currentForm ? _angelLightDistance : _devilLightDistance;
 
-        _gamePlayInputs = new GameplayInputs();
-        _gamePlayInputs.Enable();
+        GameplayInputs = new GameplayInputs();
+        GameplayInputs.Enable();
 
-        _move = _gamePlayInputs.FindAction("Move");
-        _jump = _gamePlayInputs.FindAction("Jump");
-        _swapToAngel = _gamePlayInputs.FindAction("SwapAngel");
-        _swapToDevil = _gamePlayInputs.FindAction("SwapDevil");
+        _move = GameplayInputs.FindAction("Move");
+        _jump = GameplayInputs.FindAction("Jump");
+        _swapToAngel = GameplayInputs.FindAction("SwapAngel");
+        _swapToDevil = GameplayInputs.FindAction("SwapDevil");
+
+        AbilitySystem.BindUseAbility();
 
         _move.performed += ctx => _moveDirection = _move.ReadValue<float>();
         _move.canceled += ctx => _moveDirection = _move.ReadValue<float>();
@@ -64,7 +66,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void OnDisable()
     {
-        _gamePlayInputs.Disable();
+        GameplayInputs.Disable();
         _move.performed -= ctx => _moveDirection = _move.ReadValue<float>();
         _move.canceled -= ctx => _moveDirection = _move.ReadValue<float>();
         _jump.performed -= ctx => Jump();

@@ -8,6 +8,7 @@ public class Ability : MonoBehaviour
 
     protected float _cooldown = 0.0f;
 
+    protected bool _canCast = true;
 
     private void Start()
     {
@@ -19,6 +20,21 @@ public class Ability : MonoBehaviour
     /// </summary>
     public virtual void CastAbility()
     {
-        //Debug.Log(_abilityInformation.name + " Parent Casted");
+        if (_canCast)
+        {
+            _canCast = false;
+            //Debug.Log(_abilityInformation.name + " Parent Casted");
+        }
+    }
+
+    public virtual void CancelAbility()
+    {
+        //Debug.Log(_abilityInformation.name + " Parent Cancelled");
+    }
+
+    protected IEnumerator AbilityCooldown()
+    {
+        yield return new WaitForSeconds(_cooldown);
+        _canCast = true;
     }
 }
