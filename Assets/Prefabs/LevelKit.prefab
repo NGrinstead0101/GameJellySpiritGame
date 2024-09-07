@@ -376,14 +376,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2066758692175974760}
     - target: {fileID: 5259766013518292979, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
-      propertyPath: _heartPrefab
-      value: 
-      objectReference: {fileID: 897798538855533469, guid: 6e5e71aa2889d064b844deb1115f45fe, type: 3}
-    - target: {fileID: 5259766013518292979, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
-      propertyPath: _totalHealth
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5259766013518292979, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
       propertyPath: _deathFadeOutImage
       value: 
       objectReference: {fileID: 8949913191676797360}
