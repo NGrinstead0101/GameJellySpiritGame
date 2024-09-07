@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using Unity.VisualScripting.FullSerializer;
 using UnityEditorInternal;
@@ -5,6 +6,8 @@ using UnityEngine;
 
 public abstract class EnemyState
 {
+    public static Action DealtDamage;
+
     public abstract void Enter(EnemyStateMachine context);
     public abstract void UpdateDestination(EnemyStateMachine context);
     public abstract bool NeedsDestinationUpdate(EnemyStateMachine context);
@@ -30,7 +33,7 @@ public class Patrol : EnemyState
         }
         else if ((int)context.GetTime() % 10 == 0) //every 5 seconds the patrolling enemy will randomly decide if it should go to idle
         {
-            var rand = Random.Range(0, 15);
+            var rand = UnityEngine.Random.Range(0, 15);
             if (context.GetTime() > rand)
             {
                 context.ChangeState(new Idle());
@@ -58,7 +61,7 @@ public class Patrol : EnemyState
 
     public override void UpdateDestination(EnemyStateMachine context)
     {
-        var random = Random.Range(2, 10);
+        var random = UnityEngine.Random.Range(2, 10);
         if (context.GetIsFacingLeft())
         {
             context.ChangeFacingDirection();
@@ -93,7 +96,7 @@ public class Idle : EnemyState
         }
         else if ((int)context.GetTime() % 3 ==0) //every 2 seconds the idle enemy will randomly decide if it should go to patrol
         {
-            if(context.GetTime() > Random.Range(0,15))
+            if(context.GetTime() > UnityEngine.Random.Range(0,15))
             {
                 context.ChangeState(new Patrol());
             }
@@ -192,6 +195,7 @@ public class Attack : EnemyState
             if((int)context.GetTime() % 3 ==0)
             {
                 // TODO: do attack here
+                DealtDamage?.Invoke();
                 Debug.Log("ATTACK");
             }
         }
