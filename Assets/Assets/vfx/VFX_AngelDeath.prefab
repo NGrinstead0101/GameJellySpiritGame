@@ -44,8 +44,8 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.74509805, g: 0.20784314, b: 1, a: 1}
-  m_Intensity: 0
+  m_Color: {r: 0.6666572, g: 0.32158235, b: 1, a: 1}
+  m_Intensity: 2
   m_Range: 8
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 6762957557273811934}
   - component: {fileID: 4506949070298303157}
   m_Layer: 0
-  m_Name: AngelDeath
+  m_Name: VFX_AngelDeath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
