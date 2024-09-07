@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class EnemyStateMachine : MonoBehaviour
 {
+    public static Action EnemyDied;
+
     private float time;
     private Vector2 targetDestination;
     private bool isFacingLeft;
@@ -21,6 +24,7 @@ public class EnemyStateMachine : MonoBehaviour
     private float currentHealth;
     private float currentSpeed;
     public static UnityAction HitPlayer;
+    private bool isNearWall = false;
 
     public void Start()
     {
@@ -33,7 +37,6 @@ public class EnemyStateMachine : MonoBehaviour
     }
     public void FixedUpdate()
     {
-        print(currentState);
         Vector2 loc = targetDestination;
         float direction = Mathf.Sign(loc.x - transform.position.x);
 
@@ -53,6 +56,7 @@ public class EnemyStateMachine : MonoBehaviour
         {
             if (currentState.NeedsDestinationUpdate(this))
             {
+                Debug.Log("Updating destination");
                 currentState.UpdateDestination(this);
             }
 
@@ -78,8 +82,10 @@ public class EnemyStateMachine : MonoBehaviour
     {
         if (Vector2.Distance(transform.position, GetPlayerLocation()) < GetChaseDistance())
         {
+            Debug.Log("is in range");
             return true;
         }
+        Debug.Log("Not in range");
         return false;
     }
     public int GetChaseDistance()
@@ -145,6 +151,7 @@ public class EnemyStateMachine : MonoBehaviour
     }
     public bool GetNextToPlayer()
     {
+        Debug.Log("Next to player: " + isNextToPlayer);
         return isNextToPlayer;
     }
     public bool IsFacingPlayer()
@@ -180,45 +187,25 @@ public class EnemyStateMachine : MonoBehaviour
     }
     public bool IsNextToWall()
     {
-        if (isFacingLeft)
-        {
-            RaycastHit2D hit = (Physics2D.Raycast(GetDetectionPoint().position, Vector2.left, frontDetectionPointDistance, 6));
-         
-            if (hit.collider != null)
-            {
-                print("HERE");
-                print(hit.collider.gameObject.name);
-                return true;
-            }
-            return false;
-        }
-        else
-        {
-            RaycastHit2D hit = (Physics2D.Raycast(GetDetectionPoint().position, -Vector2.left, frontDetectionPointDistance, 6));
-            if (hit.collider != null)
-            {
-                print("HERE2");
-                print(hit.collider.gameObject.name);
-                return true;
-            }
-            return false;
-        }  
+        Debug.Log("next to wall called");
+        bool returnVal = isNearWall;
+
+        if (isNearWall == true)
+            isNearWall = false;
+
+        return returnVal;
     }
-    public void ChangeIsNextToPlayer()
+
+    public void ChangeIsNextToPlayer(bool isPlayerClose)
     {
-        if (!isNextToPlayer)
-        {
-            isNextToPlayer = true;
-        }
-        else
-        {
-            isNextToPlayer = false;
-        }
+        isNextToPlayer = isPlayerClose;
     }
+
     public void SetDestination(Vector2 destination)
     {
         targetDestination = destination;
     }
+
     public void ChangeState(EnemyState newState)
     {
         if (currentState != null)
@@ -227,6 +214,7 @@ public class EnemyStateMachine : MonoBehaviour
         currentState = newState;
         currentState.Enter(this);
     }
+
     public void ChangeFacingDirection()
     {
         if (!isFacingLeft)
@@ -240,27 +228,33 @@ public class EnemyStateMachine : MonoBehaviour
             gameObject.transform.localScale = new Vector3(1, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
         }
     }
+
     public void ChangeSpeed(float newSpeed)
     {
         currentSpeed = newSpeed;
     }
+
     public void StartTimer()
     {
         StartCoroutine(Timer());
     }
+
     public void StopTimer()
     {
         StopCoroutine(Timer());
     }
+
     public void AddHealth(float healthToRemove)
     {
         currentHealth = Mathf.Floor(currentHealth + healthToRemove);
     }
+
     public void RemoveHealth(float healthToRemove)
     {
         currentHealth -= healthToRemove;
-        if (currentHealth < 0)
+        if (currentHealth <= 0)
         {
+            EnemyDied?.Invoke();
             ChangeState(new Died());
         }
     }
@@ -272,18 +266,24 @@ public class EnemyStateMachine : MonoBehaviour
             HitPlayer?.Invoke();
         }
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            ChangeIsNextToPlayer();
+            ChangeIsNextToPlayer(true);
+        }
+
+        if (other.CompareTag("WALL"))
+        {
+            Debug.Log("TriggerEntered");
+            isNearWall = true;
         }
     }
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            ChangeIsNextToPlayer();
+            ChangeIsNextToPlayer(false);
         }
     }
 }

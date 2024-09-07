@@ -21,6 +21,7 @@ public class Patrol : EnemyState
         UpdateDestination(context);
 
     }
+
     public override void CheckForStateChange(EnemyStateMachine context)
     {
         if (context.IsInRange())
@@ -29,7 +30,7 @@ public class Patrol : EnemyState
         }
         else if ((int)context.GetTime() % 10 == 0) //every 5 seconds the patrolling enemy will randomly decide if it should go to idle
         {
-            var rand = Random.Range(0, 200);
+            var rand = Random.Range(0, 50);
             if (context.GetTime() > rand)
             {
                 context.ChangeState(new Idle());
@@ -48,8 +49,8 @@ public class Patrol : EnemyState
 
         if(context.IsNextToEdge() || context.IsNextToWall()) //if youre next to a ledge, turn around and go the other way
         {
-
             context.ChangeFacingDirection();
+            UpdateDestination(context);
             return true;
         }
         return false;
@@ -69,6 +70,7 @@ public class Patrol : EnemyState
             context.SetDestination(new Vector2(context.transform.position.x - random, 0));
         }
     }
+
     public override void Exit(EnemyStateMachine context)
     {
 
@@ -110,6 +112,7 @@ public class Idle : EnemyState
     {
         context.SetDestination(context.transform.position);
     }
+
     public override void Exit(EnemyStateMachine context)
     {
         context.ChangeSpeed(context.GetNormalSpeed());
@@ -188,6 +191,7 @@ public class Attack : EnemyState
         {
             if((int)context.GetTime() % 3 ==0)
             {
+                // TODO: do attack here
                 Debug.Log("ATTACK");
             }
         }
@@ -195,6 +199,8 @@ public class Attack : EnemyState
 
     public override bool NeedsDestinationUpdate(EnemyStateMachine context)
     {
+        CheckForStateChange(context);
+
         if (!context.IsFacingPlayer())
         {
             context.ChangeFacingDirection();
@@ -220,7 +226,7 @@ public class Died : EnemyState
 
     public override void Enter(EnemyStateMachine context)
     {
-        throw new System.NotImplementedException();
+        context.gameObject.SetActive(false);
     }
 
     public override void Exit(EnemyStateMachine context)
