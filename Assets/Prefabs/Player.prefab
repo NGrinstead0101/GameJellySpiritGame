@@ -12,11 +12,12 @@ GameObject:
   - component: {fileID: 2344038283863044322}
   - component: {fileID: 1470014504492512825}
   - component: {fileID: 6880137399575938606}
+  - component: {fileID: 5259766013518292979}
   - component: {fileID: 832889441941665982}
   - component: {fileID: 6494802601647172114}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,6 +150,22 @@ MonoBehaviour:
   _baseSpeed: 5
   _angelSpeedModifier: 1.5
   _devilSpeedModifier: 1
+--- !u!114 &5259766013518292979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7224286062821405270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27cc0620624bc654582b446b80d481d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthBar: {fileID: 0}
+  _deathFadeOutImage: {fileID: 0}
+  _maxHealth: 100
+  _deathFadeOutTime: 1
 --- !u!50 &832889441941665982
 Rigidbody2D:
   serializedVersion: 4
