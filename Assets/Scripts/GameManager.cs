@@ -11,8 +11,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private UIAssetManager _assetManager;
+    private CanvasBehavior _canvasBehavior;
 
     public static GameManager Instance { get; private set; }
+
+    public enum GameState
+    {
+        menu,
+        pause,
+        level
+    }
 
     private void Awake()
     {
@@ -30,9 +38,12 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Finds the asset manager in each scene
     /// </summary>
-    private void FindAssetManager()
+    private void FindManagers()
     {
-        GameObject go = GameObject.FindWithTag("AssetManager");
-        _assetManager = go.GetComponent<UIAssetManager>();
+        GameObject asset = GameObject.FindWithTag("AssetManager");
+        _assetManager = asset.GetComponent<UIAssetManager>();
+
+        GameObject canvas = GameObject.FindWithTag("Canvas");
+        _canvasBehavior = canvas.GetComponent<CanvasBehavior>();
     }
 }

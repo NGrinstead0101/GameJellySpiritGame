@@ -28,9 +28,25 @@ public class CanvasBehavior : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Triggers the fade to/from black animation. 
+    /// </summary>
+    /// <param name="input"></param> true = fade to, false = fade from
+    public void TriggerBlackFadeAnim(bool input)
+    {
+        if(input)
+        {
+            _anim.SetTrigger("FadeToBlack");
+        }
+        else
+        {
+            _anim.SetTrigger("FadeFromBlack");
+        }
+    }
+
     //private void Update()
     //{
-    //    if(Input.GetKeyDown(KeyCode.Q))
+    //    if (Input.GetKeyDown(KeyCode.Q))
     //    {
     //        _anim.SetTrigger("FadeToBlack");
     //    }

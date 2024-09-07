@@ -1,3 +1,9 @@
+/******************************************************************
+ *    Author: Marissa 
+ *    Contributors: 
+ *    Description: Handles the game's different assets for angel/devil.
+ *    There should be one in every scene.
+ *******************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
