@@ -259,11 +259,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!4 &674269526 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2066758692175974760, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
-  m_PrefabInstance: {fileID: 6257794580862547026}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &899357885
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,16 +441,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5536382207381660370, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
-      propertyPath: _healthBar
-      value: 
-      objectReference: {fileID: 674269526}
     - target: {fileID: 5799332980885489616, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
       propertyPath: m_Name
       value: LevelKit
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 387732970629628292, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
+    - {fileID: 976485121130389487, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
+    - {fileID: 6310382647215734277, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
+    - {fileID: 1611698962912048072, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
+    - {fileID: 6767907091788556621, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}

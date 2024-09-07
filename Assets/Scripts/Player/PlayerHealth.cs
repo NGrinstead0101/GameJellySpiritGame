@@ -4,6 +4,7 @@
  *    Description: Tracks player health and updates the health bar.
  *******************************************************************/
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,27 +13,37 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     //[SerializeField] private Image _healthBar;
+    [SerializeField] private GameObject _heartPrefab;
     [SerializeField] private Transform _healthBar;
     [SerializeField] private Image _deathFadeOutImage;
-    [SerializeField] private float _maxHealth = 100f;
+    [SerializeField] private int _totalHealth = 5;
     [SerializeField] private float _deathFadeOutTime = 1f;
 
-    private int _totalHealth;
+    //private int _totalHealth;
     private int _currentHealth;
-    private Image[] _hearts;
+    private List<Image> _hearts = new List<Image>();
+
+    private const float StartingHeartPos = -345f;
+    private const float ChangeInHeartPos = 40f;
 
     /// <summary>
     /// Initial set-up
     /// </summary>
     private void Awake()
     {
-        _hearts = _healthBar.GetComponentsInChildren<Image>();
-        _totalHealth = _hearts.Length;
+        // Set-up health bar
+        for (int i = 0; i < _totalHealth; ++i)
+        {
+            GameObject newHeart = Instantiate(_heartPrefab, _healthBar);
+            newHeart.transform.localPosition = 
+                new Vector2(StartingHeartPos + ChangeInHeartPos * i, newHeart.transform.localPosition.y);
+            _hearts.Add(newHeart.GetComponent<Image>());
+        }
 
         _deathFadeOutImage.gameObject.SetActive(false);
         _currentHealth = _totalHealth;
 
-        // TODO: register to take damage action here
+        // TODO: register to take damage and heal action here
     }
 
     /// <summary>
@@ -40,7 +51,7 @@ public class PlayerHealth : MonoBehaviour
     /// </summary>
     private void OnDisable()
     {
-        //TODO: unregister from damage action here
+        //TODO: unregister from damage and heal action here
     }
 
     /// <summary>
@@ -64,7 +75,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         // Update health bar
-        if (_currentHealth > 0 && _currentHealth <= _hearts.Length)
+        if (_currentHealth > 0 && _currentHealth <= _hearts.Count)
         {
             _hearts[_currentHealth - 1].enabled = false;
 
@@ -92,7 +103,7 @@ public class PlayerHealth : MonoBehaviour
         }
 
         // Update health bar
-        for (int i = 0; i < _currentHealth && i < _hearts.Length; ++i)
+        for (int i = 0; i < _currentHealth && i < _hearts.Count; ++i)
         {
             _hearts[i].enabled = true;
         }
