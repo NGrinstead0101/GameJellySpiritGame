@@ -327,6 +327,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2599974119876282843}
     m_Modifications:
+    - target: {fileID: 832889441941665982, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
+      propertyPath: m_GravityScale
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4051470551676587054, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
       propertyPath: m_LocalPosition.x
       value: -370.67932
@@ -372,17 +376,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2066758692175974760}
     - target: {fileID: 5259766013518292979, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
-      propertyPath: _heartPrefab
-      value: 
-      objectReference: {fileID: 897798538855533469, guid: 6e5e71aa2889d064b844deb1115f45fe, type: 3}
-    - target: {fileID: 5259766013518292979, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
-      propertyPath: _totalHealth
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5259766013518292979, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
       propertyPath: _deathFadeOutImage
       value: 
       objectReference: {fileID: 8949913191676797360}
+    - target: {fileID: 6880137399575938606, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
+      propertyPath: _jumpSpeed
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7224286062821405270, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
       propertyPath: m_Name
       value: Player
