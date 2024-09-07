@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - WALL
+  - FxTemporaire
+  - Canvas
+  - AssetManager
   layers:
   - Default
   - TransparentFX
