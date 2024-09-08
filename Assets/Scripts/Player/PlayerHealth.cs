@@ -16,6 +16,7 @@ public class PlayerHealth : MonoBehaviour
     public static PlayerHealth Instance;
 
     public static Action TakeDamageAction;
+    public static Action DeathAction;
 
     [SerializeField] private GameObject _heartPrefab;
     [SerializeField] private Transform _healthBar;
@@ -103,7 +104,8 @@ public class PlayerHealth : MonoBehaviour
         // Check for death
         if (CurrentHealth <= 0)
         {
-            Time.timeScale = 0;
+            DeathAction?.Invoke();
+            //Time.timeScale = 0;
             StartCoroutine(nameof(DeathFadeOutTimer));
         }
     }

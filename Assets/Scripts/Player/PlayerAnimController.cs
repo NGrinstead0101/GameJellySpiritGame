@@ -13,6 +13,9 @@ public class PlayerAnimController : MonoBehaviour
     [SerializeField] private Sprite _angelSprite;
     [SerializeField] private Sprite _devilSprite;
 
+    [SerializeField] private GameObject _deathVFXObject;
+    private ParticleSystem _deathVFX;
+
     private static InputAction _move = null;
     private static InputAction _jump = null;
 
@@ -34,11 +37,13 @@ public class PlayerAnimController : MonoBehaviour
     {
         PlayerHealth.TakeDamageAction += TakeDamage;
         PlayerController.SwapForm += SwapAnimController;
+        PlayerHealth.DeathAction += DeathVFX;
     }
     private void OnDisable()
     {
         PlayerController.SwapForm -= SwapAnimController;
         PlayerHealth.TakeDamageAction -= TakeDamage;
+        PlayerHealth.DeathAction -= DeathVFX;
 
         _move.performed -= ctx => PlayMovingAnim();
         _move.canceled -= ctx => StopMovingAnim();
@@ -76,7 +81,6 @@ public class PlayerAnimController : MonoBehaviour
     private void TakeDamage()
     {
         _angelAnimator.SetTrigger("HurtTrigger");
-        //_angelAnimator.ResetTrigger("HurtTrigger");
     }
 
     public void Jump()
@@ -103,5 +107,11 @@ public class PlayerAnimController : MonoBehaviour
                     break;
                 }
         }
+    }
+
+    private void DeathVFX()
+    {
+        _deathVFX = _deathVFXObject.GetComponent<ParticleSystem>();
+        _deathVFX.Play();
     }
 }
