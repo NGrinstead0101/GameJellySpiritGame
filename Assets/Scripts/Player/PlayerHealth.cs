@@ -35,8 +35,8 @@ public class PlayerHealth : MonoBehaviour
     private GameManager _gameManager;
     private PlayerController _playerController;
 
-    private const float StartingHeartPos = -345f;
-    private const float ChangeInHeartPos = 40f;
+    private const float StartingHeartPos = -733f;
+    private const float ChangeInHeartPos = 100f;
 
     /// <summary>
     /// Initial set-up
@@ -48,7 +48,7 @@ public class PlayerHealth : MonoBehaviour
         {
             GameObject newHeart = Instantiate(_heartPrefab, _healthBar);
             newHeart.transform.localPosition = 
-                new Vector2(StartingHeartPos + ChangeInHeartPos * i, newHeart.transform.localPosition.y);
+                new Vector2(StartingHeartPos + ChangeInHeartPos * i, -60f);
             _hearts.Add(newHeart.GetComponent<Image>());
         }
 
@@ -80,15 +80,20 @@ public class PlayerHealth : MonoBehaviour
 
     private void UpdateHeartAppearance(AbilitySetType form)
     {
+        Image temp;
+
         for (int i = 0; i < _hearts.Count; ++i)
         {
-            if (i >= CurrentHealth)
+            if (_hearts != null && _hearts[i] != null && _hearts[i].TryGetComponent<Image>(out temp) && temp != null)
             {
-                _hearts[i].GetComponent<Image>().sprite = _emptyHeart;
-            }
-            else
-            {
-                _hearts[i].GetComponent<Image>().sprite = form == AbilitySetType.Angel ? _angelHeart : _devilHeart;
+                if (i >= CurrentHealth)
+                {
+                    temp.sprite = _emptyHeart;
+                }
+                else
+                {
+                    temp.sprite = form == AbilitySetType.Angel ? _angelHeart : _devilHeart;
+                }
             }
         }
     }

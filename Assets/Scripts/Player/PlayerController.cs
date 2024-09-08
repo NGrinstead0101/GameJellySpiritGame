@@ -10,6 +10,7 @@ using UnityEngine;
 using System;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -204,10 +205,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Applies vertical force to player when jumping
-    /// </summary>
-    private void Jump()
+    private void Update()
+    {
+        if (Physics2D.Raycast(transform.position, Vector2.down, 1.75f, 1 << LayerMask.NameToLayer("Wall")))
+        {        
+            _canJump = true;
+        }
+        else
+        {
+            _canJump = false;
+        }
+    }
+
+        /// <summary>
+        /// Applies vertical force to player when jumping
+        /// </summary>
+        private void Jump()
     {
         if (_canJump)
         {
@@ -222,9 +235,9 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Ground"))
+        if (collision.CompareTag("END"))
         {
-            _canJump = true;
+            GameManager.Instance.LoadEnding();
         }
     }
 
