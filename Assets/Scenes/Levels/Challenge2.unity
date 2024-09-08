@@ -14996,6 +14996,10 @@ PrefabInstance:
       value: EndOfLevelDoor
       objectReference: {fileID: 0}
     - target: {fileID: 1952515775850810556, guid: 841b8e6d513df6e40a8d12d800098205, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b8cf3446c6609ce4b9f11f375bfb4857, type: 3}
+    - target: {fileID: 1952515775850810556, guid: 841b8e6d513df6e40a8d12d800098205, type: 3}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
@@ -15015,6 +15019,14 @@ PrefabInstance:
       propertyPath: _enemyCount
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3684239594305780816, guid: 841b8e6d513df6e40a8d12d800098205, type: 3}
+      propertyPath: _lockedDoorSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b8cf3446c6609ce4b9f11f375bfb4857, type: 3}
+    - target: {fileID: 3684239594305780816, guid: 841b8e6d513df6e40a8d12d800098205, type: 3}
+      propertyPath: _unlockedDoorSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 548c7eedd11a9b74fb8d720934b5146e, type: 3}
     - target: {fileID: 8560412097635234817, guid: 841b8e6d513df6e40a8d12d800098205, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.022

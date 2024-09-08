@@ -51,7 +51,8 @@ public class Ability_LungeAttack : Ability
             base.CastAbility();
 
             //Debug.Log(_abilityInformation.name + " Child Casted");
-            _hitBoxCollider.enabled = true;
+            if (_hitBoxCollider != null)
+                _hitBoxCollider.enabled = true;
             Lunge?.Invoke();
             StartCoroutine(MoveHitBox());
         }
