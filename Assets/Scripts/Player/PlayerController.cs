@@ -213,7 +213,7 @@ public class PlayerController : MonoBehaviour
     /// <returns></returns>
     public IEnumerator EnterDoorTransition()
     {
-        _gamePlayInputs.Disable();
+        GameplayInputs.Disable();
 
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
 
