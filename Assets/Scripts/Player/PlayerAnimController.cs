@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.Animations;
 using UnityEngine.InputSystem;
 
 public class PlayerAnimController : MonoBehaviour
@@ -9,8 +6,8 @@ public class PlayerAnimController : MonoBehaviour
     public static PlayerAnimController Instance;
 
     [Header("Animation Controllers")]
-    [SerializeField] private UnityEditor.Animations.AnimatorController _angelAnimController;
-    [SerializeField] private UnityEditor.Animations.AnimatorController _devilAnimController;
+    [SerializeField] private RuntimeAnimatorController _angelAnimController;
+    [SerializeField] private RuntimeAnimatorController _devilAnimController;
     private Animator _animator = null;
 
     [Header("Sprite VFX")]
