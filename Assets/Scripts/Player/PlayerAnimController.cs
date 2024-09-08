@@ -7,7 +7,11 @@ public class PlayerAnimController : MonoBehaviour
 {
     public static PlayerAnimController Instance;
 
-    private Animator _animator;
+    [SerializeField] private Animator _angelAnimator;
+    [SerializeField] private Animator _devilAnimator;
+
+    [SerializeField] private Sprite _angelSprite;
+    [SerializeField] private Sprite _devilSprite;
 
     private static InputAction _move = null;
 
@@ -20,6 +24,17 @@ public class PlayerAnimController : MonoBehaviour
 
         _move.performed += ctx => PlayMovingAnim();
         _move.canceled += ctx => StopMovingAnim();
+    }
+
+    private void OnEnable()
+    {
+        PlayerHealth.TakeDamageAction += TakeDamage;
+        PlayerController.SwapForm += SwapAnimController;
+    }
+    private void OnDisable()
+    {
+        PlayerController.SwapForm -= SwapAnimController;
+        PlayerHealth.TakeDamageAction -= TakeDamage;
     }
 
     private void Awake()
@@ -36,16 +51,43 @@ public class PlayerAnimController : MonoBehaviour
 
     private void Start()
     {
-        _animator = GetComponent<Animator>();
+        _angelAnimator = GetComponent<Animator>();
     }
 
     public void PlayMovingAnim()
     {
-        _animator.SetBool("IsMoving", true);
+        _angelAnimator.SetBool("IsMoving", true);
     }
 
     public void StopMovingAnim()
     {
-        _animator.SetBool("IsMoving", false);
+        _angelAnimator.SetBool("IsMoving", false);
+    }
+
+    private void TakeDamage()
+    {
+        _angelAnimator.SetTrigger("HurtTrigger");
+        //_angelAnimator.ResetTrigger("HurtTrigger");
+    }
+
+    private void SwapAnimController(AbilitySetType newAbilitySet)
+    {
+        switch (newAbilitySet)
+        {
+            case AbilitySetType.Angel:
+                {
+                    GetComponent<SpriteRenderer>().sprite = _angelSprite;
+                    _angelAnimator.enabled = true;
+                    //_devilAnimator.enabled = false;
+                    break;
+                }
+            case AbilitySetType.Devil:
+                {
+                    GetComponent<SpriteRenderer>().sprite = _devilSprite;
+                    _angelAnimator.enabled = false;
+                    _devilAnimator.enabled = true;
+                    break;
+                }
+        }
     }
 }
