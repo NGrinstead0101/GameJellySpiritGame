@@ -1583,7 +1583,7 @@ GameObject:
   - component: {fileID: 916684526}
   - component: {fileID: 916684528}
   - component: {fileID: 916684527}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3090,7 +3090,7 @@ GameObject:
   - component: {fileID: 1251470204}
   - component: {fileID: 1251470203}
   - component: {fileID: 1251470202}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Border
   m_TagString: Ground
   m_Icon: {fileID: 0}

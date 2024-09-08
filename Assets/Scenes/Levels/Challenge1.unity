@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 73095470}
   - component: {fileID: 73095472}
   - component: {fileID: 73095471}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Walls
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -6634,7 +6634,7 @@ GameObject:
   - component: {fileID: 1772021398}
   - component: {fileID: 1772021400}
   - component: {fileID: 1772021399}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Border
   m_TagString: Ground
   m_Icon: {fileID: 0}
