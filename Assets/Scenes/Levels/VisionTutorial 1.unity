@@ -1411,7 +1411,7 @@ GameObject:
   - component: {fileID: 536256970}
   - component: {fileID: 536256972}
   - component: {fileID: 536256971}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Boarders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7160,7 +7160,7 @@ GameObject:
   - component: {fileID: 1520324735}
   - component: {fileID: 1520324739}
   - component: {fileID: 1520324738}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Walls Tilemap
   m_TagString: Ground
   m_Icon: {fileID: 0}
