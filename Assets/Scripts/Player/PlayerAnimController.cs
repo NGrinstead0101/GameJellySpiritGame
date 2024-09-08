@@ -14,6 +14,7 @@ public class PlayerAnimController : MonoBehaviour
     [SerializeField] private Sprite _devilSprite;
 
     private static InputAction _move = null;
+    private static InputAction _jump = null;
 
     /// <summary>
     /// Binds the move ability action to GameplayInputs. Called in PlayerController awake
@@ -21,9 +22,12 @@ public class PlayerAnimController : MonoBehaviour
     public void BindAnims()
     {
         _move = PlayerController.GameplayInputs.FindAction("Move");
+        _jump = PlayerController.GameplayInputs.FindAction("Jump");
 
         _move.performed += ctx => PlayMovingAnim();
         _move.canceled += ctx => StopMovingAnim();
+
+        _jump.performed += ctx => Jump();
     }
 
     private void OnEnable()
@@ -35,6 +39,11 @@ public class PlayerAnimController : MonoBehaviour
     {
         PlayerController.SwapForm -= SwapAnimController;
         PlayerHealth.TakeDamageAction -= TakeDamage;
+
+        _move.performed -= ctx => PlayMovingAnim();
+        _move.canceled -= ctx => StopMovingAnim();
+
+        _jump.performed -= ctx => Jump();
     }
 
     private void Awake()
@@ -68,6 +77,11 @@ public class PlayerAnimController : MonoBehaviour
     {
         _angelAnimator.SetTrigger("HurtTrigger");
         //_angelAnimator.ResetTrigger("HurtTrigger");
+    }
+
+    public void Jump()
+    {
+        _angelAnimator.SetTrigger("Jump");
     }
 
     private void SwapAnimController(AbilitySetType newAbilitySet)
