@@ -5,8 +5,6 @@ using UnityEngine;
 
 public abstract class EnemyState
 {
-    public static Action DealtDamage;
-
     public abstract void Enter(EnemyStateMachine context);
     public abstract void UpdateDestination(EnemyStateMachine context);
     public abstract bool NeedsDestinationUpdate(EnemyStateMachine context);
@@ -191,15 +189,6 @@ public class Attack : EnemyState
         if(!context.GetNextToPlayer())
         {
             context.ChangeState(new MoveTowardsPlayer());
-        }
-        else
-        {
-            if((int)context.GetTime() % 3 ==0)
-            {
-                context.PlaySfx("EnemyAttack");
-                DealtDamage?.Invoke();
-                Debug.Log("ATTACK");
-            }
         }
     }
 
