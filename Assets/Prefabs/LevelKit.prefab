@@ -427,6 +427,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6552933354980314782, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
+      propertyPath: _angelAnimator
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6880137399575938606, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
       propertyPath: _jumpSpeed
       value: 9
@@ -449,6 +453,11 @@ PrefabInstance:
 --- !u!4 &4328777394317641999 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4051470551676587054, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
+  m_PrefabInstance: {fileID: 300438368622789921}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5441803482754273575 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5741654621771109382, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
   m_PrefabInstance: {fileID: 300438368622789921}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &6947522602330929015 stripped
@@ -493,6 +502,7 @@ MonoBehaviour:
   _devilAnimator: {fileID: 0}
   _angelSprite: {fileID: -1566413192, guid: c7234308d2bd4924da1fd9df9dd6d53d, type: 3}
   _devilSprite: {fileID: -986503193, guid: 214982c6ecfb9b5409565c3296cf4a5d, type: 3}
+  _deathVFXObject: {fileID: 5441803482754273575}
 --- !u!1001 &7529825795477737801
 PrefabInstance:
   m_ObjectHideFlags: 0

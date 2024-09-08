@@ -103,7 +103,7 @@ public class PlayerAnimController : MonoBehaviour
                 {
                     GetComponent<SpriteRenderer>().sprite = _devilSprite;
                     _angelAnimator.enabled = false;
-                    _devilAnimator.enabled = true;
+                    //_devilAnimator.enabled = true;
                     break;
                 }
         }
