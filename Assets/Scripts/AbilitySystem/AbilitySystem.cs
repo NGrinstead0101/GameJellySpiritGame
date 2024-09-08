@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Two ability sets: Angel and Devil
@@ -41,7 +42,10 @@ public class AbilitySystem : MonoBehaviour
     AbilitySet _angelAbilitySet = new AbilitySet(AbilitySetType.Angel);
     AbilitySet _devilAbilitySet = new AbilitySet(AbilitySetType.Devil);
 
-    private AbilitySet _activeAbilitySet;
+    // Current active ability set
+    private static AbilitySet _activeAbilitySet;
+
+    private static InputAction _castAbility = null;
 
     #region Assign Actions
     private void OnEnable()
@@ -53,6 +57,10 @@ public class AbilitySystem : MonoBehaviour
     {
         PlayerController.SwapForm -= SwitchAbilitySet;
         OnCastAbility -= CastAbility;
+
+        _castAbility.performed -= ctx => CastAbility(0);
+        _castAbility.canceled -= ctx => CancelAbility(0);
+
     }
     #endregion Assign Actions
 
@@ -92,6 +100,20 @@ public class AbilitySystem : MonoBehaviour
     }
 
     /// <summary>
+    /// Binds the cast ability action to GameplayInputs. Callled in PlayerController awake
+    /// </summary>
+    public static void BindUseAbility()
+    {
+        _castAbility = PlayerController.GameplayInputs.FindAction("UseAbility");
+        _castAbility.performed += ctx => CastAbility(0);
+    }
+
+    private static void _castAbility_started(InputAction.CallbackContext obj)
+    {
+        throw new NotImplementedException();
+    }
+
+    /// <summary>
     /// Switches to a new ability set
     /// </summary>
     /// <param name="newAbilitySet"></param>
@@ -102,6 +124,9 @@ public class AbilitySystem : MonoBehaviour
             case AbilitySetType.Angel:
                 {
                     _activeAbilitySet = _angelAbilitySet;
+
+                    _castAbility.canceled += ctx => CancelAbility(0);
+
                     Debug.Log("SwitchedToAngel");       
                     break;
                 }
@@ -118,8 +143,13 @@ public class AbilitySystem : MonoBehaviour
     /// Casts the numAbility from the current active set
     /// </summary>
     /// <param name="numAbility">num ability being cast</param>
-    private void CastAbility(int numAbility)
+    private static void CastAbility(int numAbility)
     {
         _activeAbilitySet.Abilities[numAbility].CastAbility();
+    }
+
+    private static void CancelAbility(int numAbility)
+    {
+        _activeAbilitySet.Abilities[numAbility].CancelAbility();
     }
 }
