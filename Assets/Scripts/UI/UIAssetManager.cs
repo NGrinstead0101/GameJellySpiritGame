@@ -62,13 +62,11 @@ public class UIAssetManager : MonoBehaviour
                 //ensures asset's Image field is set
                 if (_assetSpriteReferences[i]._image == null)
                 {
-                    print("null");
                     var copyAsset = _assetSpriteReferences[i];
                     copyAsset._image = _assetSpriteReferences[i]._gameObjectReference.GetComponent<Image>();
                     _assetSpriteReferences[i] = copyAsset;
                 }
 
-                print("set a");
                 //sets asset sprite
                 _assetSpriteReferences[i]._image.sprite = _assetSpriteReferences[i]._angelVersion;
             }
@@ -87,13 +85,11 @@ public class UIAssetManager : MonoBehaviour
                 //ensures asset's Image field is set
                 if (_assetSpriteReferences[i]._image == null)
                 {
-                    print("null");
                     var copyAsset = _assetSpriteReferences[i];
                     copyAsset._image = _assetSpriteReferences[i]._gameObjectReference.GetComponent<Image>();
                     _assetSpriteReferences[i] = copyAsset;
                 }
 
-                print("set d");
                 //sets asset sprite
                 _assetSpriteReferences[i]._image.sprite = _assetSpriteReferences[i]._devilVersion;
             }

@@ -127,9 +127,29 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5354718309614289623, guid: bc269591f403ff24bbf038ddcd51520e, type: 3}
   m_PrefabInstance: {fileID: 4048219386735985511}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &75154206 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4066595426438627361, guid: bc269591f403ff24bbf038ddcd51520e, type: 3}
+  m_PrefabInstance: {fileID: 4048219386735985511}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &380783463 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 225757228013727641, guid: bc269591f403ff24bbf038ddcd51520e, type: 3}
+  m_PrefabInstance: {fileID: 4048219386735985511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &408309602 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 10151904062619753, guid: bc269591f403ff24bbf038ddcd51520e, type: 3}
+  m_PrefabInstance: {fileID: 4048219386735985511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &878619950 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4816473510105680590, guid: bc269591f403ff24bbf038ddcd51520e, type: 3}
+  m_PrefabInstance: {fileID: 4048219386735985511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &902921381 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4467760822842975799, guid: bc269591f403ff24bbf038ddcd51520e, type: 3}
   m_PrefabInstance: {fileID: 4048219386735985511}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1251993939
@@ -185,8 +205,8 @@ MonoBehaviour:
   - assetName: MenuScreen
     _gameObjectReference: {fileID: 1576187965}
     _image: {fileID: 0}
-    _angelVersion: {fileID: 21300000, guid: bc6c6ddcb91b5ff479e8265e9096970c, type: 3}
-    _devilVersion: {fileID: 21300000, guid: 18a36134f9bb7b44f85894633ea9e5c6, type: 3}
+    _angelVersion: {fileID: 21300000, guid: 8015de6303c1c99449325d1b0689e02e, type: 3}
+    _devilVersion: {fileID: 21300000, guid: ff0b0f3b5a519e3439302459932710c7, type: 3}
   - assetName: CreditsScreen
     _gameObjectReference: {fileID: 4048219386735985513}
     _image: {fileID: 0}
@@ -201,6 +221,15 @@ MonoBehaviour:
   - assetName: Menu Buttons
     _angelVersion: {fileID: 1578744720}
     _devilVersion: {fileID: 1401664212}
+  - assetName: TitleContinueButton
+    _angelVersion: {fileID: 380783463}
+    _devilVersion: {fileID: 408309602}
+  - assetName: escCredits
+    _angelVersion: {fileID: 75154206}
+    _devilVersion: {fileID: 902921381}
+  - assetName: escControls
+    _angelVersion: {fileID: 1645425604}
+    _devilVersion: {fileID: 878619950}
 --- !u!1 &1401664212 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3363012134918333968, guid: bc269591f403ff24bbf038ddcd51520e, type: 3}
@@ -238,7 +267,8 @@ MonoBehaviour:
   _tabs:
   - {fileID: 4048219386735985513}
   - {fileID: 4048219386735985512}
-  _continueButton: {fileID: 380783463}
+  _continueButtonD: {fileID: 408309602}
+  _continueButtonA: {fileID: 380783463}
 --- !u!4 &1503022897
 Transform:
   m_ObjectHideFlags: 0
@@ -319,6 +349,11 @@ GameObject:
 --- !u!1 &1578744720 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 139325264799266906, guid: bc269591f403ff24bbf038ddcd51520e, type: 3}
+  m_PrefabInstance: {fileID: 4048219386735985511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1645425604 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1814765211493221856, guid: bc269591f403ff24bbf038ddcd51520e, type: 3}
   m_PrefabInstance: {fileID: 4048219386735985511}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1658970378
@@ -556,6 +591,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2627640278970475841, guid: bc269591f403ff24bbf038ddcd51520e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1503022896}
     - target: {fileID: 5233933272862243932, guid: bc269591f403ff24bbf038ddcd51520e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -640,6 +679,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 6834097869476990635, guid: bc269591f403ff24bbf038ddcd51520e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1503022896}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

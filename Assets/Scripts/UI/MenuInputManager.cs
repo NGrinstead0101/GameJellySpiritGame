@@ -10,7 +10,8 @@ public class MenuInputManager : MonoBehaviour
     private InputAction _swapToAngel, _swapToDevil, _escape;
 
     [SerializeField] private List<GameObject> _tabs;
-    [SerializeField] private GameObject _continueButton;
+    [SerializeField] private GameObject _continueButtonD;
+    [SerializeField] private GameObject _continueButtonA;
     private bool _canSwap;
 
     private void Awake()
@@ -55,17 +56,17 @@ public class MenuInputManager : MonoBehaviour
     {
         if (_canSwap)
         {
-            _continueButton.SetActive(true);
+            //_continueButton.SetActive(true);
 
             if (GameManager.Instance.GetCurrentAbilityType() == AbilitySetType.Angel)
             {
                 PlayerController.SwapForm?.Invoke(AbilitySetType.Devil);
-                //print("devil");
+                SfxManager.Instance.PlaySFX("DevilMenuSwitch");
             }
             else
             {
                 PlayerController.SwapForm?.Invoke(AbilitySetType.Angel);
-                //print("angel");
+                SfxManager.Instance.PlaySFX("AngelMenuSwitch");
             }
         }
     }
