@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     int _numberOfLevels;
     [SerializeField] float _sceneTransitionTime;
 
+    public static Action<bool> PauseAction;
+
     private AbilitySetType _currentAbilityType;
 
     public static GameManager Instance { get; private set; }
@@ -109,6 +111,7 @@ public class GameManager : MonoBehaviour
     }
 
     #region state helper methods
+
     /// <summary>
     /// Loads the main menu scene
     /// </summary>
@@ -116,7 +119,22 @@ public class GameManager : MonoBehaviour
     {
         LoadScene(0);
         _currentGameState = GameState.menu;
-        //load menu art for the main menu
+        //load menu music
+    }
+
+    /// <summary>
+    /// Called from the player controller when input is detected.
+    /// </summary>
+    public void PauseInput()
+    {
+        if (_currentGameState == GameState.level)
+        {
+            ChangeGameState(GameState.pause);
+        }
+        else
+        {
+            ChangeGameState(GameState.level);
+        }
     }
 
     /// <summary>
@@ -124,10 +142,9 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void LoadPauseMenu()
     {
-        //already in level scene
-        //switch pause menu art
-        //find canvas and call fx there
-        //switch state
+        _currentGameState = GameState.pause;
+        Time.timeScale = 0;
+        PauseAction.Invoke(true);
         //switch music
     }
 
@@ -136,7 +153,10 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void ReturnToLevel()
     {
-        //leaves the pause menu
+        _currentGameState = GameState.level;
+        Time.timeScale = 1;
+        PauseAction.Invoke(false);
+        //switch music
     }
 
     /// <summary>
@@ -154,6 +174,9 @@ public class GameManager : MonoBehaviour
             //load devil scene
             StartCoroutine(LoadScene(2));
         }
+
+        _currentGameState = GameState.level;
+        //load music
     }
 
     /// <summary>
@@ -233,9 +256,10 @@ public class GameManager : MonoBehaviour
 
     //private void Update()
     //{
-    //    if(Input.GetKeyUp(KeyCode.P))
+    //    if (Input.GetKeyUp(KeyCode.P))
     //    {
-    //        StartCoroutine(LoadScene(1));
+    //        //StartCoroutine(LoadScene(1));
+    //        _currentGameState = GameState.level;
     //    }
     //}
 
