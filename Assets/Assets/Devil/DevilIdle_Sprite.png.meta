@@ -101,11 +101,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1002
-        height: 802
+        y: 2
+        width: 1000
+        height: 800
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -121,12 +121,12 @@ TextureImporter:
       name: DevilIdle_Sprite_1
       rect:
         serializedVersion: 2
-        x: 1002
-        y: 0
-        width: 1002
-        height: 802
+        x: 1000
+        y: 2
+        width: 1000
+        height: 800
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -142,12 +142,12 @@ TextureImporter:
       name: DevilIdle_Sprite_2
       rect:
         serializedVersion: 2
-        x: 2004
-        y: 0
-        width: 1002
-        height: 802
+        x: 2000
+        y: 2
+        width: 1000
+        height: 800
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -163,12 +163,12 @@ TextureImporter:
       name: DevilIdle_Sprite_3
       rect:
         serializedVersion: 2
-        x: 3006
-        y: 0
-        width: 1002
-        height: 802
+        x: 3000
+        y: 2
+        width: 1000
+        height: 800
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -184,18 +184,18 @@ TextureImporter:
       name: DevilIdle_Sprite_4
       rect:
         serializedVersion: 2
-        x: 4008
-        y: 0
-        width: 1002
-        height: 802
+        x: 4000
+        y: 2
+        width: 1000
+        height: 800
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bc5190461bba19498178f13eaffa5fe
+      spriteID: 18525c5b3670bcf49b2adf07fb9b5cfd
       internalID: 308290653
       vertices: []
       indices: 
@@ -205,18 +205,18 @@ TextureImporter:
       name: DevilIdle_Sprite_5
       rect:
         serializedVersion: 2
-        x: 5010
-        y: 0
-        width: 1002
-        height: 802
+        x: 5000
+        y: 2
+        width: 1000
+        height: 800
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b588de8dd57fc67448be836558c6785a
+      spriteID: e2dd362dbb7eae845a8d8f3c4bf3d63c
       internalID: -1191138365
       vertices: []
       indices: 
