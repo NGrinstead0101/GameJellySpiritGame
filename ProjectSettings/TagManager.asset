@@ -7,6 +7,9 @@ TagManager:
   - Ground
   - WALL
   - Enemy
+  - FxTemporaire
+  - Canvas
+  - AssetManager
   layers:
   - Default
   - TransparentFX
