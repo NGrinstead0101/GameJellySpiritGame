@@ -122,7 +122,7 @@ MonoBehaviour:
     pitch: 1
     doLoop: 0
     source: {fileID: 0}
-  - name: DevilUIAngel
+  - name: MenuUIDevil
     clips:
     - {fileID: 8300000, guid: 07574ef326b09be4db89cf6c2075330e, type: 3}
     - {fileID: 8300000, guid: f295ab91032d4d14e8781695a61b30cd, type: 3}
@@ -167,6 +167,44 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 5a9e6116b8916624ab25599de50d50a2, type: 3}
     - {fileID: 8300000, guid: 6ed03f7f1bc50ba42b7866abe9a33141, type: 3}
     - {fileID: 8300000, guid: 607b2191953f33c41b880c1c717018ac, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 3574573082446527227, guid: d64b5bd22db59004780d43d0c5af2d25, type: 2}
+    maxVolume: 1
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: LevelSwitch
+    clips:
+    - {fileID: 8300000, guid: fe09bc2e59622d643a2581cf58b12762, type: 3}
+    - {fileID: 8300000, guid: d023a7789ec50274ba4ba404313637cf, type: 3}
+    - {fileID: 8300000, guid: 95222f44081e1e943aea243d7ffb8591, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 3574573082446527227, guid: d64b5bd22db59004780d43d0c5af2d25, type: 2}
+    maxVolume: 1
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: DoorOpening
+    clips:
+    - {fileID: 8300000, guid: f8718bdf8bc291c4385139135c2a566b, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 3574573082446527227, guid: d64b5bd22db59004780d43d0c5af2d25, type: 2}
+    maxVolume: 1
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: DevilMenuSwitch
+    clips:
+    - {fileID: 8300000, guid: d3c713dede8084a42a02cdafa777fb1a, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 3574573082446527227, guid: d64b5bd22db59004780d43d0c5af2d25, type: 2}
+    maxVolume: 1
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: AngelMenuSwitch
+    clips:
+    - {fileID: 8300000, guid: c25b28131cd544640978ed8e90df301a, type: 3}
     clip: {fileID: 0}
     mixer: {fileID: 3574573082446527227, guid: d64b5bd22db59004780d43d0c5af2d25, type: 2}
     maxVolume: 1
