@@ -441,6 +441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6552933354980314782, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
+    - {fileID: 5485820431163929194, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4051470551676587054, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
@@ -514,6 +515,8 @@ MonoBehaviour:
   _devilSprite: {fileID: -986503193, guid: 214982c6ecfb9b5409565c3296cf4a5d, type: 3}
   _angelDeathVFXObject: {fileID: 5441803482754273575}
   _devilDeathVFXObject: {fileID: 859035651717856644}
+  _angelHitVFXObject: {fileID: 5097802164689082682}
+  _devilHitVFXObject: {fileID: 859035651717856644}
 --- !u!1001 &2966510902384787210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -677,6 +680,11 @@ PrefabInstance:
 --- !u!4 &5097802164689082629 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8771972552311404736, guid: bbf9e36a48d6c5648a13889afab076fd, type: 3}
+  m_PrefabInstance: {fileID: 4540550366206222789}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5097802164689082682 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8771972552311404799, guid: bbf9e36a48d6c5648a13889afab076fd, type: 3}
   m_PrefabInstance: {fileID: 4540550366206222789}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5568024743075349049

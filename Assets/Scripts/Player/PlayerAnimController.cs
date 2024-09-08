@@ -31,6 +31,10 @@ public class PlayerAnimController : MonoBehaviour
     private ParticleSystem _devilHitVFX;
     private ParticleSystem _currentHitVFX = null;
 
+    [Header("Transform VFX")]
+    [SerializeField] private GameObject _transformVFXGameObject;
+    private ParticleSystem _transformVFX;
+
     private static InputAction _move = null;
     private static InputAction _jump = null;
 
@@ -45,7 +49,7 @@ public class PlayerAnimController : MonoBehaviour
         _move.performed += ctx => PlayMovingAnim();
         _move.canceled += ctx => StopMovingAnim();
 
-        _jump.performed += ctx => Jump();
+        
     }
 
     private void Start()
@@ -56,6 +60,8 @@ public class PlayerAnimController : MonoBehaviour
 
         _angelHitVFX = _angelHitVFXObject.GetComponent<ParticleSystem>();
         _devilHitVFX = _devilHitVFXObject.GetComponent<ParticleSystem>();
+
+        _transformVFX = _transformVFXGameObject.GetComponent<ParticleSystem>();
     }
 
     private void OnEnable()
@@ -64,6 +70,7 @@ public class PlayerAnimController : MonoBehaviour
         PlayerController.SwapForm += SwapAnimController;
         PlayerHealth.DeathAction += PlayDeathVFX;
         Ability_LungeAttack.Lunge += Attack;
+        PlayerController.JumpAction += Jump;
     }
     private void OnDisable()
     {
@@ -71,6 +78,7 @@ public class PlayerAnimController : MonoBehaviour
         PlayerHealth.TakeDamageAction -= TakeDamage;
         PlayerHealth.DeathAction -= PlayDeathVFX;
         Ability_LungeAttack.Lunge -= Attack;
+        PlayerController.JumpAction -= Jump;
 
         if (_move != null)
         {
@@ -124,6 +132,7 @@ public class PlayerAnimController : MonoBehaviour
 
     private void SwapAnimController(AbilitySetType newAbilitySet)
     {
+        PlaySwapVFX();
         switch (newAbilitySet)
         {
             case AbilitySetType.Angel:
@@ -157,5 +166,10 @@ public class PlayerAnimController : MonoBehaviour
     private void PlayDeathVFX()
     { 
         _currentDeathVFX.Play();
+    }
+
+    private void PlaySwapVFX()
+    {
+        _transformVFX.Play();
     }
 }
