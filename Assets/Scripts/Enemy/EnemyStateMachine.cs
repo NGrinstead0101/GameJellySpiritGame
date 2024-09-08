@@ -9,6 +9,8 @@ public class EnemyStateMachine : MonoBehaviour
 
     [SerializeField] private GameObject torchPrefab;
     [SerializeField] private bool shouldSpawnTorch = false;
+    [SerializeField] private ParticleSystem _hitVfx;
+    [SerializeField] private ParticleSystem _deathVfx;
 
     private float time;
     private Vector2 targetDestination;
@@ -33,6 +35,9 @@ public class EnemyStateMachine : MonoBehaviour
 
     public void Start()
     {
+        SetDeathVfxSystem(false);
+        SetHitVfxSystem(false);
+
         enemyAnimator = GetComponent<Animator>();
         currentHealth = MaxHealth;
 
@@ -78,6 +83,48 @@ public class EnemyStateMachine : MonoBehaviour
         {
             time += Time.deltaTime;
             yield return null;
+        }
+    }
+
+    private IEnumerator DisableHitVfxDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        SetHitVfxSystem(false);
+    }
+
+    private void SetHitVfxSystem(bool isActive)
+    {
+        Debug.Log("entered");
+        if (_hitVfx == null)
+            return;
+
+        if (isActive)
+        {
+            Debug.Log("Play vfx");
+            _hitVfx.Play();
+        }
+        else
+        {
+            Debug.Log("Failed to play");
+            _hitVfx.Stop();
+        }
+    }
+
+    private void SetDeathVfxSystem(bool isActive)
+    {
+        if (_deathVfx == null)
+            return;
+
+        if (isActive)
+        {
+            Debug.Log("Play vfx");
+            _deathVfx.Play();
+        }
+        else
+        {
+            Debug.Log("failed to play");
+            _deathVfx.Stop();
         }
     }
 
@@ -253,9 +300,13 @@ public class EnemyStateMachine : MonoBehaviour
     public void RemoveHealth(float healthToRemove)
     {
         currentHealth -= healthToRemove;
+        SetHitVfxSystem(true);
+        StartCoroutine(DisableHitVfxDelay());
+
         if (currentHealth <= 0)
         {
             EnemyDied?.Invoke();
+            SetDeathVfxSystem(true);
 
             if (shouldSpawnTorch)
                 Instantiate(torchPrefab, transform.position, Quaternion.identity);
@@ -304,5 +355,10 @@ public class EnemyStateMachine : MonoBehaviour
     public void ToggleIsAttacking(bool isAttacking)
     {
         enemyAnimator.SetBool("isAttacking", isAttacking);
+    }
+
+    private void OnDisable()
+    {
+        SetDeathVfxSystem(false);
     }
 }
