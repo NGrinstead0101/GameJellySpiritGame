@@ -45,9 +45,9 @@ public class GameManager : MonoBehaviour
         else
         {
             Instance = this;
-            DontDestroyOnLoad(Instance);
+            
         }
-
+        DontDestroyOnLoad(this);
     }
 
     private void Start()
@@ -172,16 +172,16 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void LoadFirstLevel()
     {
-        if(_currentAbilityType == AbilitySetType.Angel)
-        {
+        //if(_currentAbilityType == AbilitySetType.Angel)
+        //{
             //load angel scene
             StartCoroutine(LoadScene(1));
-        }
-        else
-        {
-            //load devil scene
-            StartCoroutine(LoadScene(2));
-        }
+        //}
+        //else
+        //{
+        //    //load devil scene
+        //    StartCoroutine(LoadScene(2));
+        //}
 
         _currentGameState = GameState.level;
         BackgroundMusicManager.Instance.SwitchBackTrack(GameState.menu, GameState.level);
@@ -192,7 +192,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void LoadNextLevel()
     {
-        print(SceneManager.GetActiveScene().buildIndex);
+        //print(SceneManager.GetActiveScene().buildIndex);
         //if in angel tutorial scene
         if(SceneManager.GetActiveScene().buildIndex == 1 && !_devilTutComplete)
         {
@@ -235,6 +235,7 @@ public class GameManager : MonoBehaviour
     /// <param name="index"></param>
     private IEnumerator LoadScene(int index)
     {
+        Time.timeScale = 1;
         UIAssetManager.BlackFade?.Invoke(true);
 
         //sets avility type for tutorial levels
@@ -260,6 +261,18 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex));
     }
+
+    public void LoadEnding()
+    {
+        StartCoroutine(LoadScene(10));
+        StartCoroutine(Return());
+    }
+
+    private IEnumerator Return()
+    {
+        yield return new WaitForSeconds(10f);
+        LoadMainMenu();
+    }    
 
     private void Update()
     {
