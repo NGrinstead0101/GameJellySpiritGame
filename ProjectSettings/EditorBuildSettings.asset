@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus/MainMenu.unity
     guid: b0351224fc7276f4ea71fbf7c8cd9d77
   - enabled: 1
-    path: Assets/Scenes/Angel Tutorial Level.unity
+    path: Assets/Scenes/Levels/Angel Tutorial Level.unity
     guid: bbbd3e3b7c241c34682e945262a221ad
   - enabled: 1
     path: Assets/Scenes/TestScenes/SoundTesting.unity
