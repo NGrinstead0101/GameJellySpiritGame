@@ -56,7 +56,6 @@ public class MenuInputManager : MonoBehaviour
     {
         if (_canSwap)
         {
-            //_continueButton.SetActive(true);
 
             if (GameManager.Instance.GetCurrentAbilityType() == AbilitySetType.Angel)
             {
