@@ -124,10 +124,12 @@ public class EnemyStateMachine : MonoBehaviour
 
         if (isActive)
         {
+            _spriteRenderer.color = Color.red;
             _deathVfxSystem.Play();
         }
         else
         {
+            _spriteRenderer.color = Color.white;
             _deathVfxSystem.Stop();
         }
     }
@@ -304,19 +306,28 @@ public class EnemyStateMachine : MonoBehaviour
     public void RemoveHealth(float healthToRemove)
     {
         currentHealth -= healthToRemove;
-        SetHitVfxSystem(true);
-        StartCoroutine(DisableHitVfxDelay());
 
-        if (currentHealth <= 0)
+        if (currentHealth > 0)
         {
-            EnemyDied?.Invoke();
+            SetHitVfxSystem(true);
+            StartCoroutine(DisableHitVfxDelay());
+        }
+        else if (currentHealth <= 0)
+        {
             SetDeathVfxSystem(true);
 
-            if (shouldSpawnTorch)
-                Instantiate(torchPrefab, transform.position, Quaternion.identity);
-
-            ChangeState(new Died());
+            Invoke(nameof(DeathDelay), 0.15f);
         }
+    }
+
+    private void DeathDelay()
+    {
+        EnemyDied?.Invoke();
+
+        if (shouldSpawnTorch)
+            Instantiate(torchPrefab, transform.position, Quaternion.identity);
+
+        ChangeState(new Died());
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
