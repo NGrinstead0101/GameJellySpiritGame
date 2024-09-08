@@ -12,6 +12,7 @@ public class EnemyStateMachine : MonoBehaviour
     [SerializeField] private GameObject _hitVfxObject;
     [SerializeField] private GameObject _deathVfxObject;
 
+    private SfxManager _sfxManager;
     private SpriteRenderer _spriteRenderer;
     private ParticleSystem _hitVfxSystem;
     private ParticleSystem _deathVfxSystem;
@@ -38,6 +39,8 @@ public class EnemyStateMachine : MonoBehaviour
 
     public void Start()
     {
+        _sfxManager = SfxManager.Instance;
+
         _deathVfxSystem = _deathVfxObject.GetComponent<ParticleSystem>();
         _hitVfxSystem = _hitVfxObject.GetComponent<ParticleSystem>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -309,12 +312,14 @@ public class EnemyStateMachine : MonoBehaviour
 
         if (currentHealth > 0)
         {
+            PlaySfx("EnemyHit");
             SetHitVfxSystem(true);
             StartCoroutine(DisableHitVfxDelay());
         }
         else if (currentHealth <= 0)
         {
             SetDeathVfxSystem(true);
+            PlaySfx("EnemyDeath");
 
             Invoke(nameof(DeathDelay), 0.15f);
         }
@@ -360,6 +365,11 @@ public class EnemyStateMachine : MonoBehaviour
         {
             isNearLedge = true;
         }
+    }
+
+    public void PlaySfx(string sfxName)
+    {
+        _sfxManager.PlaySFX(sfxName);
     }
 
     public void SpotPlayer()
