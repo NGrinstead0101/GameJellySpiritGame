@@ -101,11 +101,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1002
-        height: 802
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 2
+        width: 1000
+        height: 800
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -121,12 +121,12 @@ TextureImporter:
       name: DevilIdle_Sprite_1
       rect:
         serializedVersion: 2
-        x: 1002
-        y: 0
-        width: 1002
-        height: 802
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1000
+        y: 2
+        width: 1000
+        height: 800
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -142,12 +142,12 @@ TextureImporter:
       name: DevilIdle_Sprite_2
       rect:
         serializedVersion: 2
-        x: 2004
-        y: 0
-        width: 1002
-        height: 802
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2000
+        y: 2
+        width: 1000
+        height: 800
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -163,12 +163,12 @@ TextureImporter:
       name: DevilIdle_Sprite_3
       rect:
         serializedVersion: 2
-        x: 3006
-        y: 0
-        width: 1002
-        height: 802
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3000
+        y: 2
+        width: 1000
+        height: 800
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -184,12 +184,12 @@ TextureImporter:
       name: DevilIdle_Sprite_4
       rect:
         serializedVersion: 2
-        x: 4008
-        y: 0
-        width: 1002
-        height: 802
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4000
+        y: 2
+        width: 1000
+        height: 800
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -205,12 +205,12 @@ TextureImporter:
       name: DevilIdle_Sprite_5
       rect:
         serializedVersion: 2
-        x: 5010
-        y: 0
-        width: 1002
-        height: 802
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 5000
+        y: 2
+        width: 1000
+        height: 800
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
