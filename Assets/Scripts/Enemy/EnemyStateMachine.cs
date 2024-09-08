@@ -319,7 +319,7 @@ public class EnemyStateMachine : MonoBehaviour
 
         if (currentHealth > 0)
         {
-            PlaySfx("EnemyHurt");
+            PlaySfx("EnemyHit");
             SetHitVfxSystem(true);
             StartCoroutine(DisableHitVfxDelay());
         }

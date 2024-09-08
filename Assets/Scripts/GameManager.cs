@@ -88,11 +88,9 @@ public class GameManager : MonoBehaviour
         switch (state)
         {
             case GameState.menu:
-
                 LoadMainMenu();
                 break;
             case GameState.pause:
-
                 LoadPauseMenu();
                 break;
             case GameState.level:
@@ -119,11 +117,6 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void LoadMainMenu()
     {
-        if(_currentGameState == GameState.pause)
-        {
-            //_currentGameState = GameState.level;
-            Time.timeScale = 1;
-        }
         LoadScene(0);
         _currentGameState = GameState.menu;
         //load menu music
@@ -191,19 +184,25 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void LoadNextLevel()
     {
-        print(SceneManager.GetActiveScene().buildIndex);
         //if in angel tutorial scene
-        if(SceneManager.GetActiveScene().buildIndex == 1 && !_devilTutComplete)
+        if(SceneManager.GetActiveScene().buildIndex == 1)
         {
             _angelTutComplete = true;
-            StartCoroutine(LoadScene(2));
+            if(!_devilTutComplete)
+            {
+                //load devil scene
+                StartCoroutine(LoadScene(2));
+            }
         }
         //if in devil tutorial scene
-        else if (SceneManager.GetActiveScene().buildIndex == 2 & !_angelTutComplete)
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             _devilTutComplete = true;
-            //load angel scene
-            StartCoroutine(LoadScene(1));
+            if (!_angelTutComplete)
+            {
+                //load angel scene
+                StartCoroutine(LoadScene(1));
+            }
         }
         //both tutorials completed
         else
@@ -255,19 +254,14 @@ public class GameManager : MonoBehaviour
         UIAssetManager.BlackFade?.Invoke(false);
     }
 
-    public void ResetCurrentScene()
-    {
-        StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex));
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.P))
-        {
-            //StartCoroutine(LoadScene(1));
-            _currentGameState = GameState.level;
-        }
-    }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyUp(KeyCode.P))
+    //    {
+    //        //StartCoroutine(LoadScene(1));
+    //        _currentGameState = GameState.level;
+    //    }
+    //}
 
     #endregion
 }

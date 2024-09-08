@@ -174,9 +174,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27cc0620624bc654582b446b80d481d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _devilHeart: {fileID: 21300000, guid: 2a0d920e5fde3ae4b9b9ba8d7981d125, type: 3}
-  _angelHeart: {fileID: 21300000, guid: 26231e71b7845a44a802410e6dae67db, type: 3}
-  _emptyHeart: {fileID: 21300000, guid: 051c6b6e31d4bd2419d54485e9afc96b, type: 3}
   _heartPrefab: {fileID: 897798538855533469, guid: 6e5e71aa2889d064b844deb1115f45fe, type: 3}
   _healthBar: {fileID: 0}
   _deathFadeOutImage: {fileID: 0}
