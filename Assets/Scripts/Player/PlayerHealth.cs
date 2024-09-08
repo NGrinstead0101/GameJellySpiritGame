@@ -35,8 +35,8 @@ public class PlayerHealth : MonoBehaviour
     private GameManager _gameManager;
     private PlayerController _playerController;
 
-    private const float StartingHeartPos = -345f;
-    private const float ChangeInHeartPos = 40f;
+    private const float StartingHeartPos = -733f;
+    private const float ChangeInHeartPos = 100f;
 
     /// <summary>
     /// Initial set-up
@@ -48,7 +48,7 @@ public class PlayerHealth : MonoBehaviour
         {
             GameObject newHeart = Instantiate(_heartPrefab, _healthBar);
             newHeart.transform.localPosition = 
-                new Vector2(StartingHeartPos + ChangeInHeartPos * i, newHeart.transform.localPosition.y);
+                new Vector2(StartingHeartPos + ChangeInHeartPos * i, -60f);
             _hearts.Add(newHeart.GetComponent<Image>());
         }
 
