@@ -28,6 +28,7 @@ public class EnemyStateMachine : MonoBehaviour
     private float currentSpeed;
     public static UnityAction HitPlayer;
     private bool isNearWall = false;
+    private bool isNearLedge = false;
     private Animator enemyAnimator;
 
     public void Start()
@@ -179,14 +180,12 @@ public class EnemyStateMachine : MonoBehaviour
     }
     public bool IsNextToEdge()
     {
-        RaycastHit2D hit = (Physics2D.Raycast(GetDetectionPoint().position, -Vector2.up, frontDetectionPointDistance));
-        {
-            if (hit.collider != null)
-            {
-                return false;
-            }
-            return true;
-        }
+        bool returnVal = isNearLedge;
+
+        if(isNearLedge)
+            isNearLedge = false;
+
+        return returnVal;
     }
     public bool IsNextToWall()
     {
@@ -289,6 +288,11 @@ public class EnemyStateMachine : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             ChangeIsNextToPlayer(false);
+        }
+
+        if (other.CompareTag("Ground"))
+        {
+            isNearLedge = true;
         }
     }
 
