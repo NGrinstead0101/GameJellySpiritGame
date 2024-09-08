@@ -170,7 +170,7 @@ MonoBehaviour:
   _heartPrefab: {fileID: 897798538855533469, guid: 6e5e71aa2889d064b844deb1115f45fe, type: 3}
   _healthBar: {fileID: 0}
   _deathFadeOutImage: {fileID: 0}
-  _totalHealth: 6
+  MaxHealth: 5
   _deathFadeOutTime: 1
 --- !u!50 &832889441941665982
 Rigidbody2D:
@@ -188,7 +188,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d81f1c4793b88024eb0ca4e048442564, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
