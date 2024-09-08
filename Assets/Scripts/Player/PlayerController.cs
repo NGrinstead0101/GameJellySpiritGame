@@ -10,6 +10,7 @@ using UnityEngine;
 using System;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -234,10 +235,10 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        /*if (collision.CompareTag("Ground"))
+        if (collision.CompareTag("END"))
         {
-            _canJump = true;
-        }*/
+            GameManager.Instance.LoadEnding();
+        }
     }
 
     /// <summary>
