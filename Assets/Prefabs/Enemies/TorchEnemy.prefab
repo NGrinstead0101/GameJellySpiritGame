@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3352841124972687417}
   - component: {fileID: 7870984314940725338}
   - component: {fileID: 1681679380483207941}
+  - component: {fileID: 2655688867801036955}
   m_Layer: 0
   m_Name: TorchEnemy
   m_TagString: Enemy
@@ -107,8 +108,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   torchPrefab: {fileID: 4714353511002517244, guid: ce4ce2a5a0727004895fabd05a77e894, type: 3}
   shouldSpawnTorch: 1
-  _hitVfxObject: {fileID: 0}
-  _deathVfxObject: {fileID: 0}
+  _hitVfxObject: {fileID: 1840728803957018863}
+  _deathVfxObject: {fileID: 7258252113292569941}
+  _attackHitbox: {fileID: 2655688867801036955}
   frontDetectionPoint: {fileID: 934325090640501243}
   frontDetectionPointDistance: 3
   frontMeleeDistance: 1
@@ -264,7 +266,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -279,6 +281,51 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!61 &2655688867801036955
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2748641735535500888}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 2.2019382, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4, y: 4}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.1165829, y: 4}
+  m_EdgeRadius: 0
 --- !u!1 &6710120506378470881
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,6 +418,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa85e75e5a9cb7d47832f0e0aa369a06, type: 3}
+--- !u!1 &7258252113292569941 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9209330634931392707, guid: fa85e75e5a9cb7d47832f0e0aa369a06, type: 3}
+  m_PrefabInstance: {fileID: 1978312497114742166}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8918230498505895963 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6969192739166670221, guid: fa85e75e5a9cb7d47832f0e0aa369a06, type: 3}
@@ -433,6 +485,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 537ca593dea85b748be4c75a872fee1f, type: 3}
+--- !u!1 &1840728803957018863 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8885265641423821500, guid: 537ca593dea85b748be4c75a872fee1f, type: 3}
+  m_PrefabInstance: {fileID: 7117194972209400403}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8012459761025786510 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1005607480902904029, guid: 537ca593dea85b748be4c75a872fee1f, type: 3}
