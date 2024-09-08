@@ -534,7 +534,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1395696551952210794, guid: 912e072b873f7c541878b45ec0ef99d4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.5707054
+      value: -4.560604
       objectReference: {fileID: 0}
     - target: {fileID: 1395696551952210794, guid: 912e072b873f7c541878b45ec0ef99d4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8154,7 +8154,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1952515775850810556, guid: 841b8e6d513df6e40a8d12d800098205, type: 3}
       propertyPath: m_SortingOrder
-      value: -1
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3684239594305780816, guid: 841b8e6d513df6e40a8d12d800098205, type: 3}
+      propertyPath: _enemyCount
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8560412097635234817, guid: 841b8e6d513df6e40a8d12d800098205, type: 3}
       propertyPath: m_LocalPosition.x
