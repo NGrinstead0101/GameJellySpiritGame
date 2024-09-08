@@ -6,6 +6,9 @@ public class Ability : MonoBehaviour
 {
     [SerializeField] protected AbilityInformation _abilityInformation;
 
+    [SerializeField] protected GameObject _vfxObject;
+    protected ParticleSystem _vfxParticleSystem;
+
     protected float _cooldown = 0.0f;
 
     protected bool _canCast = true;
@@ -13,6 +16,9 @@ public class Ability : MonoBehaviour
     private void Start()
     {
         _cooldown = _abilityInformation.Cooldown;
+        _vfxParticleSystem = _vfxObject.GetComponent<ParticleSystem>();
+
+        SetParticleSystem(false);
     }
 
     /// <summary>
@@ -23,6 +29,7 @@ public class Ability : MonoBehaviour
         if (_canCast)
         {
             _canCast = false;
+            SetParticleSystem(true);
             //Debug.Log(_abilityInformation.name + " Parent Casted");
         }
     }
@@ -30,11 +37,29 @@ public class Ability : MonoBehaviour
     public virtual void CancelAbility()
     {
         //Debug.Log(_abilityInformation.name + " Parent Cancelled");
+        SetParticleSystem(false);
     }
 
     protected IEnumerator AbilityCooldown()
     {
         yield return new WaitForSeconds(_cooldown);
         _canCast = true;
+    }
+
+    protected virtual void SetParticleSystem(bool val)
+    {
+        if(_vfxParticleSystem == null)
+        {
+            return;
+        }
+
+        if(val)
+        {
+            _vfxParticleSystem.Play();
+        }
+        else
+        {
+            _vfxParticleSystem.Stop();
+        }
     }
 }
