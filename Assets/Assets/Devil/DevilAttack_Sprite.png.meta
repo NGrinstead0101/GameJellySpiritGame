@@ -101,9 +101,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1502
-        height: 802
+        y: 2
+        width: 1500
+        height: 800
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,10 +121,10 @@ TextureImporter:
       name: DevilAttack_Sprite_1
       rect:
         serializedVersion: 2
-        x: 1502
-        y: 0
-        width: 1502
-        height: 802
+        x: 1498
+        y: 2
+        width: 1500
+        height: 800
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,10 +142,10 @@ TextureImporter:
       name: DevilAttack_Sprite_2
       rect:
         serializedVersion: 2
-        x: 3004
-        y: 0
-        width: 1502
-        height: 802
+        x: 3000
+        y: 2
+        width: 1500
+        height: 800
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,10 +163,10 @@ TextureImporter:
       name: DevilAttack_Sprite_3
       rect:
         serializedVersion: 2
-        x: 4506
-        y: 0
-        width: 1502
-        height: 802
+        x: 4500
+        y: 2
+        width: 1500
+        height: 800
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,10 +184,10 @@ TextureImporter:
       name: DevilAttack_Sprite_4
       rect:
         serializedVersion: 2
-        x: 6008
-        y: 0
-        width: 1502
-        height: 802
+        x: 6000
+        y: 2
+        width: 1500
+        height: 800
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,10 +205,10 @@ TextureImporter:
       name: DevilAttack_Sprite_5
       rect:
         serializedVersion: 2
-        x: 7510
-        y: 0
-        width: 1502
-        height: 802
+        x: 7500
+        y: 2
+        width: 1500
+        height: 800
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
