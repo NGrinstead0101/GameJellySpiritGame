@@ -22,7 +22,6 @@ public class Ability_LungeAttack : Ability
     private Collider2D _hitBoxCollider = null;
     private Vector2 _baseHitboxOffset = Vector2.zero;
 
-    private bool _canAttack = true;
     private bool _canHitEnemy = true;
 
     private void Start()
@@ -31,16 +30,6 @@ public class Ability_LungeAttack : Ability
         _baseHitboxOffset = _hitBoxCollider.offset;
         _hitBoxCollider.enabled = false;
     }
-
-#if UNITY_EDITOR
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            CastAbility();
-        }
-    }
-#endif
 
     /// <summary>
     /// Casts the lunge attack ability
@@ -107,7 +96,7 @@ public class Ability_LungeAttack : Ability
     private IEnumerator AttackCooldown()
     {
         yield return new WaitForSeconds(_cooldown);
-        _canAttack = true;
+        _canCast = true;
         _canHitEnemy = true;
     }
 
