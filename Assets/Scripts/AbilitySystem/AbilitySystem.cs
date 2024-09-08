@@ -100,7 +100,7 @@ public class AbilitySystem : MonoBehaviour
     }
 
     /// <summary>
-    /// Binds the cast ability action to GameplayInputs. Callled in PlayerController awake
+    /// Binds the cast ability action to GameplayInputs. Called in PlayerController awake
     /// </summary>
     public static void BindUseAbility()
     {

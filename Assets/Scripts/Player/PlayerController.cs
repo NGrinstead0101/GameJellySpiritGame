@@ -13,6 +13,8 @@ using UnityEngine.Rendering.Universal;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance;
+
     public static Action<AbilitySetType> SwapForm;
 
     [SerializeField] private float _jumpSpeed;
@@ -32,7 +34,7 @@ public class PlayerController : MonoBehaviour
     private bool _currentForm = true;
 
     public static GameplayInputs GameplayInputs;
-    private InputAction _move, _jump, _swapToAngel, _swapToDevil;
+    private InputAction _move, _jump, _swapToAngel, _swapToDevil, _pause;
     private float _moveDirection = 0f;
 
     /// <summary>
@@ -40,6 +42,15 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+
         _rb = GetComponent<Rigidbody2D>();
         _characterLight = GetComponent<Light2D>();
         _characterLight.pointLightOuterRadius = _currentForm ? _angelLightDistance : _devilLightDistance;
@@ -51,15 +62,20 @@ public class PlayerController : MonoBehaviour
         _jump = GameplayInputs.FindAction("Jump");
         _swapToAngel = GameplayInputs.FindAction("SwapAngel");
         _swapToDevil = GameplayInputs.FindAction("SwapDevil");
+        _pause = GameplayInputs.FindAction("Escape");
 
         AbilitySystem.BindUseAbility();
+        PlayerAnimController.Instance.BindAnims();
 
         _move.performed += ctx => _moveDirection = _move.ReadValue<float>();
         _move.canceled += ctx => _moveDirection = _move.ReadValue<float>();
+
         _jump.performed += ctx => Jump();
         _swapToAngel.performed += ctx => SwapSpiritForm();
         _swapToDevil.performed += ctx => SwapSpiritForm();
+        _pause.performed += ctx => PausePerformed();
     }
+
 
     private void Start()
     {
@@ -87,6 +103,10 @@ public class PlayerController : MonoBehaviour
         _jump.performed -= ctx => Jump();
         _swapToAngel.performed -= ctx => SwapSpiritForm();
         _swapToDevil.performed -= ctx => SwapSpiritForm();
+
+        _move.performed -= ctx => PlayerAnimController.Instance.PlayMovingAnim();
+        _move.canceled -= ctx => PlayerAnimController.Instance.StopMovingAnim();
+        _pause.performed -= ctx => PausePerformed();
     }
 
     /// <summary>
@@ -107,11 +127,11 @@ public class PlayerController : MonoBehaviour
         // Flips player attack hitbox
         if (_horizVelocity < 0)
         {
-            transform.localScale = new Vector2(-1, transform.localScale.y);
+            transform.localScale = new Vector2(-(Math.Abs(transform.localScale.x)), transform.localScale.y);
         }
         else if (_horizVelocity > 0)
         {
-            transform.localScale = new Vector2(1, transform.localScale.y);
+            transform.localScale = new Vector2(Math.Abs(transform.localScale.x), transform.localScale.y);
         }
 
         // Apply velocity to rigidbody
@@ -226,5 +246,13 @@ public class PlayerController : MonoBehaviour
         }
 
         GameManager.Instance.ChangeGameState(GameManager.GameState.level);
+    }
+
+    /// <summary>
+    /// Function called by pause input.
+    /// </summary>
+    private void PausePerformed()
+    {
+        GameManager.Instance.PauseInput();
     }
 }

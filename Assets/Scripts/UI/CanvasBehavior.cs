@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class CanvasBehavior : MonoBehaviour
 {
     [SerializeField] private GameObject _fadeToBlack;
+    [SerializeField] private GameObject _pauseMenu;
     private Animator _anim;
 
     private void Start()
@@ -16,10 +18,14 @@ public class CanvasBehavior : MonoBehaviour
     private void OnEnable()
     {
         UIAssetManager.BlackFade += TriggerBlackFadeAnim;
+        GameManager.PauseAction += SetPauseMenu;
     }
+
+
     private void OnDisable()
     {
         UIAssetManager.BlackFade -= TriggerBlackFadeAnim;
+        GameManager.PauseAction -= SetPauseMenu;
     }
 
     /// <summary>
@@ -54,11 +60,25 @@ public class CanvasBehavior : MonoBehaviour
         }
     }
 
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Q))
-    //    {
-    //        _anim.SetTrigger("FadeToBlack");
-    //    }
-    //}
+    private void SetPauseMenu(bool input)
+    {
+        if(input)
+        {
+            _pauseMenu.SetActive(true);
+        }
+        else
+        {
+            _pauseMenu.SetActive(false);
+        }
+    }
+
+    public void ResumeGame()
+    {
+        GameManager.Instance.ChangeGameState(GameManager.GameState.level);
+    }
+
+    public void LoadFirstLevel()
+    {
+        GameManager.Instance.ChangeGameState(GameManager.GameState.level);
+    }
 }
