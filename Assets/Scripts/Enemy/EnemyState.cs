@@ -225,7 +225,6 @@ public class Died : EnemyState
 {
     public override void CheckForStateChange(EnemyStateMachine context)
     {
-        throw new System.NotImplementedException();
     }
 
     public override void Enter(EnemyStateMachine context)
@@ -235,7 +234,6 @@ public class Died : EnemyState
 
     public override void Exit(EnemyStateMachine context)
     {
-        throw new System.NotImplementedException();
     }
 
     public override bool NeedsDestinationUpdate(EnemyStateMachine context)
