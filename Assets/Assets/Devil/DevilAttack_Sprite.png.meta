@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 48e572b8e86a9ba41a509e0eefa484de
+guid: 49c9f22ed71fa014283070c86fbe205c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -70,7 +70,7 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 16384
-    resizeAlgorithm: 1
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
@@ -103,16 +103,16 @@ TextureImporter:
         x: 0
         y: 0
         width: 1500
-        height: 800
+        height: 738
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f760eead72263b7439f677ab407d9f5c
-      internalID: -2056427793
+      spriteID: 489ea137005da3c46b02bae91fe95b37
+      internalID: -2051170405
       vertices: []
       indices: 
       edges: []
@@ -124,16 +124,16 @@ TextureImporter:
         x: 1500
         y: 0
         width: 1500
-        height: 800
+        height: 738
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5c89a3447e9f7340b532a44c6b7957e
-      internalID: 1285525481
+      spriteID: 46a9cc7e385db384f9787e183a5730e6
+      internalID: -1111167609
       vertices: []
       indices: 
       edges: []
@@ -145,16 +145,16 @@ TextureImporter:
         x: 3000
         y: 0
         width: 1500
-        height: 800
+        height: 738
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85e94fef500658e4bbce59efa5b42166
-      internalID: -1042915936
+      spriteID: 3beb139cec70c42418d557dff6339d65
+      internalID: 1826826459
       vertices: []
       indices: 
       edges: []
@@ -166,16 +166,16 @@ TextureImporter:
         x: 4500
         y: 0
         width: 1500
-        height: 800
+        height: 738
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2071d80870da15c4fa0c04a316692286
-      internalID: 1704225343
+      spriteID: f09e62a68f7961f408acd44a19f7ebe2
+      internalID: -2077222558
       vertices: []
       indices: 
       edges: []
@@ -187,16 +187,16 @@ TextureImporter:
         x: 6000
         y: 0
         width: 1500
-        height: 800
+        height: 738
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2ef76f6285cbba4f8750720f6b3c6b2
-      internalID: -1845015796
+      spriteID: cc35873d7d9ef1f47ab6e7e7d6c25a93
+      internalID: -629230491
       vertices: []
       indices: 
       edges: []
@@ -208,16 +208,16 @@ TextureImporter:
         x: 7500
         y: 0
         width: 1500
-        height: 800
+        height: 738
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 365edd33508b5f04aa238f0c3c7b7708
-      internalID: -1793863501
+      spriteID: 6c63fc3a76279bf48ab679f150ef3c4d
+      internalID: 2050622940
       vertices: []
       indices: 
       edges: []
@@ -233,12 +233,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      DevilAttack_Sprite_0: -2056427793
-      DevilAttack_Sprite_1: 1285525481
-      DevilAttack_Sprite_2: -1042915936
-      DevilAttack_Sprite_3: 1704225343
-      DevilAttack_Sprite_4: -1845015796
-      DevilAttack_Sprite_5: -1793863501
+      DevilAttack_Sprite_0: -2051170405
+      DevilAttack_Sprite_1: -1111167609
+      DevilAttack_Sprite_2: 1826826459
+      DevilAttack_Sprite_3: -2077222558
+      DevilAttack_Sprite_4: -629230491
+      DevilAttack_Sprite_5: 2050622940
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
