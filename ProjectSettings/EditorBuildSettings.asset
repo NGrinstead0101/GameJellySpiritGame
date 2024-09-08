@@ -7,13 +7,10 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Menus/MainMenu.unity
-    guid: b0351224fc7276f4ea71fbf7c8cd9d77
+    guid: 812ed20e03308004fa26fc452e7f8cd9
   - enabled: 1
     path: Assets/Scenes/Levels/Angel Tutorial Level.unity
     guid: bbbd3e3b7c241c34682e945262a221ad
-  - enabled: 1
-    path: Assets/Scenes/TestScenes/SoundTesting.unity
-    guid: b73093c3818f390429f87a1078f25455
   - enabled: 1
     path: Assets/Scenes/Levels/DevilTutorial.unity
     guid: 0ac874b8f168299459f49f9a0d2e6760
@@ -21,9 +18,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/HealingTutorial.unity
     guid: 87ac6b347b1ae0343a0c940406df2f5e
   - enabled: 1
+    path: Assets/Scenes/Levels/VisionTutorial.unity
+    guid: 90686fe65e8a6514f8ac80ae4013856c
+  - enabled: 1
     path: Assets/Scenes/Levels/Maze Level.unity
     guid: 43e923eea98fb804e9911a4a611acd05
   - enabled: 1
-    path: Assets/Scenes/Levels/VisionTutorial.unity
-    guid: 90686fe65e8a6514f8ac80ae4013856c
+    path: Assets/Scenes/TestScenes/SoundTesting.unity
+    guid: b73093c3818f390429f87a1078f25455
   m_configObjects: {}
