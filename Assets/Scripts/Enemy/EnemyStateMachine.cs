@@ -9,9 +9,12 @@ public class EnemyStateMachine : MonoBehaviour
 
     [SerializeField] private GameObject torchPrefab;
     [SerializeField] private bool shouldSpawnTorch = false;
-    [SerializeField] private ParticleSystem _hitVfx;
-    [SerializeField] private ParticleSystem _deathVfx;
+    [SerializeField] private GameObject _hitVfxObject;
+    [SerializeField] private GameObject _deathVfxObject;
 
+    private SpriteRenderer _spriteRenderer;
+    private ParticleSystem _hitVfxSystem;
+    private ParticleSystem _deathVfxSystem;
     private float time;
     private Vector2 targetDestination;
     private bool isFacingLeft;
@@ -35,6 +38,10 @@ public class EnemyStateMachine : MonoBehaviour
 
     public void Start()
     {
+        _deathVfxSystem = _deathVfxObject.GetComponent<ParticleSystem>();
+        _hitVfxSystem = _hitVfxObject.GetComponent<ParticleSystem>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+
         SetDeathVfxSystem(false);
         SetHitVfxSystem(false);
 
@@ -95,36 +102,33 @@ public class EnemyStateMachine : MonoBehaviour
 
     private void SetHitVfxSystem(bool isActive)
     {
-        Debug.Log("entered");
-        if (_hitVfx == null)
+        if (_hitVfxSystem == null)
             return;
 
         if (isActive)
         {
-            Debug.Log("Play vfx");
-            _hitVfx.Play();
+            _spriteRenderer.color = Color.red;
+            _hitVfxSystem.Play();
         }
         else
         {
-            Debug.Log("Failed to play");
-            _hitVfx.Stop();
+            _spriteRenderer.color = Color.white;
+            _hitVfxSystem.Stop();
         }
     }
 
     private void SetDeathVfxSystem(bool isActive)
     {
-        if (_deathVfx == null)
+        if (_deathVfxSystem == null)
             return;
 
         if (isActive)
         {
-            Debug.Log("Play vfx");
-            _deathVfx.Play();
+            _deathVfxSystem.Play();
         }
         else
         {
-            Debug.Log("failed to play");
-            _deathVfx.Stop();
+            _deathVfxSystem.Stop();
         }
     }
 
