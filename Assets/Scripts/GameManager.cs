@@ -88,14 +88,14 @@ public class GameManager : MonoBehaviour
         switch (state)
         {
             case GameState.menu:
-                ReturnToLevel();
+
                 LoadMainMenu();
                 break;
             case GameState.pause:
+
                 LoadPauseMenu();
                 break;
             case GameState.level:
-                ReturnToLevel();
                 if (_currentGameState == GameState.menu)
                 {
                     LoadFirstLevel();
@@ -119,7 +119,11 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void LoadMainMenu()
     {
-        ReturnToLevel();
+        if(_currentGameState == GameState.pause)
+        {
+            //_currentGameState = GameState.level;
+            Time.timeScale = 1;
+        }
         LoadScene(0);
         _currentGameState = GameState.menu;
         //load menu music
@@ -187,25 +191,19 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void LoadNextLevel()
     {
+        print(SceneManager.GetActiveScene().buildIndex);
         //if in angel tutorial scene
-        if(SceneManager.GetActiveScene().buildIndex == 1)
+        if(SceneManager.GetActiveScene().buildIndex == 1 && !_devilTutComplete)
         {
             _angelTutComplete = true;
-            if(!_devilTutComplete)
-            {
-                //load devil scene
-                StartCoroutine(LoadScene(2));
-            }
+            StartCoroutine(LoadScene(2));
         }
         //if in devil tutorial scene
-        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        else if (SceneManager.GetActiveScene().buildIndex == 2 & !_angelTutComplete)
         {
             _devilTutComplete = true;
-            if (!_angelTutComplete)
-            {
-                //load angel scene
-                StartCoroutine(LoadScene(1));
-            }
+            //load angel scene
+            StartCoroutine(LoadScene(1));
         }
         //both tutorials completed
         else
@@ -236,7 +234,6 @@ public class GameManager : MonoBehaviour
     /// <param name="index"></param>
     private IEnumerator LoadScene(int index)
     {
-        Time.timeScale = 1;
         UIAssetManager.BlackFade?.Invoke(true);
 
         //sets avility type for tutorial levels
