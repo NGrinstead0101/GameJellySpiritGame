@@ -348,10 +348,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelKit
       objectReference: {fileID: 0}
-    - target: {fileID: 6636798126054135925, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
-      propertyPath: _angelAbilities.Array.data[0]
-      value: 
-      objectReference: {fileID: 5263062993375726312, guid: 33026637892087748846b131f19bc5d4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

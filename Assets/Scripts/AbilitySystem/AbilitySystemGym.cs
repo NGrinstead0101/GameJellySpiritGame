@@ -6,14 +6,14 @@ public class AbilitySystemGym : MonoBehaviour
 {
     private void Update()
     {
-        /*if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             CastAbility(0);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             CastAbility(1);
-        }*/
+        }
 
     }
 

@@ -174,7 +174,7 @@ public class GameManager : MonoBehaviour
             }
         }
         //if in devil tutorial scene
-        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        else if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             _devilTutComplete = true;
             if (!_angelTutComplete)

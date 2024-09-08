@@ -1,6 +1,6 @@
 /******************************************************************
  *    Author: Nick Grinstead
- *    Contributors: Marissa Moser
+ *    Contributors: 
  *    Description: Behaviors for end of level doors.
  *******************************************************************/
 using System.Collections;
@@ -63,8 +63,6 @@ public class DoorBehavior : MonoBehaviour
 
             // TODO: trigger end of level here
             Debug.Log("Reached End of Level");
-
-            StartCoroutine(collision.GetComponent<PlayerController>().EnterDoorTransition());
         }
     }
 }

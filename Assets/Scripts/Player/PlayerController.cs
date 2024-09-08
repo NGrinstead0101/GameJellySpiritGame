@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
     private bool _currentForm = true;
 
-    public static GameplayInputs GameplayInputs;
+    private GameplayInputs _gamePlayInputs;
     private InputAction _move, _jump, _swapToAngel, _swapToDevil;
     private float _moveDirection = 0f;
 
@@ -44,15 +44,13 @@ public class PlayerController : MonoBehaviour
         _characterLight = GetComponent<Light2D>();
         _characterLight.pointLightOuterRadius = _currentForm ? _angelLightDistance : _devilLightDistance;
 
-        GameplayInputs = new GameplayInputs();
-        GameplayInputs.Enable();
+        _gamePlayInputs = new GameplayInputs();
+        _gamePlayInputs.Enable();
 
-        _move = GameplayInputs.FindAction("Move");
-        _jump = GameplayInputs.FindAction("Jump");
-        _swapToAngel = GameplayInputs.FindAction("SwapAngel");
-        _swapToDevil = GameplayInputs.FindAction("SwapDevil");
-
-        AbilitySystem.BindUseAbility();
+        _move = _gamePlayInputs.FindAction("Move");
+        _jump = _gamePlayInputs.FindAction("Jump");
+        _swapToAngel = _gamePlayInputs.FindAction("SwapAngel");
+        _swapToDevil = _gamePlayInputs.FindAction("SwapDevil");
 
         _move.performed += ctx => _moveDirection = _move.ReadValue<float>();
         _move.canceled += ctx => _moveDirection = _move.ReadValue<float>();
@@ -81,7 +79,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void OnDisable()
     {
-        GameplayInputs.Disable();
+        _gamePlayInputs.Disable();
         _move.performed -= ctx => _moveDirection = _move.ReadValue<float>();
         _move.canceled -= ctx => _moveDirection = _move.ReadValue<float>();
         _jump.performed -= ctx => Jump();
@@ -204,27 +202,5 @@ public class PlayerController : MonoBehaviour
         {
             _canJump = true;
         }
-    }
-
-    /// <summary>
-    /// Coroutine to fade the player's sprite as the "go through the door". Then calls
-    /// the game manager to load the next level.
-    /// </summary>
-    /// <returns></returns>
-    public IEnumerator EnterDoorTransition()
-    {
-        GameplayInputs.Disable();
-
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
-
-        while (sr.color.a > 0)
-        {
-            Color tmp = sr.color;
-            tmp.a -= 0.05f;
-            sr.color = tmp;
-            yield return new WaitForSeconds(0.05f);
-        }
-
-        GameManager.Instance.ChangeGameState(GameManager.GameState.level);
     }
 }

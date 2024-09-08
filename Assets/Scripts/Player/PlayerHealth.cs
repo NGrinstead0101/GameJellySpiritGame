@@ -12,15 +12,14 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public static PlayerHealth Instance;
     [SerializeField] private GameObject _heartPrefab;
     [SerializeField] private Transform _healthBar;
     [SerializeField] private Image _deathFadeOutImage;
-    public int MaxHealth = 5;
+    [SerializeField] private int _totalHealth = 5;
     [SerializeField] private float _deathFadeOutTime = 1f;
 
     //private int _totalHealth;
-    public int CurrentHealth { get; private set; }
+    private int _currentHealth;
     private List<Image> _hearts = new List<Image>();
 
     private const float StartingHeartPos = -345f;
@@ -32,7 +31,7 @@ public class PlayerHealth : MonoBehaviour
     private void Awake()
     {
         // Set-up health bar
-        for (int i = 0; i < MaxHealth; ++i)
+        for (int i = 0; i < _totalHealth; ++i)
         {
             GameObject newHeart = Instantiate(_heartPrefab, _healthBar);
             newHeart.transform.localPosition = 
@@ -41,19 +40,8 @@ public class PlayerHealth : MonoBehaviour
         }
 
         _deathFadeOutImage.gameObject.SetActive(false);
-        CurrentHealth = MaxHealth;
+        _currentHealth = _totalHealth;
 
-        // TODO: register to take damage and heal action here
-
-        if(Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
-    
         EnemyState.DealtDamage += TakeDamage;
         // TODO: register heal action here
     }
@@ -87,15 +75,15 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage()
     {
         // Update health bar
-        if (CurrentHealth > 0 && CurrentHealth <= _hearts.Count)
+        if (_currentHealth > 0 && _currentHealth <= _hearts.Count)
         {
-            _hearts[CurrentHealth - 1].enabled = false;
+            _hearts[_currentHealth - 1].enabled = false;
 
-            CurrentHealth--;
+            _currentHealth--; ;
         }
 
         // Check for death
-        if (CurrentHealth <= 0)
+        if (_currentHealth <= 0)
         {
             Time.timeScale = 0;
             StartCoroutine(nameof(DeathFadeOutTimer));
@@ -108,14 +96,14 @@ public class PlayerHealth : MonoBehaviour
     /// <param name="healthGained">Amount of hearts restored</param>
     public void HealPlayer(int healthGained)
     {
-        CurrentHealth += healthGained;
-        if (CurrentHealth > MaxHealth)
+        _currentHealth += healthGained;
+        if (_currentHealth > _totalHealth)
         {
-            CurrentHealth = MaxHealth;
+            _currentHealth = _totalHealth;
         }
 
         // Update health bar
-        for (int i = 0; i < CurrentHealth && i < _hearts.Count; ++i)
+        for (int i = 0; i < _currentHealth && i < _hearts.Count; ++i)
         {
             _hearts[i].enabled = true;
         }
