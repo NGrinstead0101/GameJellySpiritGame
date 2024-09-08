@@ -11,8 +11,11 @@ public class DoorBehavior : MonoBehaviour
 {
     [SerializeField] private bool _isLocked = false;
     [SerializeField] private int _enemyCount;
+    [SerializeField] private Sprite _lockedDoorSprite;
+    [SerializeField] private Sprite _unlockedDoorSprite;
 
     private bool _hasTriggeredDoor = false;
+    private SpriteRenderer _spriteRenderer;
 
     /// <summary>
     /// Registering to action
@@ -21,7 +24,10 @@ public class DoorBehavior : MonoBehaviour
     {
         _isLocked = _enemyCount <= 0 ? false : true;
 
-        // TODO: register to enemy death action here
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer.sprite = _isLocked ? _lockedDoorSprite : _unlockedDoorSprite;
+
+        EnemyStateMachine.EnemyDied += CheckForDoorUnlock;
     }
 
 #if UNITY_EDITOR
@@ -38,7 +44,7 @@ public class DoorBehavior : MonoBehaviour
     /// </summary>
     private void OnDisable()
     {
-        // TODO: unregister from enemy death action here
+        EnemyStateMachine.EnemyDied -= CheckForDoorUnlock;
     }
 
     /// <summary>
@@ -49,6 +55,11 @@ public class DoorBehavior : MonoBehaviour
         _enemyCount--;
 
         _isLocked = _enemyCount <= 0 ? false : true;
+
+        if (!_isLocked)
+        {
+            _spriteRenderer.sprite = _unlockedDoorSprite;
+        }
     }
 
     /// <summary>
@@ -60,9 +71,6 @@ public class DoorBehavior : MonoBehaviour
         if (collision.CompareTag("Player") && !_isLocked && !_hasTriggeredDoor)
         {
             _hasTriggeredDoor = true;
-
-            // TODO: trigger end of level here
-            Debug.Log("Reached End of Level");
 
             StartCoroutine(collision.GetComponent<PlayerController>().EnterDoorTransition());
         }
