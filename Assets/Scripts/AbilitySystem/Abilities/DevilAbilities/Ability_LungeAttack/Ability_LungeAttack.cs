@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using static System.TimeZoneInfo;
 
 public class Ability_LungeAttack : Ability
 {
+    public static Action Lunge;
+
     [Header("Attack Options (First Half of Attack)")]
 
     [Tooltip("Collider offset at the max attack range")]
@@ -24,11 +27,15 @@ public class Ability_LungeAttack : Ability
 
     private bool _canHitEnemy = true;
 
+    private DevilAnimations _animationController;
+
     private void Start()
     {
         _hitBoxCollider = GetComponent<Collider2D>();
         _baseHitboxOffset = _hitBoxCollider.offset;
         _hitBoxCollider.enabled = false;
+
+        _animationController = DevilAnimations.Instance;
     }
 
     /// <summary>
@@ -38,11 +45,20 @@ public class Ability_LungeAttack : Ability
     {
         if (_canCast)
         {
+            if (_animationController != null)
+                _animationController.SetClickTrigger("LeftClick");
+
             base.CastAbility();
 
             //Debug.Log(_abilityInformation.name + " Child Casted");
             _hitBoxCollider.enabled = true;
+            Lunge?.Invoke();
             StartCoroutine(MoveHitBox());
+        }
+        else
+        {
+            if (_animationController != null)
+                _animationController.SetClickTrigger("LeftClickInvalid");
         }
     }
 

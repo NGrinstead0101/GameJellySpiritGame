@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5e50a04b24ee9e347980eff3b9ce306c
+guid: 43eef47cf74628442b0191f3219d373e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -102,17 +102,17 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 650
-        height: 400
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 1500
+        height: 800
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a401adc4840db047b21a86028aa5e12
-      internalID: 325512082
+      spriteID: af95bb8ac36d9164a8915ae5c9b75702
+      internalID: -886417136
       vertices: []
       indices: 
       edges: []
@@ -121,19 +121,19 @@ TextureImporter:
       name: DevilWalk_Spritesheet_1
       rect:
         serializedVersion: 2
-        x: 650
+        x: 1500
         y: 0
-        width: 650
-        height: 400
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 1500
+        height: 800
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: adc62a11cce96af4996cb5690b433358
-      internalID: 662838115
+      spriteID: 2ef468ca8beffba4f806c4d1c24ec65e
+      internalID: 469119741
       vertices: []
       indices: 
       edges: []
@@ -142,19 +142,19 @@ TextureImporter:
       name: DevilWalk_Spritesheet_2
       rect:
         serializedVersion: 2
-        x: 1300
+        x: 3004
         y: 0
-        width: 650
-        height: 400
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 1500
+        height: 800
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e5c526b280f60748af7edb41ce29c38
-      internalID: 1917613902
+      spriteID: 6eedd7bdb08a094488635ce13798d200
+      internalID: -1868231514
       vertices: []
       indices: 
       edges: []
@@ -163,19 +163,19 @@ TextureImporter:
       name: DevilWalk_Spritesheet_3
       rect:
         serializedVersion: 2
-        x: 1950
+        x: 4500
         y: 0
-        width: 650
-        height: 400
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 1500
+        height: 800
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fbf9be8ab03ffb44aba088a1174c23d
-      internalID: 252234603
+      spriteID: 61ac6fd96f5b548449ab147f33b7fd44
+      internalID: -1358311521
       vertices: []
       indices: 
       edges: []
@@ -184,19 +184,19 @@ TextureImporter:
       name: DevilWalk_Spritesheet_4
       rect:
         serializedVersion: 2
-        x: 2600
+        x: 5998
         y: 0
-        width: 650
-        height: 400
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 1500
+        height: 800
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 148f2e72f63a192478448c94ec9dc8b7
-      internalID: 1691582167
+      spriteID: fb96a46847dc08942a675e1f3f388081
+      internalID: -684514026
       vertices: []
       indices: 
       edges: []
@@ -205,19 +205,19 @@ TextureImporter:
       name: DevilWalk_Spritesheet_5
       rect:
         serializedVersion: 2
-        x: 3250
+        x: 7500
         y: 0
-        width: 650
-        height: 400
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 1500
+        height: 800
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0005b87e44fb06a4497ef2a449cc84e0
-      internalID: 1059702516
+      spriteID: 20da1515e41d96a4694a878f715ec9ac
+      internalID: 620723645
       vertices: []
       indices: 
       edges: []
@@ -226,19 +226,19 @@ TextureImporter:
       name: DevilWalk_Spritesheet_6
       rect:
         serializedVersion: 2
-        x: 3900
+        x: 8996
         y: 0
-        width: 650
-        height: 400
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 1500
+        height: 800
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8eda27c22c3b353469fa46e199f78036
-      internalID: -2107991139
+      spriteID: ee051389a0d43a04a9e43b31906b6667
+      internalID: -429554569
       vertices: []
       indices: 
       edges: []
@@ -247,19 +247,19 @@ TextureImporter:
       name: DevilWalk_Spritesheet_7
       rect:
         serializedVersion: 2
-        x: 4550
+        x: 10500
         y: 0
-        width: 650
-        height: 400
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 1500
+        height: 800
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc9ba60a4c15cdd489dc5caf93463a8a
-      internalID: 1000467353
+      spriteID: eb4e20f056f043a4fb259ae8a3106273
+      internalID: 2047211202
       vertices: []
       indices: 
       edges: []
@@ -268,19 +268,19 @@ TextureImporter:
       name: DevilWalk_Spritesheet_8
       rect:
         serializedVersion: 2
-        x: 5200
+        x: 12000
         y: 0
-        width: 650
-        height: 400
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 1500
+        height: 800
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb432c51520c21b448180ab2de2525f2
-      internalID: 309826096
+      spriteID: a1ff17188fcab524ea28753bfeee90e4
+      internalID: -207795085
       vertices: []
       indices: 
       edges: []
@@ -289,19 +289,19 @@ TextureImporter:
       name: DevilWalk_Spritesheet_9
       rect:
         serializedVersion: 2
-        x: 5850
+        x: 13507
         y: 0
-        width: 650
-        height: 400
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 1500
+        height: 800
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f40f703f4aeb5747b29693293dae938
-      internalID: 655764346
+      spriteID: 2b24dba4b83aba94e8b3adb7596da09d
+      internalID: -1993663566
       vertices: []
       indices: 
       edges: []
@@ -310,19 +310,19 @@ TextureImporter:
       name: DevilWalk_Spritesheet_10
       rect:
         serializedVersion: 2
-        x: 6500
+        x: 15000
         y: 0
-        width: 650
-        height: 400
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 1500
+        height: 800
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c180195b81d29fe4aa066ef4e4122381
-      internalID: -108528456
+      spriteID: e57007022bf7f2a42a645914f443388f
+      internalID: -1703813951
       vertices: []
       indices: 
       edges: []
@@ -331,19 +331,19 @@ TextureImporter:
       name: DevilWalk_Spritesheet_11
       rect:
         serializedVersion: 2
-        x: 7150
+        x: 16500
         y: 0
-        width: 650
-        height: 400
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 1500
+        height: 800
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99c95a2a6b2247747aee0d7284831905
-      internalID: 1622575864
+      spriteID: fb9e0b6364b4d7149a5d55c8b0227c5b
+      internalID: -1257005325
       vertices: []
       indices: 
       edges: []
@@ -352,19 +352,19 @@ TextureImporter:
       name: DevilWalk_Spritesheet_12
       rect:
         serializedVersion: 2
-        x: 7800
+        x: 18000
         y: 0
-        width: 650
-        height: 400
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 1500
+        height: 800
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efb69070dc0c214439364054034c6979
-      internalID: -1728362948
+      spriteID: 86cd7e111e9d9b2478005f250a8d3889
+      internalID: 785628362
       vertices: []
       indices: 
       edges: []
@@ -373,19 +373,19 @@ TextureImporter:
       name: DevilWalk_Spritesheet_13
       rect:
         serializedVersion: 2
-        x: 8450
+        x: 19500
         y: 0
-        width: 650
-        height: 400
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 1500
+        height: 800
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e581c664c557364ebd8abcca8cce30b
-      internalID: -2119548068
+      spriteID: e3a020522ed68db4f83e255090bdb845
+      internalID: -1218723658
       vertices: []
       indices: 
       edges: []
@@ -394,19 +394,19 @@ TextureImporter:
       name: DevilWalk_Spritesheet_14
       rect:
         serializedVersion: 2
-        x: 9100
+        x: 21000
         y: 0
-        width: 650
-        height: 400
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 1500
+        height: 800
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b8aec98ced4a0a4e940033da147ea72
-      internalID: -801097538
+      spriteID: a10fc344fe923984d8b25774af493a37
+      internalID: 960466558
       vertices: []
       indices: 
       edges: []
@@ -415,19 +415,19 @@ TextureImporter:
       name: DevilWalk_Spritesheet_15
       rect:
         serializedVersion: 2
-        x: 9750
+        x: 22500
         y: 0
-        width: 650
-        height: 400
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 1500
+        height: 800
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e94eb257dddb5bc44b0494151a46eaae
-      internalID: -743020274
+      spriteID: f7ecd0d512ca26043b4558bd93be39bd
+      internalID: -177792260
       vertices: []
       indices: 
       edges: []
@@ -443,22 +443,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      DevilWalk_Spritesheet_0: 325512082
-      DevilWalk_Spritesheet_1: 662838115
-      DevilWalk_Spritesheet_10: -108528456
-      DevilWalk_Spritesheet_11: 1622575864
-      DevilWalk_Spritesheet_12: -1728362948
-      DevilWalk_Spritesheet_13: -2119548068
-      DevilWalk_Spritesheet_14: -801097538
-      DevilWalk_Spritesheet_15: -743020274
-      DevilWalk_Spritesheet_2: 1917613902
-      DevilWalk_Spritesheet_3: 252234603
-      DevilWalk_Spritesheet_4: 1691582167
-      DevilWalk_Spritesheet_5: 1059702516
-      DevilWalk_Spritesheet_6: -2107991139
-      DevilWalk_Spritesheet_7: 1000467353
-      DevilWalk_Spritesheet_8: 309826096
-      DevilWalk_Spritesheet_9: 655764346
+      DevilWalk_Spritesheet_0: -886417136
+      DevilWalk_Spritesheet_1: 469119741
+      DevilWalk_Spritesheet_10: -1703813951
+      DevilWalk_Spritesheet_11: -1257005325
+      DevilWalk_Spritesheet_12: 785628362
+      DevilWalk_Spritesheet_13: -1218723658
+      DevilWalk_Spritesheet_14: 960466558
+      DevilWalk_Spritesheet_15: -177792260
+      DevilWalk_Spritesheet_2: -1868231514
+      DevilWalk_Spritesheet_3: -1358311521
+      DevilWalk_Spritesheet_4: -684514026
+      DevilWalk_Spritesheet_5: 620723645
+      DevilWalk_Spritesheet_6: -429554569
+      DevilWalk_Spritesheet_7: 2047211202
+      DevilWalk_Spritesheet_8: -207795085
+      DevilWalk_Spritesheet_9: -1993663566
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
