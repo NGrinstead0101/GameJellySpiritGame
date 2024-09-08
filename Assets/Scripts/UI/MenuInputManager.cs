@@ -29,6 +29,13 @@ public class MenuInputManager : MonoBehaviour
         _canSwap = true;
     }
 
+    private void OnDisable()
+    {
+        _swapToAngel.performed -= ctx => SwapSpiritForm();
+        _swapToDevil.performed -= ctx => SwapSpiritForm();
+        _escape.performed -= ctx => EscapePerformed();
+    }
+
     /// <summary>
     /// Input function for when esc is pressed. Closes all the tab windows.
     /// </summary>

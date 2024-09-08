@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     private bool _currentForm = true;
 
     public static GameplayInputs GameplayInputs;
-    private InputAction _move, _jump, _swapToAngel, _swapToDevil;
+    private InputAction _move, _jump, _swapToAngel, _swapToDevil, _pause;
     private float _moveDirection = 0f;
 
     /// <summary>
@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
         _jump = GameplayInputs.FindAction("Jump");
         _swapToAngel = GameplayInputs.FindAction("SwapAngel");
         _swapToDevil = GameplayInputs.FindAction("SwapDevil");
+        _pause = GameplayInputs.FindAction("Escape");
 
         AbilitySystem.BindUseAbility();
 
@@ -59,7 +60,9 @@ public class PlayerController : MonoBehaviour
         _jump.performed += ctx => Jump();
         _swapToAngel.performed += ctx => SwapSpiritForm();
         _swapToDevil.performed += ctx => SwapSpiritForm();
+        _pause.performed += ctx => PausePerformed();
     }
+
 
     private void Start()
     {
@@ -226,5 +229,13 @@ public class PlayerController : MonoBehaviour
         }
 
         GameManager.Instance.ChangeGameState(GameManager.GameState.level);
+    }
+
+    /// <summary>
+    /// Function called by pause input.
+    /// </summary>
+    private void PausePerformed()
+    {
+        GameManager.Instance.PauseInput();
     }
 }

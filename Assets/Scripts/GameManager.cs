@@ -109,6 +109,19 @@ public class GameManager : MonoBehaviour
     }
 
     #region state helper methods
+
+    public void PauseInput()
+    {
+        if(_currentGameState == GameState.level)
+        {
+            ChangeGameState(GameState.pause);
+        }
+        else
+        {
+            ChangeGameState(GameState.level);
+        }
+    }
+
     /// <summary>
     /// Loads the main menu scene
     /// </summary>
@@ -124,10 +137,9 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void LoadPauseMenu()
     {
-        //already in level scene
-        //switch pause menu art
-        //find canvas and call fx there
         //switch state
+        //disable menu
+        //time scale
         //switch music
     }
 
@@ -137,6 +149,9 @@ public class GameManager : MonoBehaviour
     private void ReturnToLevel()
     {
         //leaves the pause menu
+        //state
+        //timescale
+        //music
     }
 
     /// <summary>
