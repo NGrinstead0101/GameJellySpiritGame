@@ -6,6 +6,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,6 +14,10 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public static PlayerHealth Instance;
+
+    public static Action TakeDamageAction;
+    public static Action DeathAction;
+
     [SerializeField] private GameObject _heartPrefab;
     [SerializeField] private Transform _healthBar;
     [SerializeField] private Image _deathFadeOutImage;
@@ -92,12 +97,15 @@ public class PlayerHealth : MonoBehaviour
             _hearts[CurrentHealth - 1].enabled = false;
 
             CurrentHealth--;
+
+            TakeDamageAction?.Invoke();
         }
 
         // Check for death
         if (CurrentHealth <= 0)
         {
-            Time.timeScale = 0;
+            DeathAction?.Invoke();
+            //Time.timeScale = 0;
             StartCoroutine(nameof(DeathFadeOutTimer));
         }
     }

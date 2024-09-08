@@ -331,6 +331,42 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1470014504492512825, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
+      propertyPath: m_Size.x
+      value: 5.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470014504492512825, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
+      propertyPath: m_Size.y
+      value: 7.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470014504492512825, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470014504492512825, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470014504492512825, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2344038283863044322, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1566413192, guid: c7234308d2bd4924da1fd9df9dd6d53d, type: 3}
+    - target: {fileID: 4051470551676587054, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051470551676587054, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051470551676587054, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.26
+      objectReference: {fileID: 0}
     - target: {fileID: 4051470551676587054, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
       propertyPath: m_LocalPosition.x
       value: -370.67932
@@ -371,6 +407,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4051470551676587054, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5259766013518292979, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
       propertyPath: _healthBar
       value: 
@@ -379,6 +419,18 @@ PrefabInstance:
       propertyPath: _deathFadeOutImage
       value: 
       objectReference: {fileID: 8949913191676797360}
+    - target: {fileID: 6494802601647172114, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494802601647172114, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552933354980314782, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
+      propertyPath: _angelAnimator
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6880137399575938606, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
       propertyPath: _jumpSpeed
       value: 9
@@ -390,13 +442,67 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7224286062821405270, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8919287650797869638}
+    - targetCorrespondingSourceObject: {fileID: 7224286062821405270, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4893679064211728023}
   m_SourcePrefab: {fileID: 100100000, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
 --- !u!4 &4328777394317641999 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4051470551676587054, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
   m_PrefabInstance: {fileID: 300438368622789921}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5441803482754273575 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5741654621771109382, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
+  m_PrefabInstance: {fileID: 300438368622789921}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6947522602330929015 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7224286062821405270, guid: 32af4f52139feb5469d1239a6a14e440, type: 3}
+  m_PrefabInstance: {fileID: 300438368622789921}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8919287650797869638
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6947522602330929015}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 155029656533862498a32d922b1a1245, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4893679064211728023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6947522602330929015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a57760a20648c4192d49cca9cf967b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _angelAnimator: {fileID: 8919287650797869638}
+  _devilAnimator: {fileID: 0}
+  _angelSprite: {fileID: -1566413192, guid: c7234308d2bd4924da1fd9df9dd6d53d, type: 3}
+  _devilSprite: {fileID: -986503193, guid: 214982c6ecfb9b5409565c3296cf4a5d, type: 3}
+  _deathVFXObject: {fileID: 5441803482754273575}
 --- !u!1001 &7529825795477737801
 PrefabInstance:
   m_ObjectHideFlags: 0
