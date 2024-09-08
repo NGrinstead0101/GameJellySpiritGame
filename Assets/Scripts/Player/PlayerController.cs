@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerController Instance;
 
     public static Action<AbilitySetType> SwapForm;
+    public static Action JumpAction;
 
     [SerializeField] private float _jumpSpeed;
     [SerializeField] private float _baseSpeed;
@@ -210,6 +211,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_canJump)
         {
+            JumpAction?.Invoke();
             _canJump = false;
             _jumpQueued = true;
         }
