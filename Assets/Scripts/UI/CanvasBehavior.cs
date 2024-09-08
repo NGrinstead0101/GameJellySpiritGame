@@ -28,11 +28,9 @@ public class CanvasBehavior : MonoBehaviour
     /// <param name="input"></param> om = 1, off = 0
     public void EnableFTB(int input)
     {
-        print("enable");
         if(input == 1) 
         {
             _fadeToBlack.SetActive(true);
-            print("true");
         }
         else
         {
