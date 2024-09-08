@@ -102,6 +102,16 @@ public class PlayerController : MonoBehaviour
             _horizVelocity = _baseSpeed * _devilSpeedModifier * _moveDirection;
         }
 
+        // Flips player attack hitbox
+        if (_horizVelocity < 0)
+        {
+            transform.localScale = new Vector2(-1, transform.localScale.y);
+        }
+        else if (_horizVelocity > 0)
+        {
+            transform.localScale = new Vector2(1, transform.localScale.y);
+        }
+
         // Apply velocity to rigidbody
         if (_jumpQueued)
         {

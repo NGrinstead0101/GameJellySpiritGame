@@ -19,6 +19,7 @@ public class Ability_LungeAttack : Ability
     private Collider2D _hitBoxCollider = null;
     private Vector2 _baseHitboxOffset = Vector2.zero;
     private bool _canAttack = true;
+    private bool _canHitEnemy = true;
 
     private void Start()
     {
@@ -26,7 +27,17 @@ public class Ability_LungeAttack : Ability
         _baseHitboxOffset = _hitBoxCollider.offset;
         _hitBoxCollider.enabled = false;
     }
-    
+
+#if UNITY_EDITOR
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            CastAbility();
+        }
+    }
+#endif
+
     /// <summary>
     /// Casts the lunge attack ability
     /// </summary>
@@ -94,5 +105,20 @@ public class Ability_LungeAttack : Ability
     {
         yield return new WaitForSeconds(_cooldown);
         _canAttack = true;
+        _canHitEnemy = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            EnemyStateMachine enemyScript = collision.GetComponent<EnemyStateMachine>();
+
+            if (enemyScript != null && _canHitEnemy)
+            {
+                enemyScript.RemoveHealth(1);
+                _canHitEnemy = false;
+            }
+        }
     }
 }
