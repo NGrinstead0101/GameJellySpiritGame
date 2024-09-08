@@ -55,6 +55,15 @@ public class GameManager : MonoBehaviour
         UIAssetManager.BlackFade?.Invoke(false);
     }
 
+    private void OnEnable()
+    {
+        PlayerController.SwapForm += SetCurrentAbilityType;
+    }
+    private void OnDisable()
+    {
+        PlayerController.SwapForm -= SetCurrentAbilityType;
+    }
+
     public GameState GetCurrentGameState()
     {
         return _currentGameState;
@@ -63,6 +72,11 @@ public class GameManager : MonoBehaviour
     public AbilitySetType GetCurrentAbilityType()
     {
         return _currentAbilityType;
+    }
+
+    private void SetCurrentAbilityType(AbilitySetType type)
+    {
+        _currentAbilityType = type;
     }
 
     /// <summary>
@@ -200,15 +214,32 @@ public class GameManager : MonoBehaviour
     {
         UIAssetManager.BlackFade?.Invoke(true);
 
+        //sets avility type for tutorial levels
+        if (index == 1)
+        {
+            SetCurrentAbilityType(AbilitySetType.Angel);
+        }
+        else if (index == 2)
+        {
+            SetCurrentAbilityType(AbilitySetType.Devil);
+        }
+
         yield return new WaitForSeconds(_sceneTransitionTime);
 
         SceneManager.LoadScene(index);
 
         yield return new WaitForSeconds(_sceneTransitionTime);
 
-        //TODO: set current ability type to player controller for current level
         UIAssetManager.BlackFade?.Invoke(false);
     }
+
+    //private void Update()
+    //{
+    //    if(Input.GetKeyUp(KeyCode.P))
+    //    {
+    //        StartCoroutine(LoadScene(1));
+    //    }
+    //}
 
     #endregion
 }

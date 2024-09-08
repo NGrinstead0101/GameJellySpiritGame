@@ -59,6 +59,21 @@ public class PlayerController : MonoBehaviour
         _swapToDevil.performed += ctx => SwapSpiritForm();
     }
 
+    private void Start()
+    {
+        //set player spirit form
+        if (GameManager.Instance.GetCurrentAbilityType() == AbilitySetType.Devil)
+        {
+            _currentForm = false;
+            SwapForm?.Invoke(AbilitySetType.Devil);
+        }
+        else
+        {
+            _currentForm = true;
+            SwapForm?.Invoke(AbilitySetType.Angel);
+        }
+    }
+
     /// <summary>
     /// Unregisters input callbacks
     /// </summary>
