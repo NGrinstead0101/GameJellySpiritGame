@@ -95,133 +95,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: DevilAttack_Sprite_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1500
-        height: 738
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 489ea137005da3c46b02bae91fe95b37
-      internalID: -2051170405
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DevilAttack_Sprite_1
-      rect:
-        serializedVersion: 2
-        x: 1500
-        y: 0
-        width: 1500
-        height: 738
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 46a9cc7e385db384f9787e183a5730e6
-      internalID: -1111167609
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DevilAttack_Sprite_2
-      rect:
-        serializedVersion: 2
-        x: 3000
-        y: 0
-        width: 1500
-        height: 738
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3beb139cec70c42418d557dff6339d65
-      internalID: 1826826459
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DevilAttack_Sprite_3
-      rect:
-        serializedVersion: 2
-        x: 4503
-        y: 0
-        width: 1500
-        height: 738
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f09e62a68f7961f408acd44a19f7ebe2
-      internalID: -2077222558
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DevilAttack_Sprite_4
-      rect:
-        serializedVersion: 2
-        x: 6000
-        y: 0
-        width: 1500
-        height: 738
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cc35873d7d9ef1f47ab6e7e7d6c25a93
-      internalID: -629230491
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DevilAttack_Sprite_5
-      rect:
-        serializedVersion: 2
-        x: 7500
-        y: 0
-        width: 1500
-        height: 738
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6c63fc3a76279bf48ab679f150ef3c4d
-      internalID: 2050622940
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -232,13 +106,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      DevilAttack_Sprite_0: -2051170405
-      DevilAttack_Sprite_1: -1111167609
-      DevilAttack_Sprite_2: 1826826459
-      DevilAttack_Sprite_3: -2077222558
-      DevilAttack_Sprite_4: -629230491
-      DevilAttack_Sprite_5: 2050622940
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
