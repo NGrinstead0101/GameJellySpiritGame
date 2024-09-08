@@ -264,7 +264,14 @@ public class GameManager : MonoBehaviour
     public void LoadEnding()
     {
         StartCoroutine(LoadScene(10));
+        StartCoroutine(Return());
     }
+
+    private IEnumerator Return()
+    {
+        yield return new WaitForSeconds(10f);
+        LoadMainMenu();
+    }    
 
     private void Update()
     {
