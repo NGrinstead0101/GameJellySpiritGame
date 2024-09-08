@@ -88,11 +88,9 @@ public class GameManager : MonoBehaviour
         switch (state)
         {
             case GameState.menu:
-
                 LoadMainMenu();
                 break;
             case GameState.pause:
-
                 LoadPauseMenu();
                 break;
             case GameState.level:
@@ -123,10 +121,12 @@ public class GameManager : MonoBehaviour
         {
             //_currentGameState = GameState.level;
             Time.timeScale = 1;
+            BackgroundMusicManager.Instance.SwitchBackTrack(GameState.pause, GameState.menu);
         }
         LoadScene(0);
         _currentGameState = GameState.menu;
-        //load menu music
+
+        BackgroundMusicManager.Instance.SwitchBackTrack(GameState.level, GameState.menu);
     }
 
     /// <summary>
@@ -152,6 +152,7 @@ public class GameManager : MonoBehaviour
         _currentGameState = GameState.pause;
         Time.timeScale = 0;
         PauseAction.Invoke(true);
+        BackgroundMusicManager.Instance.SwitchBackTrack(GameState.level, GameState.pause);
         //switch music
     }
 
@@ -163,7 +164,7 @@ public class GameManager : MonoBehaviour
         _currentGameState = GameState.level;
         Time.timeScale = 1;
         PauseAction.Invoke(false);
-        //switch music
+        BackgroundMusicManager.Instance.SwitchBackTrack(GameState.pause, GameState.level);
     }
 
     /// <summary>
@@ -183,7 +184,7 @@ public class GameManager : MonoBehaviour
         //}
 
         _currentGameState = GameState.level;
-        //load music
+        BackgroundMusicManager.Instance.SwitchBackTrack(GameState.menu, GameState.level);
     }
 
     /// <summary>
