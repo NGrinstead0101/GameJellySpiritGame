@@ -171,16 +171,16 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void LoadFirstLevel()
     {
-        if(_currentAbilityType == AbilitySetType.Angel)
-        {
+        //if(_currentAbilityType == AbilitySetType.Angel)
+        //{
             //load angel scene
             StartCoroutine(LoadScene(1));
-        }
-        else
-        {
-            //load devil scene
-            StartCoroutine(LoadScene(2));
-        }
+        //}
+        //else
+        //{
+        //    //load devil scene
+        //    StartCoroutine(LoadScene(2));
+        //}
 
         _currentGameState = GameState.level;
         //load music
@@ -191,7 +191,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void LoadNextLevel()
     {
-        print(SceneManager.GetActiveScene().buildIndex);
+        //print(SceneManager.GetActiveScene().buildIndex);
         //if in angel tutorial scene
         if(SceneManager.GetActiveScene().buildIndex == 1 && !_devilTutComplete)
         {
