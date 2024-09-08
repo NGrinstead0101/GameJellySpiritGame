@@ -126,6 +126,7 @@ public class MoveTowardsPlayer : EnemyState
     public override void Enter(EnemyStateMachine context)
     {
         //do anything you want when you first enter the state
+        context.SpotPlayer();
         CheckForStateChange(context);
     }
     public override void CheckForStateChange(EnemyStateMachine context)
@@ -177,6 +178,7 @@ public class Attack : EnemyState
 {
     public override void Enter(EnemyStateMachine context)
     {
+        context.ToggleIsAttacking(true);
         CheckForStateChange(context);
         context.SetDestination(context.transform.position);
         context.ChangeSpeed(0);
@@ -218,7 +220,7 @@ public class Attack : EnemyState
     }
     public override void Exit(EnemyStateMachine context)
     {
-        
+        context.ToggleIsAttacking(false);
     }
 }
 public class Died : EnemyState
