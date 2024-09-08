@@ -80,15 +80,20 @@ public class PlayerHealth : MonoBehaviour
 
     private void UpdateHeartAppearance(AbilitySetType form)
     {
+        Image temp;
+
         for (int i = 0; i < _hearts.Count; ++i)
         {
-            if (i >= CurrentHealth)
+            if (_hearts != null && _hearts[i] != null && _hearts[i].TryGetComponent<Image>(out temp) && temp != null)
             {
-                _hearts[i].GetComponent<Image>().sprite = _emptyHeart;
-            }
-            else
-            {
-                _hearts[i].GetComponent<Image>().sprite = form == AbilitySetType.Angel ? _angelHeart : _devilHeart;
+                if (i >= CurrentHealth)
+                {
+                    temp.sprite = _emptyHeart;
+                }
+                else
+                {
+                    temp.sprite = form == AbilitySetType.Angel ? _angelHeart : _devilHeart;
+                }
             }
         }
     }
