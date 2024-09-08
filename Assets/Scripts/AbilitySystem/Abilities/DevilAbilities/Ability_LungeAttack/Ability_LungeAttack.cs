@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using static System.TimeZoneInfo;
 
 public class Ability_LungeAttack : Ability
 {
+    public static Action Lunge;
+
     [Header("Attack Options (First Half of Attack)")]
 
     [Tooltip("Collider offset at the max attack range")]
@@ -42,6 +45,7 @@ public class Ability_LungeAttack : Ability
 
             //Debug.Log(_abilityInformation.name + " Child Casted");
             _hitBoxCollider.enabled = true;
+            Lunge?.Invoke();
             StartCoroutine(MoveHitBox());
         }
     }
