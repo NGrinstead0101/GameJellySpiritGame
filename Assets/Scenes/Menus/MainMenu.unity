@@ -137,6 +137,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4066595426438627361, guid: bc269591f403ff24bbf038ddcd51520e, type: 3}
   m_PrefabInstance: {fileID: 4048219386735985511}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &239660223 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5098642722449958041, guid: dbb042c5f3a8f5f48977527f00cc58e4, type: 3}
+  m_PrefabInstance: {fileID: 1517541491}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &380783463 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 225757228013727641, guid: bc269591f403ff24bbf038ddcd51520e, type: 3}
@@ -281,6 +286,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530244131}
   m_CullTransparentMesh: 1
+--- !u!1 &536324352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7916964214043622961, guid: dbb042c5f3a8f5f48977527f00cc58e4, type: 3}
+  m_PrefabInstance: {fileID: 1517541491}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &847410180
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,6 +376,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4467760822842975799, guid: bc269591f403ff24bbf038ddcd51520e, type: 3}
   m_PrefabInstance: {fileID: 4048219386735985511}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &915450617 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2266380585593907043, guid: dbb042c5f3a8f5f48977527f00cc58e4, type: 3}
+  m_PrefabInstance: {fileID: 1517541491}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1251993939
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,6 +463,11 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3363012134918333968, guid: bc269591f403ff24bbf038ddcd51520e, type: 3}
   m_PrefabInstance: {fileID: 4048219386735985511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1452507989 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2728906127544195685, guid: dbb042c5f3a8f5f48977527f00cc58e4, type: 3}
+  m_PrefabInstance: {fileID: 1517541491}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1503022895
 GameObject:
@@ -550,6 +570,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background Music Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 6919746732368536885, guid: dbb042c5f3a8f5f48977527f00cc58e4, type: 3}
+      propertyPath: _angelMenuGO
+      value: 
+      objectReference: {fileID: 915450617}
+    - target: {fileID: 6919746732368536885, guid: dbb042c5f3a8f5f48977527f00cc58e4, type: 3}
+      propertyPath: _devilMenuGO
+      value: 
+      objectReference: {fileID: 1902256174}
+    - target: {fileID: 6919746732368536885, guid: dbb042c5f3a8f5f48977527f00cc58e4, type: 3}
+      propertyPath: _angelLevelGO
+      value: 
+      objectReference: {fileID: 1452507989}
+    - target: {fileID: 6919746732368536885, guid: dbb042c5f3a8f5f48977527f00cc58e4, type: 3}
+      propertyPath: _angelPauseGo
+      value: 
+      objectReference: {fileID: 536324352}
+    - target: {fileID: 6919746732368536885, guid: dbb042c5f3a8f5f48977527f00cc58e4, type: 3}
+      propertyPath: _devilLevelGO
+      value: 
+      objectReference: {fileID: 239660223}
+    - target: {fileID: 6919746732368536885, guid: dbb042c5f3a8f5f48977527f00cc58e4, type: 3}
+      propertyPath: _devilPauseGO
+      value: 
+      objectReference: {fileID: 1643434992}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -564,6 +608,11 @@ GameObject:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 139325264799266906, guid: bc269591f403ff24bbf038ddcd51520e, type: 3}
   m_PrefabInstance: {fileID: 4048219386735985511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1643434992 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8638885519659907677, guid: dbb042c5f3a8f5f48977527f00cc58e4, type: 3}
+  m_PrefabInstance: {fileID: 1517541491}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1645425604 stripped
 GameObject:
@@ -785,6 +834,11 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &1902256174 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5614205226155027848, guid: dbb042c5f3a8f5f48977527f00cc58e4, type: 3}
+  m_PrefabInstance: {fileID: 1517541491}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3011677656354749126
 PrefabInstance:
   m_ObjectHideFlags: 0
