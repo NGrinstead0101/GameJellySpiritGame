@@ -51,8 +51,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _numberOfLevels = SceneManager.sceneCountInBuildSettings - 1;
-
-        UIAssetManager.BlackFade?.Invoke(false);
     }
 
     private void OnEnable()

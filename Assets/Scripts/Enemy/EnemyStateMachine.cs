@@ -28,9 +28,11 @@ public class EnemyStateMachine : MonoBehaviour
     private float currentSpeed;
     public static UnityAction HitPlayer;
     private bool isNearWall = false;
+    private Animator enemyAnimator;
 
     public void Start()
     {
+        enemyAnimator = GetComponent<Animator>();
         currentHealth = MaxHealth;
 
         if (currentState == null)
@@ -220,12 +222,12 @@ public class EnemyStateMachine : MonoBehaviour
         if (!isFacingLeft)
         {
             isFacingLeft = true;
-            gameObject.transform.localScale = new Vector3(-1, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+            gameObject.transform.localScale = new Vector3(-gameObject.transform.localScale.x, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
         }
         else
         {
             isFacingLeft = false;
-            gameObject.transform.localScale = new Vector3(1, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+            gameObject.transform.localScale = new Vector3(-gameObject.transform.localScale.x, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
         }
     }
 
@@ -288,5 +290,15 @@ public class EnemyStateMachine : MonoBehaviour
         {
             ChangeIsNextToPlayer(false);
         }
+    }
+
+    public void SpotPlayer()
+    {
+        enemyAnimator.SetBool("hasSpottedPlayer", true);
+    }    
+
+    public void ToggleIsAttacking(bool isAttacking)
+    {
+        enemyAnimator.SetBool("isAttacking", isAttacking);
     }
 }
