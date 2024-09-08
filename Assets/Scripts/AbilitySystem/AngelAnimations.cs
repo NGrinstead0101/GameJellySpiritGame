@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class AngelAnimations : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static AngelAnimations Instance;
+
+    private Animator _animator;
+
+    private void Awake()
     {
-        
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+
+        _animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetClickTrigger(string triggerName)
     {
-        
+        _animator.SetTrigger(triggerName);
     }
 }

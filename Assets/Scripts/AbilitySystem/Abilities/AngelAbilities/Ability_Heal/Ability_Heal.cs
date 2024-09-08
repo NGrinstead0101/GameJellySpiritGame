@@ -18,16 +18,32 @@ public class Ability_Heal : Ability
     private int _amountHealed = 0;
 
     private bool _isHealing = false;
+
+    private AngelAnimations _animationController;
+
+    private void Start()
+    {
+        _animationController = AngelAnimations.Instance;
+    }
+
     public override void CastAbility()
     {
         if (_canCast)
         {
+            if (_animationController != null)
+                _animationController.SetClickTrigger("LeftClick");
+
             // Ability should not activate if the player is at max healt
             if (PlayerHealth.Instance.CurrentHealth < PlayerHealth.Instance.MaxHealth)
             {
                 base.CastAbility();
                 StartCoroutine(StartHealing());            
             }
+        }
+        else
+        {
+            if (_animationController != null)
+                _animationController.SetClickTrigger("LeftClickInvalid");
         }
     }
 
