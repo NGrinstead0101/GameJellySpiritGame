@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class CanvasBehavior : MonoBehaviour
 {
@@ -83,5 +84,28 @@ public class CanvasBehavior : MonoBehaviour
     public void LoadFirstLevel()
     {
         GameManager.Instance.ChangeGameState(GameManager.GameState.level);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void GoToMainMenu()
+    {
+        GameManager.Instance.ChangeGameState(GameManager.GameState.menu);
+    }
+
+    public void PlayUISound()
+    {
+
+        if (GameManager.Instance.GetCurrentAbilityType() == AbilitySetType.Angel)
+        {
+            SfxManager.Instance.PlaySFX("MenuUIAngel");
+        }
+        else
+        {
+            SfxManager.Instance.PlaySFX("MenuUIDevil");
+        }
     }
 }
