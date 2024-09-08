@@ -59,6 +59,21 @@ public class PlayerController : MonoBehaviour
         _swapToDevil.performed += ctx => SwapSpiritForm();
     }
 
+    private void Start()
+    {
+        //set player spirit form
+        if (GameManager.Instance.GetCurrentAbilityType() == AbilitySetType.Devil)
+        {
+            _currentForm = false;
+            SwapForm?.Invoke(AbilitySetType.Devil);
+        }
+        else
+        {
+            _currentForm = true;
+            SwapForm?.Invoke(AbilitySetType.Angel);
+        }
+    }
+
     /// <summary>
     /// Unregisters input callbacks
     /// </summary>
@@ -85,6 +100,16 @@ public class PlayerController : MonoBehaviour
         else
         {
             _horizVelocity = _baseSpeed * _devilSpeedModifier * _moveDirection;
+        }
+
+        // Flips player attack hitbox
+        if (_horizVelocity < 0)
+        {
+            transform.localScale = new Vector2(-1, transform.localScale.y);
+        }
+        else if (_horizVelocity > 0)
+        {
+            transform.localScale = new Vector2(1, transform.localScale.y);
         }
 
         // Apply velocity to rigidbody
