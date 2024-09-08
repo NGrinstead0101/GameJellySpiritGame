@@ -45,9 +45,9 @@ public class GameManager : MonoBehaviour
         else
         {
             Instance = this;
-            DontDestroyOnLoad(Instance);
+            
         }
-
+        DontDestroyOnLoad(this);
     }
 
     private void Start()
@@ -234,6 +234,7 @@ public class GameManager : MonoBehaviour
     /// <param name="index"></param>
     private IEnumerator LoadScene(int index)
     {
+        Time.timeScale = 1;
         UIAssetManager.BlackFade?.Invoke(true);
 
         //sets avility type for tutorial levels
