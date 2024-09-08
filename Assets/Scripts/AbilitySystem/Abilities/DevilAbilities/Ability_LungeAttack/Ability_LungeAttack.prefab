@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4827797845784960427}
   - component: {fileID: 4094881339820321179}
+  - component: {fileID: 2263035539111689547}
   m_Layer: 0
   m_Name: Ability_LungeAttack
   m_TagString: Untagged
@@ -61,10 +62,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.3, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -75,5 +76,22 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.66, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2263035539111689547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7039084830737544613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe67d2afb2d35a49b427c6e1b7d6e23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _abilityInformation: {fileID: 11400000, guid: d5df50a655b474b45ad5a2d096aa16e0, type: 2}
+  _attackOffset: 1.34
+  _forwardAttackDuration: 0.25
+  _returnDelay: 0.1
+  _returnDuration: 0.35

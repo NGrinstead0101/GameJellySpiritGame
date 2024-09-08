@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus/MainMenu.unity
     guid: b0351224fc7276f4ea71fbf7c8cd9d77
   - enabled: 1
+    path: Assets/Scenes/Angel Tutorial Level.unity
+    guid: bbbd3e3b7c241c34682e945262a221ad
+  - enabled: 1
     path: Assets/Scenes/TestScenes/SoundTesting.unity
     guid: b73093c3818f390429f87a1078f25455
   m_configObjects: {}
