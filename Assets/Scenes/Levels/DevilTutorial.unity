@@ -534,7 +534,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1395696551952210794, guid: 912e072b873f7c541878b45ec0ef99d4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.5707054
+      value: -4.560604
       objectReference: {fileID: 0}
     - target: {fileID: 1395696551952210794, guid: 912e072b873f7c541878b45ec0ef99d4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2460,8 +2460,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: e6741f95cbedcea45866fbfd02c52dbf, type: 3}
+  m_SortingOrder: -2
+  m_Sprite: {fileID: 21300000, guid: 67a6de9dd16f8cc44b1b043da65d86d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7801,9 +7801,33 @@ PrefabInstance:
       value: EndOfLevelDoor
       objectReference: {fileID: 0}
     - target: {fileID: 1952515775850810556, guid: 841b8e6d513df6e40a8d12d800098205, type: 3}
-      propertyPath: m_SortingOrder
-      value: -1
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 94aa5219a3c5e514db7bb52fb37d7538, type: 3}
+    - target: {fileID: 1952515775850810556, guid: 841b8e6d513df6e40a8d12d800098205, type: 3}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1952515775850810556, guid: 841b8e6d513df6e40a8d12d800098205, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952515775850810556, guid: 841b8e6d513df6e40a8d12d800098205, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952515775850810556, guid: 841b8e6d513df6e40a8d12d800098205, type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3684239594305780816, guid: 841b8e6d513df6e40a8d12d800098205, type: 3}
+      propertyPath: _lockedDoorSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 94aa5219a3c5e514db7bb52fb37d7538, type: 3}
+    - target: {fileID: 3684239594305780816, guid: 841b8e6d513df6e40a8d12d800098205, type: 3}
+      propertyPath: _unlockedDoorSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 67a6de9dd16f8cc44b1b043da65d86d7, type: 3}
     - target: {fileID: 8560412097635234817, guid: 841b8e6d513df6e40a8d12d800098205, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.01
