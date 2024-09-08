@@ -203,4 +203,26 @@ public class PlayerController : MonoBehaviour
             _canJump = true;
         }
     }
+
+    /// <summary>
+    /// Coroutine to fade the player's sprite as the "go through the door". Then calls
+    /// the game manager to load the next level.
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerator EnterDoorTransition()
+    {
+        _gamePlayInputs.Disable();
+
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+
+        while (sr.color.a > 0)
+        {
+            Color tmp = sr.color;
+            tmp.a -= 0.05f;
+            sr.color = tmp;
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        GameManager.Instance.ChangeGameState(GameManager.GameState.level);
+    }
 }
