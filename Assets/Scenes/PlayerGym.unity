@@ -1048,7 +1048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5097802164699014654, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
       propertyPath: m_Intensity
-      value: 0
+      value: 1.0512855
       objectReference: {fileID: 0}
     - target: {fileID: 5799332980885489616, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
       propertyPath: m_Name
@@ -1091,6 +1091,10 @@ PrefabInstance:
     - {fileID: 6853865035013434821, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
     - {fileID: 3715615147962203153, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
     - {fileID: 1360945424936612130, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
+    - {fileID: 2557123355190096010, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
+    - {fileID: 859035651717856644, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
+    - {fileID: 5097802164689082682, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
+    - {fileID: 2043196586271659473, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
