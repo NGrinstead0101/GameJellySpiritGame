@@ -1,7 +1,6 @@
 using System;
 using System.Threading;
 using Unity.VisualScripting.FullSerializer;
-using UnityEditorInternal;
 using UnityEngine;
 
 public abstract class EnemyState
@@ -127,6 +126,7 @@ public class MoveTowardsPlayer : EnemyState
     {
         //do anything you want when you first enter the state
         context.SpotPlayer();
+        context.PlaySfx("EnemyAlert");
         CheckForStateChange(context);
     }
     public override void CheckForStateChange(EnemyStateMachine context)
@@ -196,7 +196,7 @@ public class Attack : EnemyState
         {
             if((int)context.GetTime() % 3 ==0)
             {
-                // TODO: do attack here
+                context.PlaySfx("EnemyAttack");
                 DealtDamage?.Invoke();
                 Debug.Log("ATTACK");
             }

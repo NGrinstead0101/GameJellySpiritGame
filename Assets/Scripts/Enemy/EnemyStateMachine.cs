@@ -9,7 +9,13 @@ public class EnemyStateMachine : MonoBehaviour
 
     [SerializeField] private GameObject torchPrefab;
     [SerializeField] private bool shouldSpawnTorch = false;
+    [SerializeField] private GameObject _hitVfxObject;
+    [SerializeField] private GameObject _deathVfxObject;
 
+    private SfxManager _sfxManager;
+    private SpriteRenderer _spriteRenderer;
+    private ParticleSystem _hitVfxSystem;
+    private ParticleSystem _deathVfxSystem;
     private float time;
     private Vector2 targetDestination;
     private bool isFacingLeft;
@@ -33,6 +39,15 @@ public class EnemyStateMachine : MonoBehaviour
 
     public void Start()
     {
+        _sfxManager = SfxManager.Instance;
+
+        _deathVfxSystem = _deathVfxObject.GetComponent<ParticleSystem>();
+        _hitVfxSystem = _hitVfxObject.GetComponent<ParticleSystem>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+
+        SetDeathVfxSystem(false);
+        SetHitVfxSystem(false);
+
         enemyAnimator = GetComponent<Animator>();
         currentHealth = MaxHealth;
 
@@ -78,6 +93,47 @@ public class EnemyStateMachine : MonoBehaviour
         {
             time += Time.deltaTime;
             yield return null;
+        }
+    }
+
+    private IEnumerator DisableHitVfxDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        SetHitVfxSystem(false);
+    }
+
+    private void SetHitVfxSystem(bool isActive)
+    {
+        if (_hitVfxSystem == null)
+            return;
+
+        if (isActive)
+        {
+            _spriteRenderer.color = Color.red;
+            _hitVfxSystem.Play();
+        }
+        else
+        {
+            _spriteRenderer.color = Color.white;
+            _hitVfxSystem.Stop();
+        }
+    }
+
+    private void SetDeathVfxSystem(bool isActive)
+    {
+        if (_deathVfxSystem == null)
+            return;
+
+        if (isActive)
+        {
+            _spriteRenderer.color = Color.red;
+            _deathVfxSystem.Play();
+        }
+        else
+        {
+            _spriteRenderer.color = Color.white;
+            _deathVfxSystem.Stop();
         }
     }
 
@@ -253,15 +309,30 @@ public class EnemyStateMachine : MonoBehaviour
     public void RemoveHealth(float healthToRemove)
     {
         currentHealth -= healthToRemove;
-        if (currentHealth <= 0)
+
+        if (currentHealth > 0)
         {
-            EnemyDied?.Invoke();
-
-            if (shouldSpawnTorch)
-                Instantiate(torchPrefab, transform.position, Quaternion.identity);
-
-            ChangeState(new Died());
+            PlaySfx("EnemyHit");
+            SetHitVfxSystem(true);
+            StartCoroutine(DisableHitVfxDelay());
         }
+        else if (currentHealth <= 0)
+        {
+            SetDeathVfxSystem(true);
+            PlaySfx("EnemyDeath");
+
+            Invoke(nameof(DeathDelay), 0.15f);
+        }
+    }
+
+    private void DeathDelay()
+    {
+        EnemyDied?.Invoke();
+
+        if (shouldSpawnTorch)
+            Instantiate(torchPrefab, transform.position, Quaternion.identity);
+
+        ChangeState(new Died());
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -296,6 +367,11 @@ public class EnemyStateMachine : MonoBehaviour
         }
     }
 
+    public void PlaySfx(string sfxName)
+    {
+        _sfxManager.PlaySFX(sfxName);
+    }
+
     public void SpotPlayer()
     {
         enemyAnimator.SetBool("hasSpottedPlayer", true);
@@ -304,5 +380,10 @@ public class EnemyStateMachine : MonoBehaviour
     public void ToggleIsAttacking(bool isAttacking)
     {
         enemyAnimator.SetBool("isAttacking", isAttacking);
+    }
+
+    private void OnDisable()
+    {
+        SetDeathVfxSystem(false);
     }
 }

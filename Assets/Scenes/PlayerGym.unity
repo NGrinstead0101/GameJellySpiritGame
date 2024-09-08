@@ -816,13 +816,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: EndOfLevelDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 3684239594305780816, guid: 841b8e6d513df6e40a8d12d800098205, type: 3}
+      propertyPath: _enemyCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3684239594305780816, guid: 841b8e6d513df6e40a8d12d800098205, type: 3}
+      propertyPath: _lockedDoorSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 94aa5219a3c5e514db7bb52fb37d7538, type: 3}
+    - target: {fileID: 3684239594305780816, guid: 841b8e6d513df6e40a8d12d800098205, type: 3}
+      propertyPath: _unlockedDoorSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 67a6de9dd16f8cc44b1b043da65d86d7, type: 3}
     - target: {fileID: 8560412097635234817, guid: 841b8e6d513df6e40a8d12d800098205, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.86
       objectReference: {fileID: 0}
     - target: {fileID: 8560412097635234817, guid: 841b8e6d513df6e40a8d12d800098205, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.44
+      value: -0.78
       objectReference: {fileID: 0}
     - target: {fileID: 8560412097635234817, guid: 841b8e6d513df6e40a8d12d800098205, type: 3}
       propertyPath: m_LocalPosition.z
