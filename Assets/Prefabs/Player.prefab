@@ -153,10 +153,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _jumpSpeed: 9
   _baseSpeed: 5
-  _angelSpeedModifier: 1.5
+  _angelSpeedModifier: 1.55
   _devilSpeedModifier: 1
-  _angelLightDistance: 6
-  _devilLightDistance: 3
+  _angelLightDistance: 2
+  _devilLightDistance: 4
   _lightTransitionTime: 0.5
 --- !u!114 &5259766013518292979
 MonoBehaviour:
