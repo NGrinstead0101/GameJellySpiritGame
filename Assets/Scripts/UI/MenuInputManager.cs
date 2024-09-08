@@ -31,6 +31,7 @@ public class MenuInputManager : MonoBehaviour
 
     private void OnDisable()
     {
+        GameplayInputs.Disable();
         _swapToAngel.performed -= ctx => SwapSpiritForm();
         _swapToDevil.performed -= ctx => SwapSpiritForm();
         _escape.performed -= ctx => EscapePerformed();
@@ -45,7 +46,6 @@ public class MenuInputManager : MonoBehaviour
         {
             _tabs[i].gameObject.SetActive(false);
         }
-
     }
 
     /// <summary>

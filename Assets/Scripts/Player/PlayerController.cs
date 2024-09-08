@@ -90,6 +90,7 @@ public class PlayerController : MonoBehaviour
         _jump.performed -= ctx => Jump();
         _swapToAngel.performed -= ctx => SwapSpiritForm();
         _swapToDevil.performed -= ctx => SwapSpiritForm();
+        _pause.performed -= ctx => PausePerformed();
     }
 
     /// <summary>
