@@ -39,7 +39,14 @@ public class MenuInputManager : MonoBehaviour
 
     private void SwapSpiritForm()
     {
-        print("q r");
-        //PlayerController.SwapForm
+
+        if(GameManager.Instance.GetCurrentAbilityType() == AbilitySetType.Angel)
+        {
+            PlayerController.SwapForm?.Invoke(AbilitySetType.Devil);
+        }
+        else
+        {
+            PlayerController.SwapForm?.Invoke(AbilitySetType.Angel);
+        }
     }
 }
