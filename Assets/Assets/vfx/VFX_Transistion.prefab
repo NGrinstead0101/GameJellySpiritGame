@@ -14675,7 +14675,7 @@ GameObject:
   - component: {fileID: 7362356583888851515}
   - component: {fileID: 4351322310292070911}
   m_Layer: 0
-  m_Name: VFX_AngelHit 1
+  m_Name: VFX_Transistion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
