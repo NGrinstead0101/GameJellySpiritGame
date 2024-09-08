@@ -12,7 +12,10 @@ public class CanvasBehavior : MonoBehaviour
     private void Start()
     {
         _anim = GetComponent<Animator>();
-        UIAssetManager.SwitchAssets?.Invoke(GameManager.Instance.GetCurrentAbilityType());
+        if(GameManager.Instance.GetCurrentGameState() != GameManager.GameState.menu)
+        {
+            UIAssetManager.SwitchAssets?.Invoke(GameManager.Instance.GetCurrentAbilityType());
+        }
     }
 
     private void OnEnable()

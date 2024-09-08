@@ -60,10 +60,12 @@ public class MenuInputManager : MonoBehaviour
             if (GameManager.Instance.GetCurrentAbilityType() == AbilitySetType.Angel)
             {
                 PlayerController.SwapForm?.Invoke(AbilitySetType.Devil);
+                //print("devil");
             }
             else
             {
                 PlayerController.SwapForm?.Invoke(AbilitySetType.Angel);
+                //print("angel");
             }
         }
     }

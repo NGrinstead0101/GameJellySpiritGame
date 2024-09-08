@@ -12,18 +12,34 @@ using UnityEngine.UI;
 
 public class UIAssetManager : MonoBehaviour
 {
-    [SerializeField] private List<AssetReference> _assetReferences = new List<AssetReference>();
+    [SerializeField] private List<AssetSpriteReference> _assetSpriteReferences = new List<AssetSpriteReference>();
+    [SerializeField] private List<AssetGameObjectReference> _assetGameObjectReferences = new List<AssetGameObjectReference>();
 
     public static Action<AbilitySetType> SwitchAssets;
     public static Action<bool> BlackFade;
 
-    [System.Serializable] public struct AssetReference
+    [System.Serializable] public struct AssetSpriteReference
     {
         public string assetName;
         public GameObject _gameObjectReference;
         [HideInInspector] public Image _image;
         public Sprite _angelVersion;
         public Sprite _devilVersion;
+    }
+
+    [System.Serializable]
+    public struct AssetGameObjectReference
+    {
+        public string assetName;
+        public GameObject _gameObjectReference;
+        [HideInInspector] public Image _image;
+        public Button _angelVersion;
+        public Button _devilVersion;
+        public Sprite _angelHover;
+        public Sprite _angelClick;
+        public Sprite _devilHover;
+        public Sprite _devilClick;
+
     }
 
     private void OnEnable()
@@ -44,36 +60,55 @@ public class UIAssetManager : MonoBehaviour
     /// <param name="type"></param>
     private void UpdateUIAssets(AbilitySetType type)
     {
+        print("Asset manager");
         if(type == AbilitySetType.Angel)
         {
-            for (int i = 0; i < _assetReferences.Count; i++)
+            for (int i = 0; i < _assetSpriteReferences.Count; i++)
             {
                 //ensures asset's Image field is set
-                if (_assetReferences[i]._image == null)
+                if (_assetSpriteReferences[i]._image == null)
                 {
-                    var copyAsset = _assetReferences[i];
-                    copyAsset._image = _assetReferences[i]._gameObjectReference.GetComponent<Image>();
-                    _assetReferences[i] = copyAsset;
+                    print("null");
+                    var copyAsset = _assetSpriteReferences[i];
+                    copyAsset._image = _assetSpriteReferences[i]._gameObjectReference.GetComponent<Image>();
+                    _assetSpriteReferences[i] = copyAsset;
                 }
 
+                print("set a");
                 //sets asset sprite
-                _assetReferences[i]._image.sprite = _assetReferences[i]._angelVersion;
+                _assetSpriteReferences[i]._image.sprite = _assetSpriteReferences[i]._angelVersion;
             }
+
+            //for (int i = 0; i < _assetButtonReferences.Count; i++)
+            //{
+            //    //ensures asset's Image field is set
+            //    if (_assetButtonReferences[i]._image == null)
+            //    {
+            //        var copyAsset = _assetButtonReferences[i];
+            //        copyAsset._image = _assetButtonReferences[i]._gameObjectReference.GetComponent<Image>();
+            //        _assetButtonReferences[i] = copyAsset;
+            //    }
+
+            //    //sets asset sprite
+            //    _assetSpriteReferences[i]._image.sprite = _assetSpriteReferences[i]._angelVersion;
+            //}
         }
         else
         {
-            for (int i = 0; i < _assetReferences.Count - 1; i++)
+            for (int i = 0; i < _assetSpriteReferences.Count; i++)
             {
                 //ensures asset's Image field is set
-                if (_assetReferences[i]._image == null)
+                if (_assetSpriteReferences[i]._image == null)
                 {
-                    var copyAsset = _assetReferences[i];
-                    copyAsset._image = _assetReferences[i]._gameObjectReference.GetComponent<Image>();
-                    _assetReferences[i] = copyAsset;
+                    print("null");
+                    var copyAsset = _assetSpriteReferences[i];
+                    copyAsset._image = _assetSpriteReferences[i]._gameObjectReference.GetComponent<Image>();
+                    _assetSpriteReferences[i] = copyAsset;
                 }
 
+                print("set d");
                 //sets asset sprite
-                _assetReferences[i]._image.sprite = _assetReferences[i]._devilVersion;
+                _assetSpriteReferences[i]._image.sprite = _assetSpriteReferences[i]._devilVersion;
             }
         }
     }
