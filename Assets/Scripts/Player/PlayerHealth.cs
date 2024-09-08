@@ -59,7 +59,7 @@ public class PlayerHealth : MonoBehaviour
             Destroy(this);
         }
     
-        EnemyState.DealtDamage += TakeDamage;
+        EnemyStateMachine.DealtDamage += TakeDamage;
         // TODO: register heal action here
     }
 
@@ -68,7 +68,7 @@ public class PlayerHealth : MonoBehaviour
     /// </summary>
     private void OnDisable()
     {
-        //TODO: unregister from damage and heal action here
+        EnemyStateMachine.DealtDamage -= TakeDamage;
     }
 
     /// <summary>
@@ -152,7 +152,13 @@ public class PlayerHealth : MonoBehaviour
 
         Time.timeScale = 1f;
 
-        // TODO: replace these two lines once a scene manager is built
+        ReloadScene();
+    }
+
+    private void ReloadScene()
+    {
+        StopAllCoroutines();
+
         Scene tempScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(tempScene.name);
     }

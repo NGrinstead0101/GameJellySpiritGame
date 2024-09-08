@@ -9,9 +9,27 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus/MainMenu.unity
     guid: 812ed20e03308004fa26fc452e7f8cd9
   - enabled: 1
-    path: Assets/Scenes/Angel Tutorial Level.unity
+    path: Assets/Scenes/Levels/AngelTutorial.unity
     guid: bbbd3e3b7c241c34682e945262a221ad
   - enabled: 1
-    path: Assets/Scenes/Maze Level.unity
+    path: Assets/Scenes/Levels/DevilTutorial.unity
+    guid: 0ac874b8f168299459f49f9a0d2e6760
+  - enabled: 1
+    path: Assets/Scenes/Levels/SwitchingTutorial.unity
+    guid: 6dd1fd47d9f5ea4419ca2ed9dfe558c8
+  - enabled: 1
+    path: Assets/Scenes/Levels/HealingTutorial.unity
+    guid: 87ac6b347b1ae0343a0c940406df2f5e
+  - enabled: 1
+    path: Assets/Scenes/Levels/VisionTutorial.unity
+    guid: 90686fe65e8a6514f8ac80ae4013856c
+  - enabled: 1
+    path: Assets/Scenes/Levels/MazeLevel.unity
     guid: 43e923eea98fb804e9911a4a611acd05
+  - enabled: 1
+    path: Assets/Scenes/Levels/Challenge1.unity
+    guid: f24368b4b5145204882c164fd2f2f364
+  - enabled: 1
+    path: Assets/Scenes/Levels/Challenge2.unity
+    guid: 4b09682de4ceedf4bb2ee3993d6f8690
   m_configObjects: {}
