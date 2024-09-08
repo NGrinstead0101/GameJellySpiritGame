@@ -66,13 +66,16 @@ public class CanvasBehavior : MonoBehaviour
 
     private void SetPauseMenu(bool input)
     {
-        if(input)
+        if(_pauseMenu != null)
         {
-            _pauseMenu.SetActive(true);
-        }
-        else
-        {
-            _pauseMenu.SetActive(false);
+            if (input)
+            {
+                _pauseMenu.SetActive(true);
+            }
+            else
+            {
+                _pauseMenu.SetActive(false);
+            }
         }
     }
 
@@ -107,5 +110,10 @@ public class CanvasBehavior : MonoBehaviour
         {
             SfxManager.Instance.PlaySFX("MenuUIDevil");
         }
+    }
+
+    public void  ResetLevel()
+    {
+        GameManager.Instance.ResetCurrentScene();
     }
 }
