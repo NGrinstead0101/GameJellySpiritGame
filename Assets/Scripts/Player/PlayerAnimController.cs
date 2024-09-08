@@ -45,10 +45,16 @@ public class PlayerAnimController : MonoBehaviour
         PlayerHealth.TakeDamageAction -= TakeDamage;
         PlayerHealth.DeathAction -= DeathVFX;
 
-        _move.performed -= ctx => PlayMovingAnim();
-        _move.canceled -= ctx => StopMovingAnim();
+        if (_move != null)
+        {
+            _move.performed -= ctx => PlayMovingAnim();
+            _move.canceled -= ctx => StopMovingAnim();
+        }
 
-        _jump.performed -= ctx => Jump();
+        if (_jump != null)
+        {
+            _jump.performed -= ctx => Jump();
+        }
     }
 
     private void Awake()
