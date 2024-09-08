@@ -88,12 +88,14 @@ public class GameManager : MonoBehaviour
         switch (state)
         {
             case GameState.menu:
+                ReturnToLevel();
                 LoadMainMenu();
                 break;
             case GameState.pause:
                 LoadPauseMenu();
                 break;
             case GameState.level:
+                ReturnToLevel();
                 if (_currentGameState == GameState.menu)
                 {
                     LoadFirstLevel();
@@ -117,6 +119,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void LoadMainMenu()
     {
+        ReturnToLevel();
         LoadScene(0);
         _currentGameState = GameState.menu;
         //load menu music
@@ -233,6 +236,7 @@ public class GameManager : MonoBehaviour
     /// <param name="index"></param>
     private IEnumerator LoadScene(int index)
     {
+        Time.timeScale = 1;
         UIAssetManager.BlackFade?.Invoke(true);
 
         //sets avility type for tutorial levels
@@ -254,14 +258,19 @@ public class GameManager : MonoBehaviour
         UIAssetManager.BlackFade?.Invoke(false);
     }
 
-    //private void Update()
-    //{
-    //    if (Input.GetKeyUp(KeyCode.P))
-    //    {
-    //        //StartCoroutine(LoadScene(1));
-    //        _currentGameState = GameState.level;
-    //    }
-    //}
+    public void ResetCurrentScene()
+    {
+        StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex));
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.P))
+        {
+            //StartCoroutine(LoadScene(1));
+            _currentGameState = GameState.level;
+        }
+    }
 
     #endregion
 }
