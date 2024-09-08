@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus/MainMenu.unity
     guid: 812ed20e03308004fa26fc452e7f8cd9
   - enabled: 1
-    path: Assets/Scenes/Angel Tutorial Level.unity
+    path: Assets/Scenes/Levels/AngelTutorial.unity
     guid: bbbd3e3b7c241c34682e945262a221ad
   - enabled: 1
-    path: Assets/Scenes/Maze Level.unity
+    path: Assets/Scenes/Levels/MazeLevel.unity
     guid: 43e923eea98fb804e9911a4a611acd05
   m_configObjects: {}
