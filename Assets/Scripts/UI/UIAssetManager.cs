@@ -46,7 +46,7 @@ public class UIAssetManager : MonoBehaviour
     {
         if(type == AbilitySetType.Angel)
         {
-            for (int i = 0; i < _assetReferences.Count - 1; i++)
+            for (int i = 0; i < _assetReferences.Count; i++)
             {
                 //ensures asset's Image field is set
                 if (_assetReferences[i]._image == null)
