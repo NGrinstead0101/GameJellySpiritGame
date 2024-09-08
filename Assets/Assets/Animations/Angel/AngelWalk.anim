@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WalkAnimation
+  m_Name: AngelWalk
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -22,35 +22,35 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: 95721806, guid: 81a09293087090a4d9a4511b764fd722, type: 3}
-    - time: 0.1
+    - time: 0.083333336
       value: {fileID: 1638117689, guid: 81a09293087090a4d9a4511b764fd722, type: 3}
-    - time: 0.16666667
+    - time: 0.15
       value: {fileID: 614428043, guid: 81a09293087090a4d9a4511b764fd722, type: 3}
-    - time: 0.25
+    - time: 0.2
       value: {fileID: -603335142, guid: 81a09293087090a4d9a4511b764fd722, type: 3}
-    - time: 0.33333334
+    - time: 0.25
       value: {fileID: -402853234, guid: 81a09293087090a4d9a4511b764fd722, type: 3}
-    - time: 0.4
+    - time: 0.31666666
       value: {fileID: 2017729045, guid: 81a09293087090a4d9a4511b764fd722, type: 3}
-    - time: 0.5
+    - time: 0.4
       value: {fileID: -504986326, guid: 81a09293087090a4d9a4511b764fd722, type: 3}
-    - time: 0.5833333
+    - time: 0.46666667
       value: {fileID: -77023257, guid: 81a09293087090a4d9a4511b764fd722, type: 3}
-    - time: 0.68333334
+    - time: 0.55
       value: {fileID: 955886229, guid: 81a09293087090a4d9a4511b764fd722, type: 3}
-    - time: 0.78333336
+    - time: 0.6333333
       value: {fileID: -1649436, guid: 81a09293087090a4d9a4511b764fd722, type: 3}
-    - time: 0.85
+    - time: 0.68333334
       value: {fileID: 725766938, guid: 81a09293087090a4d9a4511b764fd722, type: 3}
-    - time: 0.93333334
+    - time: 0.75
       value: {fileID: 894864898, guid: 81a09293087090a4d9a4511b764fd722, type: 3}
-    - time: 1
+    - time: 0.8
       value: {fileID: 1596903027, guid: 81a09293087090a4d9a4511b764fd722, type: 3}
-    - time: 1.0833334
+    - time: 0.85
       value: {fileID: -1052763256, guid: 81a09293087090a4d9a4511b764fd722, type: 3}
-    - time: 1.1833333
+    - time: 0.95
       value: {fileID: 208935007, guid: 81a09293087090a4d9a4511b764fd722, type: 3}
-    - time: 1.25
+    - time: 1
       value: {fileID: 998274467, guid: 81a09293087090a4d9a4511b764fd722, type: 3}
     attribute: m_Sprite
     path: 
@@ -95,7 +95,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.2666667
+    m_StopTime: 1.0166667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
