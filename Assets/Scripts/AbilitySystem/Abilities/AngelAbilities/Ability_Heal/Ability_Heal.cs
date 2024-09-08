@@ -30,12 +30,12 @@ public class Ability_Heal : Ability
     {
         if (_canCast)
         {
-            if (_animationController != null)
-                _animationController.SetClickTrigger("LeftClick");
-
             // Ability should not activate if the player is at max healt
             if (PlayerHealth.Instance.CurrentHealth < PlayerHealth.Instance.MaxHealth)
             {
+                if (_animationController != null)
+                    _animationController.SetClickTrigger("LeftClick");
+
                 base.CastAbility();
                 StartCoroutine(StartHealing());            
             }
