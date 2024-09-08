@@ -8,18 +8,28 @@ public class PlayerAnimController : MonoBehaviour
 {
     public static PlayerAnimController Instance;
 
+    [Header("Animation Controllers")]
     [SerializeField] private UnityEditor.Animations.AnimatorController _angelAnimController;
     [SerializeField] private UnityEditor.Animations.AnimatorController _devilAnimController;
     private Animator _animator = null;
 
+    [Header("Sprite VFX")]
     [SerializeField] private Sprite _angelSprite;
     [SerializeField] private Sprite _devilSprite;
 
+    [Header("Death VFX")]
     [SerializeField] private GameObject _angelDeathVFXObject;
     [SerializeField] private GameObject _devilDeathVFXObject;
     private ParticleSystem _angelDeathVFX;
     private ParticleSystem _devilDeathVFX;
     private ParticleSystem _currentDeathVFX;
+
+    [Header("Hit VFX")]
+    [SerializeField] private GameObject _angelHitVFXObject;
+    [SerializeField] private GameObject _devilHitVFXObject;
+    private ParticleSystem _angelHitVFX;
+    private ParticleSystem _devilHitVFX;
+    private ParticleSystem _currentHitVFX = null;
 
     private static InputAction _move = null;
     private static InputAction _jump = null;
@@ -43,19 +53,24 @@ public class PlayerAnimController : MonoBehaviour
         _animator = GetComponent<Animator>();
         _angelDeathVFX = _angelDeathVFXObject.GetComponent<ParticleSystem>();
         _devilDeathVFX = _devilDeathVFXObject.GetComponent<ParticleSystem>();
+
+        _angelHitVFX = _angelHitVFXObject.GetComponent<ParticleSystem>();
+        _devilHitVFX = _devilHitVFXObject.GetComponent<ParticleSystem>();
     }
 
     private void OnEnable()
     {
         PlayerHealth.TakeDamageAction += TakeDamage;
         PlayerController.SwapForm += SwapAnimController;
-        PlayerHealth.DeathAction += DeathVFX;
+        PlayerHealth.DeathAction += PlayDeathVFX;
+        Ability_LungeAttack.Lunge += Attack;
     }
     private void OnDisable()
     {
         PlayerController.SwapForm -= SwapAnimController;
         PlayerHealth.TakeDamageAction -= TakeDamage;
-        PlayerHealth.DeathAction -= DeathVFX;
+        PlayerHealth.DeathAction -= PlayDeathVFX;
+        Ability_LungeAttack.Lunge -= Attack;
 
         if (_move != null)
         {
@@ -94,6 +109,7 @@ public class PlayerAnimController : MonoBehaviour
     private void TakeDamage()
     {
         _animator.SetTrigger("Hurt");
+        PlayHitVFX();
     }
 
     public void Jump()
@@ -114,6 +130,7 @@ public class PlayerAnimController : MonoBehaviour
                 {
                     GetComponent<SpriteRenderer>().sprite = _angelSprite;
                     _animator.runtimeAnimatorController = _angelAnimController;
+                    _currentHitVFX = _angelHitVFX;
                     _currentDeathVFX = _angelDeathVFX;
                     /*_angelAnimator.enabled = true;
                     _devilAnimator.enabled = false;*/
@@ -124,6 +141,7 @@ public class PlayerAnimController : MonoBehaviour
                     GetComponent<SpriteRenderer>().sprite = _devilSprite;
                     _animator.runtimeAnimatorController = _devilAnimController;
                     _currentDeathVFX = _devilDeathVFX;
+                    _currentHitVFX = _devilHitVFX;
                     /*_angelAnimator.enabled = false;
                     _devilAnimator.enabled = true;*/
                     break;
@@ -131,7 +149,12 @@ public class PlayerAnimController : MonoBehaviour
         }
     }
 
-    private void DeathVFX()
+    private void PlayHitVFX()
+    {
+        _currentHitVFX.Play();
+    }
+
+    private void PlayDeathVFX()
     { 
         _currentDeathVFX.Play();
     }

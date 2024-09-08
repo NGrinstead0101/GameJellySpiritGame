@@ -446,6 +446,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1772282918 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 859035651717856644, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
+  m_PrefabInstance: {fileID: 6257794580862547026}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1868927625
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -503,6 +508,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e7ba79fddbbfe84c98f7ca09d1d5b2d, type: 3}
+--- !u!1 &2138150252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5097802164689082682, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
+  m_PrefabInstance: {fileID: 6257794580862547026}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6099158271372345896
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -608,6 +618,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2642748201936516547, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4893679064211728023, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
+      propertyPath: _angelHitVFXObject
+      value: 
+      objectReference: {fileID: 2138150252}
+    - target: {fileID: 4893679064211728023, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
+      propertyPath: _devilHitVFXObject
+      value: 
+      objectReference: {fileID: 1772282918}
     - target: {fileID: 5799332980885489616, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
       propertyPath: m_Name
       value: LevelKit
