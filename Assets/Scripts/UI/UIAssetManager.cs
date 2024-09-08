@@ -31,14 +31,8 @@ public class UIAssetManager : MonoBehaviour
     public struct AssetGameObjectReference
     {
         public string assetName;
-        public GameObject _gameObjectReference;
-        [HideInInspector] public Image _image;
-        public Button _angelVersion;
-        public Button _devilVersion;
-        public Sprite _angelHover;
-        public Sprite _angelClick;
-        public Sprite _devilHover;
-        public Sprite _devilClick;
+        public GameObject _angelVersion;
+        public GameObject _devilVersion;
 
     }
 
@@ -79,19 +73,12 @@ public class UIAssetManager : MonoBehaviour
                 _assetSpriteReferences[i]._image.sprite = _assetSpriteReferences[i]._angelVersion;
             }
 
-            //for (int i = 0; i < _assetButtonReferences.Count; i++)
-            //{
-            //    //ensures asset's Image field is set
-            //    if (_assetButtonReferences[i]._image == null)
-            //    {
-            //        var copyAsset = _assetButtonReferences[i];
-            //        copyAsset._image = _assetButtonReferences[i]._gameObjectReference.GetComponent<Image>();
-            //        _assetButtonReferences[i] = copyAsset;
-            //    }
-
-            //    //sets asset sprite
-            //    _assetSpriteReferences[i]._image.sprite = _assetSpriteReferences[i]._angelVersion;
-            //}
+            for (int i = 0; i < _assetGameObjectReferences.Count; i++)
+            {
+                //sets game object
+                _assetGameObjectReferences[i]._angelVersion.SetActive(true);
+                _assetGameObjectReferences[i]._devilVersion.SetActive(false);
+            }
         }
         else
         {
@@ -109,6 +96,13 @@ public class UIAssetManager : MonoBehaviour
                 print("set d");
                 //sets asset sprite
                 _assetSpriteReferences[i]._image.sprite = _assetSpriteReferences[i]._devilVersion;
+            }
+
+            for (int i = 0; i < _assetGameObjectReferences.Count; i++)
+            {
+                //sets game object
+                _assetGameObjectReferences[i]._angelVersion.SetActive(false);
+                _assetGameObjectReferences[i]._devilVersion.SetActive(true);
             }
         }
     }
