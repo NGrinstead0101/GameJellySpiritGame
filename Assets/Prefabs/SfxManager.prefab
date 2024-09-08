@@ -1,0 +1,177 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7844294992936666840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5165279512945389003}
+  - component: {fileID: 3361806047837134979}
+  m_Layer: 0
+  m_Name: SfxManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5165279512945389003
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7844294992936666840}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3361806047837134979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7844294992936666840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d48949299de294bb10a07e4ff25ecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _SFXs:
+  - name: AngelDeath
+    clips:
+    - {fileID: 8300000, guid: efc5de41d93f26a498a04692e9f7d8ad, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 3574573082446527227, guid: d64b5bd22db59004780d43d0c5af2d25, type: 2}
+    maxVolume: 1
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: AngelHurt
+    clips:
+    - {fileID: 8300000, guid: cf862d13c310c034daa060644d7f7b52, type: 3}
+    - {fileID: 8300000, guid: a0a57e93e06111a4b8cd019002c9dd7f, type: 3}
+    - {fileID: 8300000, guid: 32b0ef7165dd1714bb3611e4966cdf39, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 3574573082446527227, guid: d64b5bd22db59004780d43d0c5af2d25, type: 2}
+    maxVolume: 1
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: Healing
+    clips:
+    - {fileID: 8300000, guid: b537102e0dc07554f8eb7c21442ef43a, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 3574573082446527227, guid: d64b5bd22db59004780d43d0c5af2d25, type: 2}
+    maxVolume: 1
+    pitch: 1
+    doLoop: 1
+    source: {fileID: 0}
+  - name: MenuUIAngel
+    clips:
+    - {fileID: 8300000, guid: 86761c00853a06244a4425fed60370ea, type: 3}
+    - {fileID: 8300000, guid: f9a21e1616145cc4ab05d31bcf82f7f0, type: 3}
+    - {fileID: 8300000, guid: e98a0293c5909964a808c9cc96f10f7c, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 3574573082446527227, guid: d64b5bd22db59004780d43d0c5af2d25, type: 2}
+    maxVolume: 1
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: DevilAttack
+    clips:
+    - {fileID: 8300000, guid: a162e79ed3e7ac74297c697faba97e49, type: 3}
+    - {fileID: 8300000, guid: 759779f4f00a19642a10a0efa7a86f50, type: 3}
+    - {fileID: 8300000, guid: 868e2100ed9c0f54488b66f780e07a71, type: 3}
+    - {fileID: 8300000, guid: be9d10097dc89e1429ce0ac847bb3c78, type: 3}
+    - {fileID: 8300000, guid: 6db83141c9070164b9f51574b24229d3, type: 3}
+    - {fileID: 8300000, guid: 0f65a9fbc97dba747bccbfffc0dfeb28, type: 3}
+    - {fileID: 8300000, guid: 4ab58917bf4a59d4aa9b9e74e74c5042, type: 3}
+    - {fileID: 8300000, guid: 49482a8e0eb8a2e4b90cf4ef6e7137ff, type: 3}
+    - {fileID: 8300000, guid: fc31a26675196244f8c1a55a443276c3, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 3574573082446527227, guid: d64b5bd22db59004780d43d0c5af2d25, type: 2}
+    maxVolume: 1
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: DevilDeath
+    clips:
+    - {fileID: 8300000, guid: 3146badccee33d643a9c3248b4590583, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 3574573082446527227, guid: d64b5bd22db59004780d43d0c5af2d25, type: 2}
+    maxVolume: 1
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: DevilHurt
+    clips:
+    - {fileID: 8300000, guid: 9ad973ffcbc75d849b7e959b30a103e2, type: 3}
+    - {fileID: 8300000, guid: 0bd2afd0afac0864cbe0f0a48b64dcaa, type: 3}
+    - {fileID: 8300000, guid: 728282c0372044a4aafd25629416998c, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 3574573082446527227, guid: d64b5bd22db59004780d43d0c5af2d25, type: 2}
+    maxVolume: 1
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: DevilUIAngel
+    clips:
+    - {fileID: 8300000, guid: 07574ef326b09be4db89cf6c2075330e, type: 3}
+    - {fileID: 8300000, guid: f295ab91032d4d14e8781695a61b30cd, type: 3}
+    - {fileID: 8300000, guid: 67e61c39578058445afc2fe5e397a457, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 3574573082446527227, guid: d64b5bd22db59004780d43d0c5af2d25, type: 2}
+    maxVolume: 1
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: EnemyAlert
+    clips:
+    - {fileID: 8300000, guid: 4e06fdd3a3c89ea479ae9f987ec849ad, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 3574573082446527227, guid: d64b5bd22db59004780d43d0c5af2d25, type: 2}
+    maxVolume: 1
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: EnemyAttack
+    clips:
+    - {fileID: 8300000, guid: 85a65db634bbb524d9ceeeca0d66642b, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 3574573082446527227, guid: d64b5bd22db59004780d43d0c5af2d25, type: 2}
+    maxVolume: 1
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: EnemyDeath
+    clips:
+    - {fileID: 8300000, guid: 24636211124a34549913782d93be374c, type: 3}
+    - {fileID: 8300000, guid: 7adc474d9a03f0041a3ba231fef4c8e2, type: 3}
+    - {fileID: 8300000, guid: 79d0eada7d6f0714795ea39a6ed1150c, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 3574573082446527227, guid: d64b5bd22db59004780d43d0c5af2d25, type: 2}
+    maxVolume: 1
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  - name: EnemyHurt
+    clips:
+    - {fileID: 8300000, guid: 5a9e6116b8916624ab25599de50d50a2, type: 3}
+    - {fileID: 8300000, guid: 6ed03f7f1bc50ba42b7866abe9a33141, type: 3}
+    - {fileID: 8300000, guid: 607b2191953f33c41b880c1c717018ac, type: 3}
+    clip: {fileID: 0}
+    mixer: {fileID: 3574573082446527227, guid: d64b5bd22db59004780d43d0c5af2d25, type: 2}
+    maxVolume: 1
+    pitch: 1
+    doLoop: 0
+    source: {fileID: 0}
+  _fadeInDuration: 1
+  _fadeOutDuration: 3
