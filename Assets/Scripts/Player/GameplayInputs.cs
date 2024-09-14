@@ -46,16 +46,7 @@ public partial class @GameplayInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SwapAngel"",
-                    ""type"": ""Button"",
-                    ""id"": ""23e2dccc-aaaf-4419-a2d6-c8baaed4f1d9"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""SwapDevil"",
+                    ""name"": ""SwapSet"",
                     ""type"": ""Button"",
                     ""id"": ""8d376093-d12f-4104-bbfa-a74744f0201d"",
                     ""expectedControlType"": ""Button"",
@@ -140,23 +131,12 @@ public partial class @GameplayInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ab3983df-5556-43f8-97d6-48895a6c1107"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SwapAngel"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""652dfb5f-683c-44f8-bc26-f33a6b6a944d"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SwapDevil"",
+                    ""action"": ""SwapSet"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -191,8 +171,7 @@ public partial class @GameplayInputs: IInputActionCollection2, IDisposable
         m_PlayerActionMap = asset.FindActionMap("PlayerActionMap", throwIfNotFound: true);
         m_PlayerActionMap_Move = m_PlayerActionMap.FindAction("Move", throwIfNotFound: true);
         m_PlayerActionMap_Jump = m_PlayerActionMap.FindAction("Jump", throwIfNotFound: true);
-        m_PlayerActionMap_SwapAngel = m_PlayerActionMap.FindAction("SwapAngel", throwIfNotFound: true);
-        m_PlayerActionMap_SwapDevil = m_PlayerActionMap.FindAction("SwapDevil", throwIfNotFound: true);
+        m_PlayerActionMap_SwapSet = m_PlayerActionMap.FindAction("SwapSet", throwIfNotFound: true);
         m_PlayerActionMap_UseAbility = m_PlayerActionMap.FindAction("UseAbility", throwIfNotFound: true);
         m_PlayerActionMap_Escape = m_PlayerActionMap.FindAction("Escape", throwIfNotFound: true);
     }
@@ -258,8 +237,7 @@ public partial class @GameplayInputs: IInputActionCollection2, IDisposable
     private List<IPlayerActionMapActions> m_PlayerActionMapActionsCallbackInterfaces = new List<IPlayerActionMapActions>();
     private readonly InputAction m_PlayerActionMap_Move;
     private readonly InputAction m_PlayerActionMap_Jump;
-    private readonly InputAction m_PlayerActionMap_SwapAngel;
-    private readonly InputAction m_PlayerActionMap_SwapDevil;
+    private readonly InputAction m_PlayerActionMap_SwapSet;
     private readonly InputAction m_PlayerActionMap_UseAbility;
     private readonly InputAction m_PlayerActionMap_Escape;
     public struct PlayerActionMapActions
@@ -268,8 +246,7 @@ public partial class @GameplayInputs: IInputActionCollection2, IDisposable
         public PlayerActionMapActions(@GameplayInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_PlayerActionMap_Move;
         public InputAction @Jump => m_Wrapper.m_PlayerActionMap_Jump;
-        public InputAction @SwapAngel => m_Wrapper.m_PlayerActionMap_SwapAngel;
-        public InputAction @SwapDevil => m_Wrapper.m_PlayerActionMap_SwapDevil;
+        public InputAction @SwapSet => m_Wrapper.m_PlayerActionMap_SwapSet;
         public InputAction @UseAbility => m_Wrapper.m_PlayerActionMap_UseAbility;
         public InputAction @Escape => m_Wrapper.m_PlayerActionMap_Escape;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActionMap; }
@@ -287,12 +264,9 @@ public partial class @GameplayInputs: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
-            @SwapAngel.started += instance.OnSwapAngel;
-            @SwapAngel.performed += instance.OnSwapAngel;
-            @SwapAngel.canceled += instance.OnSwapAngel;
-            @SwapDevil.started += instance.OnSwapDevil;
-            @SwapDevil.performed += instance.OnSwapDevil;
-            @SwapDevil.canceled += instance.OnSwapDevil;
+            @SwapSet.started += instance.OnSwapSet;
+            @SwapSet.performed += instance.OnSwapSet;
+            @SwapSet.canceled += instance.OnSwapSet;
             @UseAbility.started += instance.OnUseAbility;
             @UseAbility.performed += instance.OnUseAbility;
             @UseAbility.canceled += instance.OnUseAbility;
@@ -309,12 +283,9 @@ public partial class @GameplayInputs: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
-            @SwapAngel.started -= instance.OnSwapAngel;
-            @SwapAngel.performed -= instance.OnSwapAngel;
-            @SwapAngel.canceled -= instance.OnSwapAngel;
-            @SwapDevil.started -= instance.OnSwapDevil;
-            @SwapDevil.performed -= instance.OnSwapDevil;
-            @SwapDevil.canceled -= instance.OnSwapDevil;
+            @SwapSet.started -= instance.OnSwapSet;
+            @SwapSet.performed -= instance.OnSwapSet;
+            @SwapSet.canceled -= instance.OnSwapSet;
             @UseAbility.started -= instance.OnUseAbility;
             @UseAbility.performed -= instance.OnUseAbility;
             @UseAbility.canceled -= instance.OnUseAbility;
@@ -342,8 +313,7 @@ public partial class @GameplayInputs: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnSwapAngel(InputAction.CallbackContext context);
-        void OnSwapDevil(InputAction.CallbackContext context);
+        void OnSwapSet(InputAction.CallbackContext context);
         void OnUseAbility(InputAction.CallbackContext context);
         void OnEscape(InputAction.CallbackContext context);
     }

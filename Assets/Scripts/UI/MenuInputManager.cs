@@ -8,7 +8,7 @@ public class MenuInputManager : MonoBehaviour
 {
     public static Action<AbilitySetType> SwapFormMenu;
     public static GameplayInputs GameplayInputs;
-    private InputAction _swapToAngel, _swapToDevil, _escape;
+    private InputAction _swapSet, _escape;
 
     [SerializeField] private List<GameObject> _tabs;
     [SerializeField] private GameObject _continueButtonD;
@@ -20,12 +20,10 @@ public class MenuInputManager : MonoBehaviour
         GameplayInputs = new GameplayInputs();
         GameplayInputs.Enable();
 
-        _swapToAngel = GameplayInputs.FindAction("SwapAngel");
-        _swapToDevil = GameplayInputs.FindAction("SwapDevil");
+        _swapSet = GameplayInputs.FindAction("SwapSet");
         _escape = GameplayInputs.FindAction("Escape");
 
-        _swapToAngel.performed += ctx => SwapSpiritForm();
-        _swapToDevil.performed += ctx => SwapSpiritForm();
+        _swapSet.performed += ctx => SwapSpiritForm();
         _escape.performed += ctx => EscapePerformed();
 
         _canSwap = true;
@@ -34,8 +32,7 @@ public class MenuInputManager : MonoBehaviour
     private void OnDisable()
     {
         GameplayInputs.Disable();
-        _swapToAngel.performed -= ctx => SwapSpiritForm();
-        _swapToDevil.performed -= ctx => SwapSpiritForm();
+        _swapSet.performed -= ctx => SwapSpiritForm();
         _escape.performed -= ctx => EscapePerformed();
     }
 

@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
 
     public static GameplayInputs GameplayInputs;
-    private InputAction _move, _jump, _swapToAngel, _swapToDevil, _pause;
+    private InputAction _move, _jump, _swapSets, _pause;
     private float _moveDirection = 0f;
 
     /// <summary>
@@ -61,8 +61,7 @@ public class PlayerController : MonoBehaviour
 
         _move = GameplayInputs.FindAction("Move");
         _jump = GameplayInputs.FindAction("Jump");
-        _swapToAngel = GameplayInputs.FindAction("SwapAngel");
-        _swapToDevil = GameplayInputs.FindAction("SwapDevil");
+        _swapSets = GameplayInputs.FindAction("SwapSet");
         _pause = GameplayInputs.FindAction("Escape");
 
         AbilitySystem.BindUseAbility();
@@ -71,8 +70,7 @@ public class PlayerController : MonoBehaviour
         _move.canceled += ctx => _moveDirection = _move.ReadValue<float>();
 
         _jump.performed += ctx => Jump();
-        _swapToAngel.performed += ctx => SwapSpiritForm();
-        _swapToDevil.performed += ctx => SwapSpiritForm();
+        _swapSets.performed += ctx => SwapSpiritForm();
         _pause.performed += ctx => PausePerformed();
     }
 
@@ -101,8 +99,7 @@ public class PlayerController : MonoBehaviour
         _move.performed -= ctx => _moveDirection = _move.ReadValue<float>();
         _move.canceled -= ctx => _moveDirection = _move.ReadValue<float>();
         _jump.performed -= ctx => Jump();
-        _swapToAngel.performed -= ctx => SwapSpiritForm();
-        _swapToDevil.performed -= ctx => SwapSpiritForm();
+        _swapSets.performed -= ctx => SwapSpiritForm();
 
         _move.performed -= ctx => PlayerAnimController.Instance.PlayMovingAnim();
         _move.canceled -= ctx => PlayerAnimController.Instance.StopMovingAnim();

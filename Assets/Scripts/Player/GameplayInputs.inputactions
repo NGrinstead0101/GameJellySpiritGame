@@ -24,16 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SwapAngel",
-                    "type": "Button",
-                    "id": "23e2dccc-aaaf-4419-a2d6-c8baaed4f1d9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "SwapDevil",
+                    "name": "SwapSet",
                     "type": "Button",
                     "id": "8d376093-d12f-4104-bbfa-a74744f0201d",
                     "expectedControlType": "Button",
@@ -118,23 +109,12 @@
                 },
                 {
                     "name": "",
-                    "id": "ab3983df-5556-43f8-97d6-48895a6c1107",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SwapAngel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "652dfb5f-683c-44f8-bc26-f33a6b6a944d",
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SwapDevil",
+                    "action": "SwapSet",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
