@@ -10,9 +10,12 @@ public class CanvasBehavior : MonoBehaviour
     [SerializeField] private GameObject _pauseMenu;
     private Animator _anim;
 
+    private bool _hasStarted = false;
+
     private void Start()
     {
         _anim = GetComponent<Animator>();
+        _hasStarted = false;
         if(GameManager.Instance.GetCurrentGameState() != GameManager.GameState.menu)
         {
             UIAssetManager.SwitchAssets?.Invoke(GameManager.ActiveAbilitySetType);
@@ -30,22 +33,6 @@ public class CanvasBehavior : MonoBehaviour
     {
         UIAssetManager.BlackFade -= TriggerBlackFadeAnim;
         GameManager.PauseAction -= SetPauseMenu;
-    }
-
-    /// <summary>
-    /// Sets the fade to black image to on/off, 1/0. Called by animation event
-    /// </summary>
-    /// <param name="input"></param> om = 1, off = 0
-    public void EnableFTB(int input)
-    {
-        if(input == 1) 
-        {
-            _fadeToBlack.SetActive(true);
-        }
-        else
-        {
-            _fadeToBlack.SetActive(false);
-        }
     }
 
     /// <summary>
@@ -81,7 +68,11 @@ public class CanvasBehavior : MonoBehaviour
 
     public void ResumeGame()
     {
-        GameManager.Instance.ChangeGameState(GameManager.GameState.level);
+        if(!_hasStarted)
+        {
+            _hasStarted = true;
+            GameManager.Instance.ChangeGameState(GameManager.GameState.level);    
+        }    
     }
 
     public void LoadFirstLevel()
@@ -96,6 +87,7 @@ public class CanvasBehavior : MonoBehaviour
 
     public void GoToMainMenu()
     {
+        _hasStarted = false;
         GameManager.Instance.ChangeGameState(GameManager.GameState.menu);
     }
 

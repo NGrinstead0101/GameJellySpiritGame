@@ -74,22 +74,6 @@ public class PlayerController : MonoBehaviour
         _pause.performed += ctx => PausePerformed();
     }
 
-
-    private void Start()
-    {
-        /*//set player spirit form
-        if (GameManager.ActiveAbilitySetType == AbilitySetType.Devil)
-        {
-            _currentForm = false;
-            SwapForm?.Invoke(AbilitySetType.Devil);
-        }
-        else
-        {
-            _currentForm = true;
-            SwapForm?.Invoke(AbilitySetType.Angel);
-        }*/
-    }
-
     /// <summary>
     /// Unregisters input callbacks
     /// </summary>
