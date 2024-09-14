@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class MenuInputManager : MonoBehaviour
 {
+    public static Action<AbilitySetType> SwapFormMenu;
     public static GameplayInputs GameplayInputs;
     private InputAction _swapToAngel, _swapToDevil, _escape;
 
@@ -67,6 +68,7 @@ public class MenuInputManager : MonoBehaviour
                 SfxManager.Instance.PlaySFX("AngelMenuSwitch");
             }
             UIAssetManager.SwitchAssets?.Invoke(GameManager.ActiveAbilitySetType);
+            SwapFormMenu?.Invoke(GameManager.ActiveAbilitySetType);
         }
     }
 

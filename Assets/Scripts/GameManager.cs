@@ -225,6 +225,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(index);
 
         yield return new WaitForSeconds(0.5f);
+
         //sets ability type for tutorial levels
         if (index == 1)
         {
