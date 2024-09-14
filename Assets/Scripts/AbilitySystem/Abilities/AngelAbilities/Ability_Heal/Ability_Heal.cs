@@ -21,8 +21,9 @@ public class Ability_Heal : Ability
 
     private AngelAnimations _animationController;
 
-    private void Start()
+    protected override void Initialize()
     {
+        base.Initialize();
         _animationController = AngelAnimations.Instance;
     }
 
@@ -36,6 +37,7 @@ public class Ability_Heal : Ability
                 if (_animationController != null)
                     _animationController.SetClickTrigger("LeftClick");
 
+                Debug.Log("CastHealing");
                 base.CastAbility();
                 StartCoroutine(StartHealing());            
             }
@@ -54,6 +56,7 @@ public class Ability_Heal : Ability
     {
         if (_isHealing)
         {
+            Debug.Log("CancelHealing");
             base.CancelAbility();
             _isHealing = false;
         }
