@@ -16,11 +16,6 @@ public class BackgroundMusicManager : MonoBehaviour
     [SerializeField] private GameObject _menuMusic;
     private AudioSource _menuMusicSource;
 
-    [SerializeField] private GameObject _angelMusic;
-    private AudioSource _angelMusicSource;
-    [SerializeField] private GameObject _devilMusic;
-    private AudioSource _devilMusicSource;
-
     [SerializeField] private float _angelDevilTransitionTime;
     [SerializeField] private float _backTrackTransitionTime;
 
@@ -43,11 +38,7 @@ public class BackgroundMusicManager : MonoBehaviour
     [SerializeField] private GameObject _devilPauseGO;
     AudioSource _devilPause;
 
-    [SerializeField] private List<AudioSource> _angelDevilClips = new List<AudioSource>();
-
     public static BackgroundMusicManager Instance { get; private set; }
-
-    
 
     private void Awake()
     {
@@ -68,8 +59,6 @@ public class BackgroundMusicManager : MonoBehaviour
         _levelMusicSource = _levelMusic.GetComponent<AudioSource>();
         _pauseMusicSource = _pauseMusic.GetComponent<AudioSource>();
         _menuMusicSource = _menuMusic.GetComponent<AudioSource>();
-        _angelMusicSource = _angelMusic.GetComponent<AudioSource>();
-        _devilMusicSource = _devilMusic.GetComponent<AudioSource>();
 
         _angelMenu = _angelMenuGO.GetComponent<AudioSource>();
         _angelLevel = _angelLevelGO.GetComponent<AudioSource>();
@@ -169,6 +158,7 @@ public class BackgroundMusicManager : MonoBehaviour
         float start = audioSource.volume;
         while (currentTime < duration)
         {
+            print(audioSource.volume);
             currentTime += Time.deltaTime;
             audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
             yield return null;
