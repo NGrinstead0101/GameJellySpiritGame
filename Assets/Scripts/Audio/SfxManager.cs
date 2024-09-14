@@ -104,20 +104,4 @@ public class SfxManager : MonoBehaviour
 
         yield break;
     }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            PlaySFX("Healing");
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            FadeInSFX("Healing");
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            FadeOutSFX("Healing");
-        }
-    }
 }
