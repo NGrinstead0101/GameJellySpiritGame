@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     public static Action<bool> PauseAction;
 
-    private AbilitySetType _currentAbilityType;
+    public static AbilitySetType ActiveAbilitySetType = AbilitySetType.Angel;
 
     public static GameManager Instance { get; private set; }
 
@@ -55,28 +55,9 @@ public class GameManager : MonoBehaviour
         _numberOfLevels = SceneManager.sceneCountInBuildSettings - 1;
     }
 
-    private void OnEnable()
-    {
-        PlayerController.SwapForm += SetCurrentAbilityType;
-    }
-    private void OnDisable()
-    {
-        PlayerController.SwapForm -= SetCurrentAbilityType;
-    }
-
     public GameState GetCurrentGameState()
     {
         return _currentGameState;
-    }
-
-    public AbilitySetType GetCurrentAbilityType()
-    {
-        return _currentAbilityType;
-    }
-
-    private void SetCurrentAbilityType(AbilitySetType type)
-    {
-        _currentAbilityType = type;
     }
 
     /// <summary>
@@ -173,16 +154,15 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void LoadFirstLevel()
     {
-        //if(_currentAbilityType == AbilitySetType.Angel)
-        //{
-            //load angel scene
+        if(GameManager.ActiveAbilitySetType == AbilitySetType.Angel)
+        {
             StartCoroutine(LoadScene(1));
-        //}
-        //else
-        //{
-        //    //load devil scene
-        //    StartCoroutine(LoadScene(2));
-        //}
+        }
+        else
+        {
+            //load devil scene
+            StartCoroutine(LoadScene(2));
+        }
 
         _currentGameState = GameState.level;
         BackgroundMusicManager.Instance.SwitchBackTrack(GameState.menu, GameState.level);
@@ -240,14 +220,14 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         UIAssetManager.BlackFade?.Invoke(true);
 
-        //sets avility type for tutorial levels
+        //sets ability type for tutorial levels
         if (index == 1)
         {
-            SetCurrentAbilityType(AbilitySetType.Angel);
+            PlayerController.SwapForm?.Invoke(AbilitySetType.Angel);
         }
         else if (index == 2)
         {
-            SetCurrentAbilityType(AbilitySetType.Devil);
+            PlayerController.SwapForm?.Invoke(AbilitySetType.Devil);
         }
 
         yield return new WaitForSeconds(_sceneTransitionTime);
