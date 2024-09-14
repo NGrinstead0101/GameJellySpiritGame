@@ -15,7 +15,7 @@ public class CanvasBehavior : MonoBehaviour
         _anim = GetComponent<Animator>();
         if(GameManager.Instance.GetCurrentGameState() != GameManager.GameState.menu)
         {
-            UIAssetManager.SwitchAssets?.Invoke(GameManager.Instance.GetCurrentAbilityType());
+            UIAssetManager.SwitchAssets?.Invoke(GameManager.ActiveAbilitySetType);
         }
     }
 
@@ -102,7 +102,7 @@ public class CanvasBehavior : MonoBehaviour
     public void PlayUISound()
     {
 
-        if (GameManager.Instance.GetCurrentAbilityType() == AbilitySetType.Angel)
+        if (GameManager.ActiveAbilitySetType == AbilitySetType.Angel)
         {
             SfxManager.Instance.PlaySFX("MenuUIAngel");
         }
