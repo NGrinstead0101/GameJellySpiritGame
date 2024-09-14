@@ -6,12 +6,16 @@ using UnityEngine.Events;
 public class EnemyStateMachine : MonoBehaviour
 {
     public static Action EnemyDied;
+    public static Action DealtDamage;
 
     [SerializeField] private GameObject torchPrefab;
     [SerializeField] private bool shouldSpawnTorch = false;
     [SerializeField] private GameObject _hitVfxObject;
     [SerializeField] private GameObject _deathVfxObject;
+    [SerializeField] private BoxCollider2D _attackHitbox;
 
+    bool _hitOnce = false;
+    private bool _canHitPlayer = false;
     private SfxManager _sfxManager;
     private SpriteRenderer _spriteRenderer;
     private ParticleSystem _hitVfxSystem;
@@ -212,6 +216,9 @@ public class EnemyStateMachine : MonoBehaviour
     }
     public bool GetNextToPlayer()
     {
+        if (Vector2.Distance(transform.position, GetPlayerLocation()) > 3f)
+            isNextToPlayer = false;
+
         return isNextToPlayer;
     }
     public bool IsFacingPlayer()
@@ -344,7 +351,12 @@ public class EnemyStateMachine : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player") && _canHitPlayer && !_hitOnce)
+        {
+            _hitOnce = true;
+            DealtDamage?.Invoke();
+        }
+        else if (other.gameObject.CompareTag("Player"))
         {
             ChangeIsNextToPlayer(true);
         }
@@ -356,11 +368,6 @@ public class EnemyStateMachine : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            ChangeIsNextToPlayer(false);
-        }
-
         if (other.CompareTag("Ground"))
         {
             isNearLedge = true;
@@ -385,5 +392,19 @@ public class EnemyStateMachine : MonoBehaviour
     private void OnDisable()
     {
         SetDeathVfxSystem(false);
+    }
+
+    public void EnableHitCollider()
+    {
+        PlaySfx("EnemyAttack");
+        _attackHitbox.enabled = true;
+        _canHitPlayer = true;
+        _hitOnce = false;
+    }
+
+    public void DisableHitCollider()
+    {
+        _attackHitbox.enabled = false;
+        _canHitPlayer = false;
     }
 }

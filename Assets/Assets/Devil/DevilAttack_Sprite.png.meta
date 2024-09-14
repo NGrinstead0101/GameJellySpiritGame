@@ -105,7 +105,7 @@ TextureImporter:
         width: 1500
         height: 738
       alignment: 9
-      pivot: {x: 0.5, y: 0.55}
+      pivot: {x: 0.45, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -121,12 +121,12 @@ TextureImporter:
       name: DevilAttack_Sprite_1
       rect:
         serializedVersion: 2
-        x: 1500
+        x: 1496
         y: 0
         width: 1500
         height: 738
       alignment: 9
-      pivot: {x: 0.5, y: 0.55}
+      pivot: {x: 0.45, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -142,12 +142,12 @@ TextureImporter:
       name: DevilAttack_Sprite_2
       rect:
         serializedVersion: 2
-        x: 3000
+        x: 3002
         y: 0
         width: 1500
         height: 738
       alignment: 9
-      pivot: {x: 0.5, y: 0.55}
+      pivot: {x: 0.45, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,7 +168,7 @@ TextureImporter:
         width: 1500
         height: 738
       alignment: 9
-      pivot: {x: 0.5, y: 0.55}
+      pivot: {x: 0.45, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,7 +189,7 @@ TextureImporter:
         width: 1500
         height: 738
       alignment: 9
-      pivot: {x: 0.5, y: 0.55}
+      pivot: {x: 0.45, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -210,7 +210,7 @@ TextureImporter:
         width: 1500
         height: 738
       alignment: 9
-      pivot: {x: 0.5, y: 0.55}
+      pivot: {x: 0.45, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

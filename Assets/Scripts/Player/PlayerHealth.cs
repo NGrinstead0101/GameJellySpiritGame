@@ -18,6 +18,10 @@ public class PlayerHealth : MonoBehaviour
     public static Action TakeDamageAction;
     public static Action DeathAction;
 
+    [SerializeField] private Sprite _devilHeart;
+    [SerializeField] private Sprite _angelHeart;
+    [SerializeField] private Sprite _emptyHeart;
+
     [SerializeField] private GameObject _heartPrefab;
     [SerializeField] private Transform _healthBar;
     [SerializeField] private Image _deathFadeOutImage;
@@ -27,6 +31,9 @@ public class PlayerHealth : MonoBehaviour
     //private int _totalHealth;
     public int CurrentHealth { get; private set; }
     private List<Image> _hearts = new List<Image>();
+
+    private GameManager _gameManager;
+    private PlayerController _playerController;
 
     private const float StartingHeartPos = -345f;
     private const float ChangeInHeartPos = 40f;
@@ -59,8 +66,31 @@ public class PlayerHealth : MonoBehaviour
             Destroy(this);
         }
     
-        EnemyState.DealtDamage += TakeDamage;
+        EnemyStateMachine.DealtDamage += TakeDamage;
         // TODO: register heal action here
+    }
+
+    private void Start()
+    {
+        _gameManager = GameManager.Instance;
+        UpdateHeartAppearance(_gameManager.GetCurrentAbilityType());
+
+        PlayerController.SwapForm += UpdateHeartAppearance;
+    }
+
+    private void UpdateHeartAppearance(AbilitySetType form)
+    {
+        for (int i = 0; i < _hearts.Count; ++i)
+        {
+            if (i >= CurrentHealth)
+            {
+                _hearts[i].GetComponent<Image>().sprite = _emptyHeart;
+            }
+            else
+            {
+                _hearts[i].GetComponent<Image>().sprite = form == AbilitySetType.Angel ? _angelHeart : _devilHeart;
+            }
+        }
     }
 
     /// <summary>
@@ -68,7 +98,7 @@ public class PlayerHealth : MonoBehaviour
     /// </summary>
     private void OnDisable()
     {
-        //TODO: unregister from damage and heal action here
+        EnemyStateMachine.DealtDamage -= TakeDamage;
     }
 
     /// <summary>
@@ -94,7 +124,7 @@ public class PlayerHealth : MonoBehaviour
         // Update health bar
         if (CurrentHealth > 0 && CurrentHealth <= _hearts.Count)
         {
-            _hearts[CurrentHealth - 1].enabled = false;
+            _hearts[CurrentHealth - 1].GetComponent<Image>().sprite = _emptyHeart;
 
             CurrentHealth--;
 
@@ -122,11 +152,14 @@ public class PlayerHealth : MonoBehaviour
             CurrentHealth = MaxHealth;
         }
 
-        // Update health bar
-        for (int i = 0; i < CurrentHealth && i < _hearts.Count; ++i)
-        {
-            _hearts[i].enabled = true;
-        }
+        AbilitySetType form = _gameManager.GetCurrentAbilityType();
+        UpdateHeartAppearance(form);
+
+        //// Update health bar
+        //for (int i = 0; i < CurrentHealth && i < _hearts.Count; ++i)
+        //{
+        //    _hearts[i].GetComponent<SpriteRenderer>().sprite = form == AbilitySetType.Angel ? : _angelHeart 
+        //}
     }
 
     /// <summary>
@@ -152,7 +185,13 @@ public class PlayerHealth : MonoBehaviour
 
         Time.timeScale = 1f;
 
-        // TODO: replace these two lines once a scene manager is built
+        ReloadScene();
+    }
+
+    private void ReloadScene()
+    {
+        StopAllCoroutines();
+
         Scene tempScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(tempScene.name);
     }
