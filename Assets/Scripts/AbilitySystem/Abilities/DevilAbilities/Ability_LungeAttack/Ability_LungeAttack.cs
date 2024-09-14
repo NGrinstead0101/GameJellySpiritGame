@@ -29,8 +29,10 @@ public class Ability_LungeAttack : Ability
 
     private DevilAnimations _animationController;
 
-    private void Start()
+    protected override void Initialize()
     {
+        base.Initialize();
+
         _hitBoxCollider = GetComponent<Collider2D>();
         _baseHitboxOffset = _hitBoxCollider.offset;
         _hitBoxCollider.enabled = false;

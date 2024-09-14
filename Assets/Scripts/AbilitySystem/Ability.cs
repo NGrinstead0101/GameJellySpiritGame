@@ -13,10 +13,16 @@ public class Ability : MonoBehaviour
 
     protected bool _canCast = true;
 
-    private void Start()
+    protected void Start()
+    {
+        Initialize();
+    }
+
+    protected virtual void Initialize()
     {
         _cooldown = _abilityInformation.Cooldown;
-        _vfxParticleSystem = _vfxObject.GetComponent<ParticleSystem>();
+        if (_vfxObject != null)
+            _vfxParticleSystem = _vfxObject.GetComponent<ParticleSystem>();
 
         SetParticleSystem(false);
     }
