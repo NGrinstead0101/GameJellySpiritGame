@@ -8550,7 +8550,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5091606040929702433, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5111449991368603484, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
       propertyPath: m_IsActive
@@ -8568,6 +8568,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6357572460782156258, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6579890557105095439, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
       propertyPath: _angelLightDistance
       value: 2
@@ -8582,6 +8586,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6579890557105095439, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
       propertyPath: _devilSpeedModifier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7022193161658451036, guid: 8841bb4a76d33d349bcc1257d5d6cf31, type: 3}
+      propertyPath: m_Intensity
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
