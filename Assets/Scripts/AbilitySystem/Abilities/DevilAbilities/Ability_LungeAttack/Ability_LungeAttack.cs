@@ -51,6 +51,7 @@ public class Ability_LungeAttack : Ability
                 _animationController.SetClickTrigger("LeftClick");
 
             base.CastAbility();
+            SfxManager.Instance.PlaySFX("DevilAttack");
 
             //Debug.Log(_abilityInformation.name + " Child Casted");
             if (_hitBoxCollider != null)
