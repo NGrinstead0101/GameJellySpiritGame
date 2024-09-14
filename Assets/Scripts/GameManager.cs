@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
         }
         LoadScene(0);
         _currentGameState = GameState.menu;
-        BackgroundMusicManager.Instance.RestartBackTracks();
+        //BackgroundMusicManager.Instance.RestartBackTracks();
 
         BackgroundMusicManager.Instance.SwitchBackTrack(GameState.level, GameState.menu);
     }
@@ -166,7 +166,7 @@ public class GameManager : MonoBehaviour
 
         _currentGameState = GameState.level;
         BackgroundMusicManager.Instance.SwitchBackTrack(GameState.menu, GameState.level);
-        BackgroundMusicManager.Instance.RestartBackTracks();
+        //BackgroundMusicManager.Instance.RestartBackTracks();
     }
 
     /// <summary>
@@ -227,14 +227,14 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         //sets ability type for tutorial levels
-        if (index == 1)
-        {
-            PlayerController.SwapForm?.Invoke(AbilitySetType.Angel);
-        }
-        else if (index == 2)
-        {
-            PlayerController.SwapForm?.Invoke(AbilitySetType.Devil);
-        }
+        //if (index == 1)
+        //{
+        //    PlayerController.SwapForm?.Invoke(AbilitySetType.Angel);
+        //}
+        //else if (index == 2)
+        //{
+        //    PlayerController.SwapForm?.Invoke(AbilitySetType.Devil);
+        //}
 
         yield return new WaitForSeconds(_sceneTransitionTime);
 

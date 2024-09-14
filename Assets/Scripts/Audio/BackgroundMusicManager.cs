@@ -216,20 +216,20 @@ public class BackgroundMusicManager : MonoBehaviour
         }
     }
 
-    public void RestartBackTracks()
-    {
-        print("reset");
-        _menuMusicSource.Play();
-        _pauseMusicSource.Play();
-        _levelMusicSource.Play();
+    //public void RestartBackTracks()
+    //{
+    //    print("reset");
+    //    _menuMusicSource.Play();
+    //    _pauseMusicSource.Play();
+    //    _levelMusicSource.Play();
 
-        _angelMenu.Play();
-        _angelLevel.Play();
-        _angelPause.Play();
-        _devilMenu.Play();
-        _devilLevel.Play();
-        _devilPause.Play();
-    }
+    //    _angelMenu.Play();
+    //    _angelLevel.Play();
+    //    _angelPause.Play();
+    //    _devilMenu.Play();
+    //    _devilLevel.Play();
+    //    _devilPause.Play();
+    //}
 
     #endregion
 
