@@ -1197,7 +1197,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3361806047837134979, guid: 1728de99c2cc34b4e99fd6e8b0e54001, type: 3}
       propertyPath: _fadeOutDuration
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5165279512945389003, guid: 1728de99c2cc34b4e99fd6e8b0e54001, type: 3}
       propertyPath: m_LocalPosition.x
