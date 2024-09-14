@@ -158,8 +158,9 @@ public class PlayerHealth : MonoBehaviour
             }
 
             DeathAction?.Invoke();
-            //Time.timeScale = 0;
-            StartCoroutine(nameof(DeathFadeOutTimer));
+
+            GameManager.Instance.ResetCurrentScene();
+            //StartCoroutine(nameof(DeathFadeOutTimer));
         }
     }
 
@@ -177,12 +178,6 @@ public class PlayerHealth : MonoBehaviour
 
         AbilitySetType form = GameManager.ActiveAbilitySetType;
         UpdateHeartAppearance(form);
-
-        //// Update health bar
-        //for (int i = 0; i < CurrentHealth && i < _hearts.Count; ++i)
-        //{
-        //    _hearts[i].GetComponent<SpriteRenderer>().sprite = form == AbilitySetType.Angel ? : _angelHeart 
-        //}
     }
 
     /// <summary>
@@ -213,9 +208,6 @@ public class PlayerHealth : MonoBehaviour
 
     private void ReloadScene()
     {
-        StopAllCoroutines();
-
-        Scene tempScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(tempScene.name);
+        GameManager.Instance.ResetCurrentScene();
     }
 }
