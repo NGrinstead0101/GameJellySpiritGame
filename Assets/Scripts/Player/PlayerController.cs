@@ -33,7 +33,6 @@ public class PlayerController : MonoBehaviour
     private bool _canJump = true;
     private bool _jumpQueued = false;
 
-    private bool _currentForm = true;
 
     public static GameplayInputs GameplayInputs;
     private InputAction _move, _jump, _swapToAngel, _swapToDevil, _pause;
@@ -55,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
         _rb = GetComponent<Rigidbody2D>();
         _characterLight = GetComponent<Light2D>();
-        _characterLight.pointLightOuterRadius = _currentForm ? _angelLightDistance : _devilLightDistance;
+        _characterLight.pointLightOuterRadius = (GameManager.ActiveAbilitySetType == AbilitySetType.Angel) ? _angelLightDistance : _devilLightDistance;
 
         GameplayInputs = new GameplayInputs();
         GameplayInputs.Enable();
@@ -67,7 +66,6 @@ public class PlayerController : MonoBehaviour
         _pause = GameplayInputs.FindAction("Escape");
 
         AbilitySystem.BindUseAbility();
-        PlayerAnimController.Instance.BindAnims();
 
         _move.performed += ctx => _moveDirection = _move.ReadValue<float>();
         _move.canceled += ctx => _moveDirection = _move.ReadValue<float>();
@@ -81,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        //set player spirit form
+        /*//set player spirit form
         if (GameManager.ActiveAbilitySetType == AbilitySetType.Devil)
         {
             _currentForm = false;
@@ -91,7 +89,7 @@ public class PlayerController : MonoBehaviour
         {
             _currentForm = true;
             SwapForm?.Invoke(AbilitySetType.Angel);
-        }
+        }*/
     }
 
     /// <summary>
@@ -117,7 +115,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         // Determine horizontal velocity
-        if (_currentForm)
+        if (GameManager.ActiveAbilitySetType == AbilitySetType.Angel)
         {
             _horizVelocity = _baseSpeed * _angelSpeedModifier * _moveDirection;
         }
@@ -140,7 +138,7 @@ public class PlayerController : MonoBehaviour
         if (_jumpQueued)
         {
             _jumpQueued = false;
-            float modifiedJumpSpeed = _currentForm ? _jumpSpeed * _angelSpeedModifier : _jumpSpeed * _devilSpeedModifier;
+            float modifiedJumpSpeed = GameManager.ActiveAbilitySetType == AbilitySetType.Angel ? _jumpSpeed * _angelSpeedModifier : _jumpSpeed * _devilSpeedModifier;
             _rb.velocity = new Vector2(_horizVelocity, modifiedJumpSpeed);
         }
         else
@@ -154,7 +152,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void SwapSpiritForm()
     {
-        if(_currentForm)
+        if(GameManager.ActiveAbilitySetType == AbilitySetType.Angel)
         {
             SwapForm?.Invoke(AbilitySetType.Devil);
         }
@@ -164,7 +162,6 @@ public class PlayerController : MonoBehaviour
         }
 
         SfxManager.Instance.PlaySFX("LevelSwitch");
-        _currentForm = !_currentForm;
         StopAllCoroutines();
         StartCoroutine(nameof(LerpLightDistance));        
     }
@@ -175,7 +172,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator LerpLightDistance()
     {
         float startingDistance = _characterLight.pointLightOuterRadius;
-        float targetDistance = _currentForm ? _angelLightDistance : _devilLightDistance;
+        float targetDistance = GameManager.ActiveAbilitySetType == AbilitySetType.Angel ? _angelLightDistance : _devilLightDistance;
         float timeWaited = 0f;
 
         while (timeWaited < _lightTransitionTime)
@@ -188,7 +185,7 @@ public class PlayerController : MonoBehaviour
                 Mathf.Lerp(startingDistance, targetDistance, timeWaited / _lightTransitionTime);
         }
 
-        _characterLight.pointLightOuterRadius = _currentForm ? _angelLightDistance : _devilLightDistance;
+        _characterLight.pointLightOuterRadius = GameManager.ActiveAbilitySetType == AbilitySetType.Angel ? _angelLightDistance : _devilLightDistance;
     }
 
     /// <summary>
@@ -196,7 +193,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void UpdateHorizVelocity()
     {
-        if (_currentForm)
+        if (GameManager.ActiveAbilitySetType == AbilitySetType.Angel)
         {
             _horizVelocity = _baseSpeed * _angelSpeedModifier * _moveDirection;
         }
