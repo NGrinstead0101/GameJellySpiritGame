@@ -697,7 +697,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7775457896253040447, guid: d552db4df82f6524faa723b6217f65e9, type: 3}
       propertyPath: m_Intensity
-      value: 2.9361284
+      value: 3.0476928
       objectReference: {fileID: 0}
     - target: {fileID: 7775457896312314820, guid: d552db4df82f6524faa723b6217f65e9, type: 3}
       propertyPath: m_LocalScale.x
@@ -717,7 +717,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7775457896312314820, guid: d552db4df82f6524faa723b6217f65e9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.77
+      value: -7.62
       objectReference: {fileID: 0}
     - target: {fileID: 7775457896312314820, guid: d552db4df82f6524faa723b6217f65e9, type: 3}
       propertyPath: m_ConstrainProportionsScale

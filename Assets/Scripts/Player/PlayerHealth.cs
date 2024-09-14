@@ -73,7 +73,7 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         _gameManager = GameManager.Instance;
-        UpdateHeartAppearance(_gameManager.GetCurrentAbilityType());
+        UpdateHeartAppearance(GameManager.ActiveAbilitySetType);
 
         PlayerController.SwapForm += UpdateHeartAppearance;
     }
@@ -157,7 +157,7 @@ public class PlayerHealth : MonoBehaviour
             CurrentHealth = MaxHealth;
         }
 
-        AbilitySetType form = _gameManager.GetCurrentAbilityType();
+        AbilitySetType form = GameManager.ActiveAbilitySetType;
         UpdateHeartAppearance(form);
 
         //// Update health bar

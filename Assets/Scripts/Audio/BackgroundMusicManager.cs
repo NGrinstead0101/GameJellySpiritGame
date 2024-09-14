@@ -121,7 +121,7 @@ public class BackgroundMusicManager : MonoBehaviour
                 case GameManager.GameState.menu:
                     //devil menu on
                     print(GameManager.Instance.GetCurrentGameState());
-                    print(GameManager.Instance.GetCurrentAbilityType());
+                    print(GameManager.ActiveAbilitySetType);
                     StartCoroutine(StartFade(_angelMenu, 0, _angelDevilTransitionTime));
                     StartCoroutine(StartFade(_devilMenu, 1, _angelDevilTransitionTime));
                     StartCoroutine(StartFade(_devilLevel, 0, _angelDevilTransitionTime));
@@ -174,7 +174,7 @@ public class BackgroundMusicManager : MonoBehaviour
         StartCoroutine(StartFade(EnumToClip(from), 0, _backTrackTransitionTime));
         StartCoroutine(StartFade(EnumToClip(to), 1, _backTrackTransitionTime));
 
-        SwitchDynamicMusic(GameManager.Instance.GetCurrentAbilityType());
+        SwitchDynamicMusic(GameManager.ActiveAbilitySetType);
     }
 
     public void SwitchBackTrackLoad(GameManager.GameState from, GameManager.GameState to)

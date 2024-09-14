@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 0ac874b8f168299459f49f9a0d2e6760
+<<<<<<<< HEAD:Assets/Scenes/TestScenes/DevilTutorial.unity.meta
+guid: cb9ec9111cd4251478781816a8c2d249
+========
+guid: f7d8a4badbddef844865e0e2cf1905cd
+>>>>>>>> main:Assets/Scenes/Angel Tutorial Level.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
