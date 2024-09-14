@@ -220,6 +220,11 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         UIAssetManager.BlackFade?.Invoke(true);
 
+        yield return new WaitForSeconds(_sceneTransitionTime);
+
+        SceneManager.LoadScene(index);
+
+        yield return new WaitForSeconds(0.5f);
         //sets ability type for tutorial levels
         if (index == 1)
         {
@@ -232,11 +237,8 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(_sceneTransitionTime);
 
-        SceneManager.LoadScene(index);
-
-        yield return new WaitForSeconds(_sceneTransitionTime);
-
         UIAssetManager.BlackFade?.Invoke(false);
+        PlayerAnimController.Instance.BindAnims();
     }
 
     public void ResetCurrentScene()

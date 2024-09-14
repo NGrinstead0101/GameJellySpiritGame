@@ -67,7 +67,6 @@ public class PlayerController : MonoBehaviour
         _pause = GameplayInputs.FindAction("Escape");
 
         AbilitySystem.BindUseAbility();
-        PlayerAnimController.Instance.BindAnims();
 
         _move.performed += ctx => _moveDirection = _move.ReadValue<float>();
         _move.canceled += ctx => _moveDirection = _move.ReadValue<float>();
@@ -81,7 +80,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        //set player spirit form
+        /*//set player spirit form
         if (GameManager.ActiveAbilitySetType == AbilitySetType.Devil)
         {
             _currentForm = false;
@@ -91,7 +90,7 @@ public class PlayerController : MonoBehaviour
         {
             _currentForm = true;
             SwapForm?.Invoke(AbilitySetType.Angel);
-        }
+        }*/
     }
 
     /// <summary>
