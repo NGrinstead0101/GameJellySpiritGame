@@ -165,7 +165,9 @@ public class PlayerController : MonoBehaviour
 
         _currentForm = !_currentForm;
         StopAllCoroutines();
-        StartCoroutine(nameof(LerpLightDistance));        
+        StartCoroutine(nameof(LerpLightDistance));
+
+        SfxManager.Instance.PlaySFX("LevelSwitch");
     }
 
     /// <summary>

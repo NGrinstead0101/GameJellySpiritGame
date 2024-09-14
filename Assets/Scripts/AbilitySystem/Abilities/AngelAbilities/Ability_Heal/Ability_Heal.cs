@@ -56,6 +56,7 @@ public class Ability_Heal : Ability
         {
             base.CancelAbility();
             _isHealing = false;
+            SfxManager.Instance.FadeOutSFX("Healing");
         }
     }
 
@@ -66,6 +67,7 @@ public class Ability_Heal : Ability
     {
         _isHealing = true;
         _amountHealed = 0;
+        SfxManager.Instance.FadeInSFX("Healing");
 
         while (_isHealing)
         {

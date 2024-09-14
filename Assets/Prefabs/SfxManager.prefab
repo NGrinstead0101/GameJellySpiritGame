@@ -212,4 +212,4 @@ MonoBehaviour:
     doLoop: 0
     source: {fileID: 0}
   _fadeInDuration: 1
-  _fadeOutDuration: 3
+  _fadeOutDuration: 2
