@@ -166,7 +166,6 @@ public class GameManager : MonoBehaviour
 
         _currentGameState = GameState.level;
         BackgroundMusicManager.Instance.SwitchBackTrack(GameState.menu, GameState.level);
-        //BackgroundMusicManager.Instance.RestartBackTracks();
     }
 
     /// <summary>
@@ -272,14 +271,6 @@ public class GameManager : MonoBehaviour
         LoadMainMenu();
     }    
 
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.P))
-        {
-            //StartCoroutine(LoadScene(1));
-            _currentGameState = GameState.level;
-        }
-    }
 
     #endregion
 }
