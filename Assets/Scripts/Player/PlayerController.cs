@@ -162,6 +162,7 @@ public class PlayerController : MonoBehaviour
             SwapForm?.Invoke(AbilitySetType.Angel);
         }
 
+        SfxManager.Instance.PlaySFX("LevelSwitch");
         _currentForm = !_currentForm;
         StopAllCoroutines();
         StartCoroutine(nameof(LerpLightDistance));        
