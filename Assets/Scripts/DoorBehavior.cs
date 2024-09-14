@@ -58,6 +58,7 @@ public class DoorBehavior : MonoBehaviour
 
         if (!_isLocked)
         {
+            SfxManager.Instance.PlaySFX("DoorOpening");
             _spriteRenderer.sprite = _unlockedDoorSprite;
         }
     }

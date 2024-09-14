@@ -39,7 +39,8 @@ public class Ability_Heal : Ability
 
                 Debug.Log("CastHealing");
                 base.CastAbility();
-                StartCoroutine(StartHealing());            
+                StartCoroutine(StartHealing());
+                SfxManager.Instance.PlaySFX("Healing");
             }
         }
         else
@@ -54,6 +55,8 @@ public class Ability_Heal : Ability
     /// </summary>
     public override void CancelAbility()
     {
+        SfxManager.Instance.StopSFX("Healing");
+
         if (_isHealing)
         {
             Debug.Log("CancelHealing");

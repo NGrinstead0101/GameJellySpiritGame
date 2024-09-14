@@ -381,7 +381,8 @@ public class EnemyStateMachine : MonoBehaviour
 
     public void PlaySfx(string sfxName)
     {
-        _sfxManager.PlaySFX(sfxName);
+        if (_sfxManager != null)
+            _sfxManager.PlaySFX(sfxName);
     }
 
     public void SpotPlayer()
