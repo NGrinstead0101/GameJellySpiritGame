@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         //set player spirit form
-        if (GameManager.Instance.GetCurrentAbilityType() == AbilitySetType.Devil)
+        if (GameManager.ActiveAbilitySetType == AbilitySetType.Devil)
         {
             _currentForm = false;
             SwapForm?.Invoke(AbilitySetType.Devil);

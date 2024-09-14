@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -43,7 +44,7 @@ public class AbilitySystem : MonoBehaviour
     AbilitySet _devilAbilitySet = new AbilitySet(AbilitySetType.Devil);
 
     // Current active ability set
-    private static AbilitySet _activeAbilitySet;
+    public static AbilitySet ActiveAbilitySet;
 
     private static InputAction _castAbility = null;
 
@@ -123,7 +124,8 @@ public class AbilitySystem : MonoBehaviour
         {
             case AbilitySetType.Angel:
                 {
-                    _activeAbilitySet = _angelAbilitySet;
+                    ActiveAbilitySet = _angelAbilitySet;
+                    GameManager.ActiveAbilitySetType = AbilitySetType.Angel;
 
                     _castAbility.canceled += ctx => CancelAbility(0);
 
@@ -132,7 +134,9 @@ public class AbilitySystem : MonoBehaviour
                 }
             case AbilitySetType.Devil:
                 {
-                    _activeAbilitySet = _devilAbilitySet;
+                    ActiveAbilitySet = _devilAbilitySet;
+                    GameManager.ActiveAbilitySetType = AbilitySetType.Devil;
+
                     Debug.Log("SwitchedToDevil");
                     break;
                 }
@@ -145,11 +149,11 @@ public class AbilitySystem : MonoBehaviour
     /// <param name="numAbility">num ability being cast</param>
     private static void CastAbility(int numAbility)
     {
-        _activeAbilitySet.Abilities[numAbility].CastAbility();
+        ActiveAbilitySet.Abilities[numAbility].CastAbility();
     }
 
     private static void CancelAbility(int numAbility)
     {
-        _activeAbilitySet.Abilities[numAbility].CancelAbility();
+        ActiveAbilitySet.Abilities[numAbility].CancelAbility();
     }
 }
