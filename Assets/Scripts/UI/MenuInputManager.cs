@@ -56,17 +56,17 @@ public class MenuInputManager : MonoBehaviour
     {
         if (_canSwap)
         {
-
-            if (GameManager.Instance.GetCurrentAbilityType() == AbilitySetType.Angel)
+            if (GameManager.ActiveAbilitySetType == AbilitySetType.Angel)
             {
-                PlayerController.SwapForm?.Invoke(AbilitySetType.Devil);
+                GameManager.ActiveAbilitySetType = AbilitySetType.Devil;
                 SfxManager.Instance.PlaySFX("DevilMenuSwitch");
             }
             else
             {
-                PlayerController.SwapForm?.Invoke(AbilitySetType.Angel);
+                GameManager.ActiveAbilitySetType = AbilitySetType.Angel;
                 SfxManager.Instance.PlaySFX("AngelMenuSwitch");
             }
+            UIAssetManager.SwitchAssets?.Invoke(GameManager.ActiveAbilitySetType);
         }
     }
 
