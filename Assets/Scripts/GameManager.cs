@@ -235,6 +235,19 @@ public class GameManager : MonoBehaviour
         {
             PlayerController.SwapForm?.Invoke(AbilitySetType.Devil);
         }
+        else
+        {
+            if (ActiveAbilitySetType == AbilitySetType.Angel)
+            {
+                PlayerController.SwapForm?.Invoke(AbilitySetType.Angel);
+            }
+            else
+            {
+                PlayerController.SwapForm?.Invoke(AbilitySetType.Devil);
+            }
+        }
+
+        // Ensures proper ability set is loaded on start
 
         yield return new WaitForSeconds(_sceneTransitionTime);
 
