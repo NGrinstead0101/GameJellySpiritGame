@@ -73,6 +73,18 @@ public class EnemyStateMachine : MonoBehaviour
         transform.position = new Vector2(currentPosition.x, transform.position.y);
     }
 
+    private void Update()
+    {
+        if (Physics2D.Raycast(frontDetectionPoint.position, Vector2.down, 1.75f, 1 << LayerMask.NameToLayer("Wall")))
+        {
+            isNearLedge = false;
+        }
+        else
+        {
+            isNearLedge = true;
+        }
+    }
+
     /// <summary>
     /// When running, moves the enemy towards a set location on the x axis.
     /// </summary>
@@ -223,7 +235,7 @@ public class EnemyStateMachine : MonoBehaviour
     }
     public bool IsFacingPlayer()
     {
-        if ((transform.position.x < GetPlayerLocation().x) && !isFacingLeft)
+        if ((transform.position.x < GetPlayerLocation().x) ^ isFacingLeft)
         {
             return true;
         }
@@ -245,7 +257,7 @@ public class EnemyStateMachine : MonoBehaviour
     {
         bool returnVal = isNearLedge;
 
-        if(isNearLedge)
+        if (isNearLedge)
             isNearLedge = false;
 
         return returnVal;
@@ -319,7 +331,7 @@ public class EnemyStateMachine : MonoBehaviour
 
         if (currentHealth > 0)
         {
-            PlaySfx("EnemyHit");
+            PlaySfx("EnemyHurt");
             SetHitVfxSystem(true);
             StartCoroutine(DisableHitVfxDelay());
         }
@@ -361,16 +373,9 @@ public class EnemyStateMachine : MonoBehaviour
             ChangeIsNextToPlayer(true);
         }
 
-        if (other.CompareTag("WALL"))
+        if (other.CompareTag("WALL") || other.CompareTag("Enemy"))
         {
             isNearWall = true;
-        }
-    }
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Ground"))
-        {
-            isNearLedge = true;
         }
     }
 

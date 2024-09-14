@@ -45,9 +45,9 @@ public class GameManager : MonoBehaviour
         else
         {
             Instance = this;
-            DontDestroyOnLoad(Instance);
+            
         }
-
+        DontDestroyOnLoad(this);
     }
 
     private void Start()
@@ -117,9 +117,17 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void LoadMainMenu()
     {
+        if(_currentGameState == GameState.pause)
+        {
+            //_currentGameState = GameState.level;
+            Time.timeScale = 1;
+            BackgroundMusicManager.Instance.SwitchBackTrack(GameState.pause, GameState.menu);
+        }
         LoadScene(0);
         _currentGameState = GameState.menu;
-        //load menu music
+        BackgroundMusicManager.Instance.RestartBackTracks();
+
+        BackgroundMusicManager.Instance.SwitchBackTrack(GameState.level, GameState.menu);
     }
 
     /// <summary>
@@ -145,6 +153,7 @@ public class GameManager : MonoBehaviour
         _currentGameState = GameState.pause;
         Time.timeScale = 0;
         PauseAction.Invoke(true);
+        BackgroundMusicManager.Instance.SwitchBackTrack(GameState.level, GameState.pause);
         //switch music
     }
 
@@ -156,7 +165,7 @@ public class GameManager : MonoBehaviour
         _currentGameState = GameState.level;
         Time.timeScale = 1;
         PauseAction.Invoke(false);
-        //switch music
+        BackgroundMusicManager.Instance.SwitchBackTrack(GameState.pause, GameState.level);
     }
 
     /// <summary>
@@ -164,19 +173,20 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void LoadFirstLevel()
     {
-        if(_currentAbilityType == AbilitySetType.Angel)
-        {
+        //if(_currentAbilityType == AbilitySetType.Angel)
+        //{
             //load angel scene
             StartCoroutine(LoadScene(1));
-        }
-        else
-        {
-            //load devil scene
-            StartCoroutine(LoadScene(2));
-        }
+        //}
+        //else
+        //{
+        //    //load devil scene
+        //    StartCoroutine(LoadScene(2));
+        //}
 
         _currentGameState = GameState.level;
-        //load music
+        BackgroundMusicManager.Instance.SwitchBackTrack(GameState.menu, GameState.level);
+        BackgroundMusicManager.Instance.RestartBackTracks();
     }
 
     /// <summary>
@@ -184,25 +194,19 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void LoadNextLevel()
     {
+        //print(SceneManager.GetActiveScene().buildIndex);
         //if in angel tutorial scene
-        if(SceneManager.GetActiveScene().buildIndex == 1)
+        if(SceneManager.GetActiveScene().buildIndex == 1 && !_devilTutComplete)
         {
             _angelTutComplete = true;
-            if(!_devilTutComplete)
-            {
-                //load devil scene
-                StartCoroutine(LoadScene(2));
-            }
+            StartCoroutine(LoadScene(2));
         }
         //if in devil tutorial scene
-        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        else if (SceneManager.GetActiveScene().buildIndex == 2 & !_angelTutComplete)
         {
             _devilTutComplete = true;
-            if (!_angelTutComplete)
-            {
-                //load angel scene
-                StartCoroutine(LoadScene(1));
-            }
+            //load angel scene
+            StartCoroutine(LoadScene(1));
         }
         //both tutorials completed
         else
@@ -233,6 +237,7 @@ public class GameManager : MonoBehaviour
     /// <param name="index"></param>
     private IEnumerator LoadScene(int index)
     {
+        Time.timeScale = 1;
         UIAssetManager.BlackFade?.Invoke(true);
 
         //sets avility type for tutorial levels
@@ -254,14 +259,31 @@ public class GameManager : MonoBehaviour
         UIAssetManager.BlackFade?.Invoke(false);
     }
 
-    //private void Update()
-    //{
-    //    if (Input.GetKeyUp(KeyCode.P))
-    //    {
-    //        //StartCoroutine(LoadScene(1));
-    //        _currentGameState = GameState.level;
-    //    }
-    //}
+    public void ResetCurrentScene()
+    {
+        StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex));
+    }
+
+    public void LoadEnding()
+    {
+        StartCoroutine(LoadScene(10));
+        StartCoroutine(Return());
+    }
+
+    private IEnumerator Return()
+    {
+        yield return new WaitForSeconds(10f);
+        LoadMainMenu();
+    }    
+
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.P))
+        {
+            //StartCoroutine(LoadScene(1));
+            _currentGameState = GameState.level;
+        }
+    }
 
     #endregion
 }
