@@ -72,11 +72,13 @@ public class BackgroundMusicManager : MonoBehaviour
     private void OnEnable()
     {
         PlayerController.SwapForm += SwitchDynamicMusic;
+        MenuInputManager.SwapFormMenu += SwitchDynamicMusic;
     }
 
     private void OnDisable()
     {
         PlayerController.SwapForm -= SwitchDynamicMusic;
+        MenuInputManager.SwapFormMenu -= SwitchDynamicMusic;
     }
 
 
@@ -102,7 +104,7 @@ public class BackgroundMusicManager : MonoBehaviour
                     StartCoroutine(StartFade(_angelMenu, 0, _angelDevilTransitionTime));
                     StartCoroutine(StartFade(_devilMenu, 0, _angelDevilTransitionTime));
                     StartCoroutine(StartFade(_devilLevel, 0, _angelDevilTransitionTime));
-                    StartCoroutine(StartFade(_angelLevel, 1, _angelDevilTransitionTime));
+                    StartCoroutine(StartFade(_angelLevel, 0.6f, _angelDevilTransitionTime));
                     StartCoroutine(StartFade(_angelPause, 0, _angelDevilTransitionTime));
                     break;
                 case GameManager.GameState.pause:
@@ -129,7 +131,7 @@ public class BackgroundMusicManager : MonoBehaviour
                     break;
                 case GameManager.GameState.level:
                     //devil level on
-                    StartCoroutine(StartFade(_devilLevel, 1, _angelDevilTransitionTime));
+                    StartCoroutine(StartFade(_devilLevel, 0.6f, _angelDevilTransitionTime));
                     StartCoroutine(StartFade(_devilMenu, 0, _angelDevilTransitionTime));
                     StartCoroutine(StartFade(_angelMenu, 0, _angelDevilTransitionTime));
                     StartCoroutine(StartFade(_angelLevel, 0, _angelDevilTransitionTime));
@@ -171,16 +173,32 @@ public class BackgroundMusicManager : MonoBehaviour
 
     public void SwitchBackTrack(GameManager.GameState from, GameManager.GameState to)
     {
-        StartCoroutine(StartFade(EnumToClip(from), 0, _backTrackTransitionTime));
-        StartCoroutine(StartFade(EnumToClip(to), 1, _backTrackTransitionTime));
+        if (to == GameManager.GameState.level)
+        {
+            StartCoroutine(StartFade(EnumToClip(from), 0, _backTrackTransitionTime));
+            StartCoroutine(StartFade(EnumToClip(to), 0.6f, _backTrackTransitionTime));
+        }
+        else
+        {
+            StartCoroutine(StartFade(EnumToClip(from), 0, _backTrackTransitionTime));
+            StartCoroutine(StartFade(EnumToClip(to), 1, _backTrackTransitionTime));
+        }
 
         SwitchDynamicMusic(GameManager.ActiveAbilitySetType);
     }
 
     public void SwitchBackTrackLoad(GameManager.GameState from, GameManager.GameState to)
     {
-        StartCoroutine(StartFade(EnumToClip(from), 0, _backTrackTransitionTime));
-        StartCoroutine(StartFade(EnumToClip(to), 1, _backTrackTransitionTime));
+        if (to == GameManager.GameState.level)
+        {
+            StartCoroutine(StartFade(EnumToClip(from), 0, _backTrackTransitionTime));
+            StartCoroutine(StartFade(EnumToClip(to), 0.6f, _backTrackTransitionTime));
+        }
+        else
+        {
+            StartCoroutine(StartFade(EnumToClip(from), 0, _backTrackTransitionTime));
+            StartCoroutine(StartFade(EnumToClip(to), 1, _backTrackTransitionTime));
+        }
     }
 
     private AudioSource EnumToClip(GameManager.GameState input)
