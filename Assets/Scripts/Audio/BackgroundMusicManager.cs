@@ -16,15 +16,9 @@ public class BackgroundMusicManager : MonoBehaviour
     [SerializeField] private GameObject _menuMusic;
     private AudioSource _menuMusicSource;
 
-    [SerializeField] private GameObject _angelMusic;
-    private AudioSource _angelMusicSource;
-    [SerializeField] private GameObject _devilMusic;
-    private AudioSource _devilMusicSource;
-
     [SerializeField] private float _angelDevilTransitionTime;
     [SerializeField] private float _backTrackTransitionTime;
 
-    
     [SerializeField] private GameObject _angelMenuGO;
     AudioSource _angelMenu;
 
@@ -43,11 +37,7 @@ public class BackgroundMusicManager : MonoBehaviour
     [SerializeField] private GameObject _devilPauseGO;
     AudioSource _devilPause;
 
-    [SerializeField] private List<AudioSource> _angelDevilClips = new List<AudioSource>();
-
     public static BackgroundMusicManager Instance { get; private set; }
-
-    
 
     private void Awake()
     {
@@ -68,15 +58,13 @@ public class BackgroundMusicManager : MonoBehaviour
         _levelMusicSource = _levelMusic.GetComponent<AudioSource>();
         _pauseMusicSource = _pauseMusic.GetComponent<AudioSource>();
         _menuMusicSource = _menuMusic.GetComponent<AudioSource>();
-        _angelMusicSource = _angelMusic.GetComponent<AudioSource>();
-        _devilMusicSource = _devilMusic.GetComponent<AudioSource>();
 
         _angelMenu = _angelMenuGO.GetComponent<AudioSource>();
         _angelLevel = _angelLevelGO.GetComponent<AudioSource>();
         _angelPause = _angelPauseGo.GetComponent<AudioSource>();
         _devilMenu = _devilMenuGO.GetComponent<AudioSource>();
-        _devilLevel = _devilMenuGO.GetComponent<AudioSource>();
-        _devilPause = _devilMenuGO.GetComponent<AudioSource>();
+        _devilLevel = _devilLevelGO.GetComponent<AudioSource>();
+        _devilPause = _devilPauseGO.GetComponent<AudioSource>();
 
         SwitchBackTrackLoad(GameManager.GameState.level, GameManager.GameState.menu);
     }
@@ -112,6 +100,7 @@ public class BackgroundMusicManager : MonoBehaviour
                 case GameManager.GameState.level:
                     //angel level on
                     StartCoroutine(StartFade(_angelMenu, 0, _angelDevilTransitionTime));
+                    StartCoroutine(StartFade(_devilMenu, 0, _angelDevilTransitionTime));
                     StartCoroutine(StartFade(_devilLevel, 0, _angelDevilTransitionTime));
                     StartCoroutine(StartFade(_angelLevel, 1, _angelDevilTransitionTime));
                     StartCoroutine(StartFade(_angelPause, 0, _angelDevilTransitionTime));
@@ -142,6 +131,7 @@ public class BackgroundMusicManager : MonoBehaviour
                     //devil level on
                     StartCoroutine(StartFade(_devilLevel, 1, _angelDevilTransitionTime));
                     StartCoroutine(StartFade(_devilMenu, 0, _angelDevilTransitionTime));
+                    StartCoroutine(StartFade(_angelMenu, 0, _angelDevilTransitionTime));
                     StartCoroutine(StartFade(_angelLevel, 0, _angelDevilTransitionTime));
                     StartCoroutine(StartFade(_devilPause, 0, _angelDevilTransitionTime));
                     break;
@@ -169,7 +159,7 @@ public class BackgroundMusicManager : MonoBehaviour
         float start = audioSource.volume;
         while (currentTime < duration)
         {
-            currentTime += Time.deltaTime;
+            currentTime += Time.fixedDeltaTime;
             audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
             yield return null;
         }
@@ -206,6 +196,21 @@ public class BackgroundMusicManager : MonoBehaviour
             default:
                 return null;
         }
+    }
+
+    public void RestartBackTracks()
+    {
+        print("reset");
+        _menuMusicSource.Play();
+        _pauseMusicSource.Play();
+        _levelMusicSource.Play();
+
+        _angelMenu.Play();
+        _angelLevel.Play();
+        _angelPause.Play();
+        _devilMenu.Play();
+        _devilLevel.Play();
+        _devilPause.Play();
     }
 
     #endregion
