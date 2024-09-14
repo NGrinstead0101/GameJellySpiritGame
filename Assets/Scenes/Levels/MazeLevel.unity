@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1395696551952210794, guid: 912e072b873f7c541878b45ec0ef99d4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.57405
+      value: -4.5707054
       objectReference: {fileID: 0}
     - target: {fileID: 1395696551952210794, guid: 912e072b873f7c541878b45ec0ef99d4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -185,6 +185,22 @@ PrefabInstance:
     - target: {fileID: 2788191129104856817, guid: 912e072b873f7c541878b45ec0ef99d4, type: 3}
       propertyPath: m_LocalPosition.y
       value: -4.762179
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311165685313309973, guid: 912e072b873f7c541878b45ec0ef99d4, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311165685313309973, guid: 912e072b873f7c541878b45ec0ef99d4, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311165685313309973, guid: 912e072b873f7c541878b45ec0ef99d4, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311165685313309973, guid: 912e072b873f7c541878b45ec0ef99d4, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653756924787736263, guid: 912e072b873f7c541878b45ec0ef99d4, type: 3}
       propertyPath: m_Follow
